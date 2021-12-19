@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KernelLogic.DataBaseObjects.Entities
 {
-    public class Product
+    internal class Product
     {
         [Key]
         public int ProductId { get; set; }

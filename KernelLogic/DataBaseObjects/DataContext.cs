@@ -14,6 +14,6 @@ namespace KernelLogic.DataBaseObjects
         {
         }
 
-        public DbSet<Product> Products { get; set; }
+        internal DbSet<Product> Products { get; set; }
     }
 }
