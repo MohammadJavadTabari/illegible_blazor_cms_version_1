@@ -2,7 +2,7 @@
 
 namespace illShop.Shared.Dto.DtosRelatedProduct
 {
-    internal class ProductDto
+    public class ProductDto
     {
         [Key]
         public int ProductId { get; set; }
