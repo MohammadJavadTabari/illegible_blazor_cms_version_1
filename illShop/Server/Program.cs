@@ -1,4 +1,6 @@
+using KernelLogic.DataBaseObjects;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseSqlServer("Database=DESKTOP-M1RD6KK;Initial Catalog=illShop;Trusted_Connection=True;");
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
