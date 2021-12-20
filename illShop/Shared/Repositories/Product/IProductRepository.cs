@@ -1,4 +1,5 @@
-﻿using illShop.Shared.Dto.DtosRelatedProduct;
+﻿using AutoMapper;
+using illShop.Shared.Dto.DtosRelatedProduct;
 using KernelLogic.DataBaseObjects;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,21 +14,18 @@ namespace illShop.Shared.Repositories.Product
     {
         private DataContext _dataContext;
         private DbSet<KernelLogic.DataBaseObjects.Entities.Product> _products;
+        private readonly IMapper _mapper;
 
-        public ProductRepository(DataContext dataContext) : base()
+        public ProductRepository(DataContext dataContext, IMapper mapper) : base()
         {
             _dataContext = dataContext;
             _products = _dataContext.Set<KernelLogic.DataBaseObjects.Entities.Product>();
+            _mapper = mapper;
         }
 
         public async Task<int> AddProductAsync(ProductDto productDto)
         {
-            var entity = new KernelLogic.DataBaseObjects.Entities.Product() { 
-            ImageUrl =" sdfds",
-            Price = 123,
-            ProductId = 0,
-            ProductName = "test"
-            };
+            var entity = _mapper.Map<ProductDto,KernelLogic.DataBaseObjects.Entities.Product>(productDto);
             await _products.AddAsync(entity);
             await _dataContext.SaveChangesAsync();
             return entity.ProductId;
