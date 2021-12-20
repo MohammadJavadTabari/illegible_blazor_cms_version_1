@@ -13,7 +13,8 @@ namespace illShop.Shared.BasicServices
         Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress);
         Task<string> UploadImage(MultipartFormDataContent content, string uriAddress);
         Task<T> GetById<T>(int id, string uriAddress);
-        Task UpdateByDto(object product, string uriAddress);
+        Task UpdateByDto(object data, string uriAddress);
+        Task DeleteById(int id, string uriAddress);
     }
     public class HttpRequestHandlerService : IHttpRequestHandlerService
     {
@@ -83,15 +84,27 @@ namespace illShop.Shared.BasicServices
             return productDto;
         }
 
-        public async Task UpdateByDto(object product, string uriAddress)
+        public async Task UpdateByDto(object data, string uriAddress)
         {
-            var content = JsonSerializer.Serialize(product);
+            var content = JsonSerializer.Serialize(data);
             var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
             var putResult = await _httpClient.PutAsync(uriAddress, bodyContent);
             var putContent = await putResult.Content.ReadAsStringAsync();
             if (!putResult.IsSuccessStatusCode)
             {
                 throw new ApplicationException(putContent);
+            }
+        }
+
+        public async Task DeleteById(int id, string uriAddress)
+        {
+            var url = Path.Combine(uriAddress, id.ToString());
+
+            var deleteResult = await _httpClient.DeleteAsync(url);
+            var deleteContent = await deleteResult.Content.ReadAsStringAsync();
+            if (!deleteResult.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(deleteContent);
             }
         }
     }

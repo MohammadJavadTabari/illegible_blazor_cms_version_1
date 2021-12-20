@@ -9,7 +9,7 @@ namespace illShop.Client.Pages.ProductComponents
         public MetaData MetaData { get; set; } = new MetaData();
         private PagingParameters _pagingParameters = new ();
 
-        private async Task GetPosts()
+        private async Task GetProducts()
         {
             var pagingResponse = await _httpRequestHandler.GetPagedData(_pagingParameters, "ProductHandlers/GetPagedProducts");
             ProductDtoList = pagingResponse.Items;
@@ -17,26 +17,31 @@ namespace illShop.Client.Pages.ProductComponents
         }
         protected async override Task OnInitializedAsync()
         {
-            await GetPosts();
-            var aa = ProductDtoList;
+            await GetProducts();
         }
         private async Task SelectedPage(int page)
         {
             _pagingParameters.PageNumber = page;
-            await GetPosts();
+            await GetProducts();
         }
         private async Task SearchChanged(string searchTerm)
         {
             Console.WriteLine(searchTerm);
             _pagingParameters.PageNumber = 1;
             _pagingParameters.SearchTerm = searchTerm;
-            await GetPosts();
+            await GetProducts();
         }
         private async Task SortChanged(string orderBy)
         {
             Console.WriteLine(orderBy);
             _pagingParameters.OrderBy = orderBy;
-            await GetPosts();
+            await GetProducts();
+        }
+        private async Task DeleteProduct(int id)
+        {
+            await _httpRequestHandler.DeleteById(id, "ProductHandlers/RemoveProduct");
+            _pagingParameters.PageNumber = 1;
+            await GetProducts();
         }
     }
 }

@@ -47,5 +47,12 @@ namespace illShop.Server.Controllers.Products
             await _productRepository.UpdateProduct(product);
             return NoContent();
         }
+        [HttpDelete]
+        [Route("RemoveProduct/{id}")]
+        public async Task<IActionResult> DeleteProduct([FromRoute] int id)
+        {
+            await _productRepository.DeleteProduct(id);
+            return NoContent();
+        }
     }
 }

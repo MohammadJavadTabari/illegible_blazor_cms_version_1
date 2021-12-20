@@ -4,6 +4,7 @@ namespace illShop.Shared.Dto.DtosRelatedProduct
 {
     public class ProductDto
     {
+        [Key]
         public int ProductId { get; set; }
         [Required(ErrorMessage ="please fill product name field")]
         public string ProductName { get; set; } = "ProductName";

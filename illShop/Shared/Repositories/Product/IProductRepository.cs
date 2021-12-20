@@ -13,6 +13,7 @@ namespace illShop.Shared.Repositories.Product
         Task<PagedList<ProductDto>> GetPagedBlogPosts(PagingParameters pagingParameters);
         Task<ProductDto> GetProduct(int id);
         Task UpdateProduct(ProductDto productDto);
+        Task DeleteProduct(int id);
     }
 
     public class ProductRepository : IProductRepository
@@ -53,6 +54,12 @@ namespace illShop.Shared.Repositories.Product
             var data = _mapper.Map<KernelLogic.DataBaseObjects.Entities.Product>(productDto);
             _products.Update(data);
             await _dataContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteProduct(int id)
+        {
+            _products.Remove(await _products.FirstOrDefaultAsync(p => p.ProductId.Equals(id)));
+            await _dataContext.SaveChangesAsync();            
         }
     }
 }
