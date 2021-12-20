@@ -32,5 +32,20 @@ namespace illShop.Server.Controllers.Products
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(products.MetaData));
             return Ok(products);
         }
+        [HttpGet]
+        [Route("GetProductById/{id}")]
+        public async Task<IActionResult> GetProduct([FromRoute] int id)
+        {
+            var product = await _productRepository.GetProduct(id);
+            return Ok(product);
+        }
+
+        [HttpPut("{id}")]
+        [Route("EditProduct")]
+        public async Task<IActionResult> UpdateProduct([FromBody] ProductDto product)
+        {
+            await _productRepository.UpdateProduct(product);
+            return NoContent();
+        }
     }
 }
