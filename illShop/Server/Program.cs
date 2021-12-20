@@ -15,6 +15,15 @@ builder.Services.AddDbContext<DataContext>(options =>
 });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddCors(policy =>
+{
+    policy.AddPolicy("IllegibleCors", opt => opt
+    .AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .WithExposedHeaders("X-Pagination"));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,7 +36,7 @@ else
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
-
+app.UseCors("IllegibleCors");
 app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();

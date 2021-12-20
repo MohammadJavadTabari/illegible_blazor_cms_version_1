@@ -1,0 +1,40 @@
+﻿@if (ProductDtoList.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">ProductName</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var data in ProductDtoList)
+            {
+                <tr>
+                    <td>
+                        <img src="@data.ImageUrl" alt="product image" style="width:100px;" />
+                    </td>
+                    <td class="align-middle">
+                        @data.ProductName
+                    </td>
+                    <td class="align-middle">
+                        @data.Price
+                    </td>
+                    <td class="align-middle">
+                        <button type="button" class="btn btn-info">Update</button>
+                    </td>
+                    <td class="align-middle">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <span>
+        Loading products...
+    </span>
+}

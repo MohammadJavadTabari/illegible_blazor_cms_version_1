@@ -1,11 +1,15 @@
 ﻿using System.Text.Json;
 using System.Net.Http.Json;
+using illShop.Shared.BasicObjects.Paging;
+using Microsoft.AspNetCore.WebUtilities;
+using illShop.Shared.Dto.DtosRelatedProduct;
 
 namespace illShop.Shared.BasicServices
 {
     public interface IHttpRequestHandlerService
     {
         Task<bool> PostAsHttpJsonAsync(object Dto, string uriAddress);
+        Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress);
     }
     public class HttpRequestHandlerService : IHttpRequestHandlerService
     {
@@ -24,6 +28,27 @@ namespace illShop.Shared.BasicServices
             if (responseMessage.IsSuccessStatusCode)
                 isdone = true;
             return isdone;
+        }
+        public async Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress)
+        {
+            var queryStringParam = new Dictionary<string, string>
+            {
+                ["pageNumber"] = pagingParameters.PageNumber.ToString(),
+                ["searchTerm"] = pagingParameters.SearchTerm == null ? "" : pagingParameters.SearchTerm,
+                ["orderBy"] = pagingParameters.OrderBy
+            };
+            var response = await _httpClient.GetAsync(QueryHelpers.AddQueryString(uriAddress, queryStringParam));
+            var content = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content);
+            }
+            var pagingResponse = new PagingResponse<ProductDto>
+            {
+                Items = JsonSerializer.Deserialize<List<ProductDto>>(content, _options),
+                MetaData = JsonSerializer.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First(), _options)
+            };
+            return pagingResponse;
         }
     }
 }

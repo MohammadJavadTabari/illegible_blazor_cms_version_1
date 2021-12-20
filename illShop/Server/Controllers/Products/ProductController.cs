@@ -1,6 +1,8 @@
-﻿using illShop.Shared.Dto.DtosRelatedProduct;
+﻿using illShop.Shared.BasicObjects.Paging;
+using illShop.Shared.Dto.DtosRelatedProduct;
 using illShop.Shared.Repositories.Product;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace illShop.Server.Controllers.Products
 {
@@ -14,11 +16,21 @@ namespace illShop.Server.Controllers.Products
         {
             _productRepository = productRepository;
         }
+
         [HttpPost]
         [Route("AddProduct")]
-        public async Task AddProduct([FromBody] ProductDto productDto)
+        public async Task<IActionResult> AddProduct([FromBody] ProductDto productDto)
         {
-            await _productRepository.AddProductAsync(productDto);
+            var product = await _productRepository.AddProductAsync(productDto);
+            return Created("", product);
+        }
+
+        [HttpGet("GetPagedProducts")]
+        public async Task<IActionResult> GetPagedProducts([FromQuery] PagingParameters pagingParameters)
+        {
+            var products = await _productRepository.GetPagedBlogPosts(pagingParameters);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(products.MetaData));
+            return Ok(products);
         }
     }
 }
