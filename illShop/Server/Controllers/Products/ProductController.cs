@@ -40,7 +40,7 @@ namespace illShop.Server.Controllers.Products
             return Ok(product);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         [Route("EditProduct")]
         public async Task<IActionResult> UpdateProduct([FromBody] ProductDto product)
         {

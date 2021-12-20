@@ -12,7 +12,7 @@ namespace illShop.Shared.BasicServices
         Task<bool> PostAsHttpJsonAsync(object Dto, string uriAddress);
         Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress);
         Task<string> UploadImage(MultipartFormDataContent content, string uriAddress);
-        Task<T> GetById<T>(string id, string uriAddress);
+        Task<T> GetById<T>(int id, string uriAddress);
         Task UpdateByDto(object product, string uriAddress);
     }
     public class HttpRequestHandlerService : IHttpRequestHandlerService
@@ -70,9 +70,9 @@ namespace illShop.Shared.BasicServices
             }
         }
 
-        public async Task<T> GetById<T>(string id, string uriAddress)
+        public async Task<T> GetById<T>(int id, string uriAddress)
         {
-            var url = Path.Combine(uriAddress, id);
+            var url = Path.Combine(uriAddress, id.ToString());
             var response = await _httpClient.GetAsync(url);
             var content = await response.Content.ReadAsStringAsync();
             if (!response.IsSuccessStatusCode)

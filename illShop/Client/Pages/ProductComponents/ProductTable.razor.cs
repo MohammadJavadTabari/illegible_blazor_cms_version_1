@@ -7,5 +7,11 @@ namespace illShop.Client.Pages.ProductComponents
     {
         [Parameter]
         public List<ProductDto>? ProductDtoList { get; set; }
+
+        private void RedirectToUpdate(int ProductId)
+        {
+            var url = Path.Combine("/updateProduct/", ProductId.ToString());
+            NavigationManager.NavigateTo(url);
+        }
     }
 }
