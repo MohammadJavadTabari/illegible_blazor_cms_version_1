@@ -62,7 +62,7 @@ namespace illShop.Shared.BasicServices
             }
             else
             {
-                var imgUrl = Path.Combine(uriAddress, postContent);
+                var imgUrl = Path.Combine(_httpClient.BaseAddress.ToString(), postContent);
                 return imgUrl;
             }
         }
