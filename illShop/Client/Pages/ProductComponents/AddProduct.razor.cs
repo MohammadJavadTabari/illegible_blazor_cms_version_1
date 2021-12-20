@@ -10,5 +10,6 @@ namespace illShop.Client.Pages.ProductComponents
         {
             await _httpRequestHandler.PostAsHttpJsonAsync(ProductDto, "ProductHandlers/AddProduct");
         }
+        private void AssignImageUrl(string imgUrl) => ProductDto.ImageUrl = imgUrl;
     }
 }

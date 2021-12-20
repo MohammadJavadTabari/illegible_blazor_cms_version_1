@@ -10,6 +10,7 @@ namespace illShop.Shared.BasicServices
     {
         Task<bool> PostAsHttpJsonAsync(object Dto, string uriAddress);
         Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress);
+        Task<string> UploadImage(MultipartFormDataContent content, string uriAddress);
     }
     public class HttpRequestHandlerService : IHttpRequestHandlerService
     {
@@ -49,6 +50,21 @@ namespace illShop.Shared.BasicServices
                 MetaData = JsonSerializer.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First(), _options)
             };
             return pagingResponse;
+        }
+
+        public async Task<string> UploadImage(MultipartFormDataContent content, string uriAddress)
+        {
+            var postResult = await _httpClient.PostAsync(uriAddress, content);
+            var postContent = await postResult.Content.ReadAsStringAsync();
+            if (!postResult.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(postContent);
+            }
+            else
+            {
+                var imgUrl = Path.Combine(uriAddress, postContent);
+                return imgUrl;
+            }
         }
     }
 }

@@ -20,5 +20,9 @@
     <ProjectReference Include="..\Shared\illShop.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="StaticFiles\Images\" />
+  </ItemGroup>
+
 
 </Project>
