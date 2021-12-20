@@ -1,11 +1,6 @@
 ﻿using illShop.Shared.Dto.DtosRelatedProduct;
 using KernelLogic.DataBaseObjects;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace illShop.Shared.Repositories.Product
 {
@@ -27,7 +22,12 @@ namespace illShop.Shared.Repositories.Product
 
         public async Task<int> AddProductAsync(ProductDto productDto)
         {
-            var entity = new KernelLogic.DataBaseObjects.Entities.Product();
+            var entity = new KernelLogic.DataBaseObjects.Entities.Product() { 
+            ImageUrl =" sdfds",
+            Price = 123,
+            ProductId = 0,
+            ProductName = "test"
+            };
             await _products.AddAsync(entity);
             await _dataContext.SaveChangesAsync();
             return entity.ProductId;

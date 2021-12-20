@@ -1,1 +1,31 @@
 ﻿@page "/addProduct"
+
+<EditForm Model="ProductDto" OnSubmit="Create" class="card card-body bg-light mt-5">
+    <DataAnnotationsValidator />
+    <div class="form-group row">
+        <label for="title" class="col-md-2 col-form-label">Product Name:</label>
+        <div class="col-md-10">
+            <InputText id="title" class="form-control" @bind-Value="ProductDto.ProductName" />
+            <ValidationMessage For="@(() => ProductDto.ProductName)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="postContext" class="col-md-2 col-form-label">PostContext:</label>
+        <div class="col-md-10">
+            <InputNumber id="postContext" class="form-control" @bind-Value="ProductDto.Price" />
+            <ValidationMessage For="@(() => ProductDto.Price)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="postContext" class="col-md-2 col-form-label">PostContext:</label>
+        <div class="col-md-10">
+            <InputText id="postContext" class="form-control" @bind-Value="ProductDto.ImageUrl" />
+            <ValidationMessage For="@(() => ProductDto.ImageUrl)" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-success">Create</button>
+        </div>
+    </div>
+</EditForm>
