@@ -25,7 +25,7 @@
                         <button type="button" class="btn btn-info" @onclick="() => RedirectToUpdate(data.ProductId)">Update</button>
                     </td>
                     <td class="align-middle">
-                        <button type="button" class="btn btn-danger" @onclick="() => OnDeleted.InvokeAsync(data.ProductId)">Delete</button>
+                        <button type="button" class="btn btn-danger" @onclick="() => Delete(data.ProductId)">Delete</button>
                     </td>
                 </tr>
             }
