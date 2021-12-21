@@ -56,7 +56,7 @@ namespace illShop.Shared.BasicServices
             // then like register method
             // send jsonLoginDto to login controller Encoded in utf8
             //and get response
-            var response = await _client.PostAsync("Login",new StringContent(loginAsJson,Encoding.UTF8, "application/json"));
+            var response = await _client.PostAsync("LoginHandler/login", new StringContent(loginAsJson,Encoding.UTF8, "application/json"));
 
             // then deserialize response to LoginDto
             var loginResult = JsonSerializer.Deserialize<LoginResultDto>
@@ -95,6 +95,5 @@ namespace illShop.Shared.BasicServices
             // remove http Authorization req header
             _client.DefaultRequestHeaders.Authorization = null;
         }
-
     }
 }

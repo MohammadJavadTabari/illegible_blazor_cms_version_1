@@ -1,4 +1,5 @@
 using illShop.Shared.BasicObjects.JWT;
+using illShop.Shared.BasicServices;
 using illShop.Shared.Repositories.Product;
 using KernelLogic.DataBaseObjects;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -33,6 +34,7 @@ builder.Services.AddCors(policy =>
     .AllowAnyMethod()
     .WithExposedHeaders("X-Pagination"));
 });
+builder.Services.AddScoped<ITokenExtension, TokenExtension>();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IDentityContext>();
 #region IDentity with jwt
 
