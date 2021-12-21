@@ -1,8 +1,12 @@
+using illShop.Shared.BasicObjects.JWT;
 using illShop.Shared.Repositories.Product;
 using KernelLogic.DataBaseObjects;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 #region Service Container Builder
 var builder = WebApplication.CreateBuilder(args);
@@ -30,7 +34,28 @@ builder.Services.AddCors(policy =>
     .WithExposedHeaders("X-Pagination"));
 });
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IDentityContext>();
+#region IDentity with jwt
 
+var jwtSetting = new JwtSetting();
+builder.Services.AddAuthentication(opt =>
+{
+    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = jwtSetting.ValidateIssuer,
+        ValidateAudience = jwtSetting.ValidateAudience,
+        ValidateLifetime = jwtSetting.ValidateLifetime,
+        ValidateIssuerSigningKey = jwtSetting.ValidateIssuerSigningKey,
+        ValidIssuer = jwtSetting.ValidIssuer,
+        ValidAudience = jwtSetting.ValidAudience,
+        IssuerSigningKey =new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSetting.SecuritySignInKey)),
+    };
+});
+
+#endregion
 #endregion
 
 #region appConfigs
