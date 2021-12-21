@@ -24,12 +24,12 @@ namespace illShop.Server.Controllers.Identity
         {
             var user = await _userManager.FindByNameAsync(loginModelDto.Email);
             if (user == null || !await _userManager.CheckPasswordAsync(user, loginModelDto.Password))
-                return Unauthorized(new AuthResponseDto { ErrorMessage = "Invalid Authentication" });
+                return Unauthorized(new LoginResultDto { Error = "Invalid Authentication" });
             var signingCredentials = _tokenExtension.GetSigningCredentials();
             var claims = _tokenExtension.GetClaims(user);
             var tokenOptions = _tokenExtension.GenerateTokenOptions(signingCredentials, claims);
             var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-            return Ok(new AuthResponseDto { IsAuthSuccessful = true, Token = token });
+            return Ok(new LoginResultDto { IsAuthSuccessful = true, Token = token });
         }
     }
 }
