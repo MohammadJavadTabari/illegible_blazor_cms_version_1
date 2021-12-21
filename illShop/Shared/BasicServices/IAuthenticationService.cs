@@ -25,7 +25,7 @@ namespace illShop.Shared.BasicServices
         {
             var content = JsonSerializer.Serialize(userForRegistration);
             var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
-            var registrationResult = await _client.PostAsync("accounts/registration", bodyContent);
+            var registrationResult = await _client.PostAsync("AccountHandelMethods/Registration", bodyContent);
             var registrationContent = await registrationResult.Content.ReadAsStringAsync();
             if (!registrationResult.IsSuccessStatusCode)
             {
