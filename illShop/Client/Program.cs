@@ -1,6 +1,7 @@
+using Blazored.LocalStorage;
 using illShop.Client;
 using illShop.Shared.BasicServices;
-
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Tewr.Blazor.FileReader;
@@ -14,5 +15,6 @@ builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<IHttpRequestHandlerService, HttpRequestHandlerService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddFileReaderService(o => o.UseWasmSharedBuffer = false);
-
+builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddScoped<AuthenticationStateProvider,ApiAuthenticationStateProvider>();
 await builder.Build().RunAsync();
