@@ -4,6 +4,7 @@ using KernelLogic.DataBaseObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KernelLogic.Migrations.IDentity
 {
     [DbContext(typeof(IDentityContext))]
-    partial class IDentityContextModelSnapshot : ModelSnapshot
+    [Migration("20211221165136_InitialRoleSeed")]
+    partial class InitialRoleSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -28,7 +28,7 @@ namespace illShop.Server.Controllers.Identity
                 var errors = result.Errors.Select(e => e.Description);
                 return BadRequest(new RegistrationResponseDto { Errors = errors });
             }
-
+            await _userManager.AddToRoleAsync(user, "Viewer");
             return StatusCode(201);
         }
     }
