@@ -1,9 +1,10 @@
 using illShop.Shared.Repositories.Product;
 using KernelLogic.DataBaseObjects;
-using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 
+#region Service Container Builder
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,6 +14,10 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer("Database=DESKTOP-M1RD6KK;Initial Catalog=illShop;Trusted_Connection=True;");
+});
+builder.Services.AddDbContext<IDentityContext>(options =>
+{
+    options.UseSqlServer("Database=DESKTOP-M1RD6KK;Initial Catalog=illShop.Identity;Trusted_Connection=True;");
 });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -24,7 +29,11 @@ builder.Services.AddCors(policy =>
     .AllowAnyMethod()
     .WithExposedHeaders("X-Pagination"));
 });
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IDentityContext>();
 
+#endregion
+
+#region appConfigs
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -58,3 +67,5 @@ app.MapControllers();
 app.MapFallbackToFile("index.html");
 
 app.Run();
+
+#endregion
