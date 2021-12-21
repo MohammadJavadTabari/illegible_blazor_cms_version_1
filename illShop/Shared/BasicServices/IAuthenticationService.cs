@@ -49,34 +49,19 @@ namespace illShop.Shared.BasicServices
         // get user login data and validate it
         public async Task<LoginResultDto> Login(LoginModelDto loginModel)
         {
-            // like register method i serialize loginViewModel
-            // to json
             var loginAsJson = JsonSerializer.Serialize(loginModel);
-
-            // then like register method
-            // send jsonLoginDto to login controller Encoded in utf8
-            //and get response
             var response = await _client.PostAsync("LoginHandler/login", new StringContent(loginAsJson,Encoding.UTF8, "application/json"));
-
-            // then deserialize response to LoginDto
             var loginResult = JsonSerializer.Deserialize<LoginResultDto>
                 (await response.Content.ReadAsStringAsync(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-            // in case of invalid authentication data send it back 
-            // for showing errors
+            
             if (!response.IsSuccessStatusCode)
             {
                 return loginResult;
             }
-
-            // as i said above i use local storage here
-            // to get or set token's
             await _localStorage.SetItemAsync("authToken", loginResult.Token);
 
-            // Mark User As Authenticated 
             ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(loginModel.Email);
 
-            // set http Authorization req header with bearer scheme
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", loginResult.Token);
 
             return loginResult;
@@ -84,15 +69,9 @@ namespace illShop.Shared.BasicServices
 
         public async Task Logout()
         {
-            // remove Authentication Generated Token 
             await _localStorage.RemoveItemAsync("authToken");
 
-            // Mark User As Logged Out
-            ((ApiAuthenticationStateProvider)
-                _authenticationStateProvider)
-                .MarkUserAsLoggedOut();
-
-            // remove http Authorization req header
+            ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsLoggedOut();
             _client.DefaultRequestHeaders.Authorization = null;
         }
     }
