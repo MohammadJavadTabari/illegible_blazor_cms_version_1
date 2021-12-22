@@ -1,43 +1,36 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">illShop</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
-
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
+﻿<MudDrawer @bind-Open="SideBarOpen" Elevation="1">
+    <MudDrawerHeader>
+        <MudAvatar Color="Color.Transparent" Size="Size.Large" Image="Images/shopping.png" />
+        <MudText Typo="Typo.h6" Color="Color.Primary" Style="margin-top:10px; margin-left:15px;">Ill Shop</MudText>
+    </MudDrawerHeader>
+    <MudNavMenu>
+        <AuthorizeView>
+            <Authorized>
+                <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Filled.Home">Home</MudNavLink>
+                <MudNavLink Href="/Products" Icon="@Icons.Filled.DashboardCustomize">Products</MudNavLink>
+                <MudNavLink Href="/logout" Icon="@Icons.Filled.DashboardCustomize">Products</MudNavLink>
+                <MudNavGroup Title="Expanding" Icon="@Icons.Filled.DashboardCustomize" Expanded="false">
+                    <MudNavLink Href="#" Icon="@Icons.Filled.Camera">Photos</MudNavLink>
+                    <MudNavLink Href="#" Icon="@Icons.Filled.Celebration">Party</MudNavLink>
+                </MudNavGroup>
+            </Authorized>
+            <NotAuthorized>
+                <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Filled.Home">Home</MudNavLink>
+                <MudNavLink Href="/Products" Icon="@Icons.Filled.DashboardCustomize">Products</MudNavLink>
+                <MudNavLink Href="/login" Icon="@Icons.Filled.DashboardCustomize">Products</MudNavLink>
+                <MudNavLink Href="/registration" Icon="@Icons.Filled.DashboardCustomize">Products</MudNavLink>
+                <MudNavGroup Title="Expanding" Icon="@Icons.Filled.DashboardCustomize" Expanded="false">
+                    <MudNavLink Href="#" Icon="@Icons.Filled.Camera">Photos</MudNavLink>
+                    <MudNavLink Href="#" Icon="@Icons.Filled.Celebration">Party</MudNavLink>
+                </MudNavGroup>
+            </NotAuthorized>
+        </AuthorizeView>
         <AuthorizeView Roles="Administrator">
             <Authorized>
                 <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="addProduct">
-                        <span class="oi oi-plus" aria-hidden="true"></span> Add Product
-                    </NavLink>
+                    <MudNavLink Href="/addProduct" Icon="@Icons.Filled.Storage">AddProduct</MudNavLink>
                 </div>
             </Authorized>
         </AuthorizeView>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="Products">
-                <span class="oi oi-grid-four-up" aria-hidden="true"></span> All Products
-            </NavLink>
-        </div>
-    </nav>
-</div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+    </MudNavMenu>
+</MudDrawer>
