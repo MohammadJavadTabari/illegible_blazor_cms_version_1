@@ -5,12 +5,25 @@
         <NavMenu />
     </div>
 
-    <main>
-        <div class="top-row px-4">
-            <AuthLinks />
-        </div>
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
+    <MudLayout>
+        <MudAppBar Elevation="3">
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" />
+            <MudSpacer />
+            @if (_isLightMode)
+            {
+                <MudIconButton Icon="@Icons.Material.Filled.Brightness4" Color="Color.Inherit" OnClick="ToggleTheme" />
+            }
+            else
+            {
+                <MudIconButton Icon="@Icons.Material.Filled.Brightness5" Color="Color.Inherit" OnClick="ToggleTheme" />
+            }
+        </MudAppBar>
+        <MudMainContent Class="pt-16 px-16">
+            <MudContainer Class="mt-6">
+                @Body
+            </MudContainer>
+        </MudMainContent>
+    </MudLayout>
+
 </div>
+<MudThemeProvider Theme="_currentTheme" />
