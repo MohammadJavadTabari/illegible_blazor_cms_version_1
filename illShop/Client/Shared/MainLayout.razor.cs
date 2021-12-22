@@ -19,19 +19,26 @@ namespace illShop.Client.Shared
             }
         }
         private MudTheme GenerateDarkTheme() =>
-            new MudTheme
+        new MudTheme
+        {
+            Palette = new Palette()
             {
-                Palette = new Palette()
-                {
-                    Black = "#27272f",
-                    Background = "#32333d",
-                    BackgroundGrey = "#27272f",
-                    Surface = "#373740",
-                    TextPrimary = "#ffffffb3",
-                    TextSecondary = "rgba(255,255,255, 0.50)",
-                    AppbarBackground = "#27272f",
-                    AppbarText = "#ffffffb3"
-                }
-            };
+                Black = "#27272f",
+                Background = "#32333d",
+                BackgroundGrey = "#27272f",
+                Surface = "#373740",
+                TextPrimary = "#ffffffb3",
+                TextSecondary = "rgba(255,255,255, 0.50)",
+                AppbarBackground = "#27272f",
+                AppbarText = "#ffffffb3"
+            }
+        };
+        private bool _sidebarOpen = true;
+        
+
+        private void ToggleNavMenu()
+        {
+            _sidebarOpen = !_sidebarOpen;
+        }
     }
 }
