@@ -60,7 +60,7 @@ namespace illShop.Shared.BasicServices
             }
             await _localStorage.SetItemAsync("authToken", loginResult.Token);
 
-            ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(loginModel.Email);
+            ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(loginResult.Token);
 
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", loginResult.Token);
 

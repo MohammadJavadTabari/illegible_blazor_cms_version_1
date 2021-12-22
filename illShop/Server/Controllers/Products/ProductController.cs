@@ -1,6 +1,7 @@
 ﻿using illShop.Shared.BasicObjects.Paging;
 using illShop.Shared.Dto.DtosRelatedProduct;
 using illShop.Shared.Repositories.Product;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -8,6 +9,7 @@ namespace illShop.Server.Controllers.Products
 {
     [Route("ProductHandlers")]
     [ApiController]
+    [Authorize(Roles = "Administrator")]
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;

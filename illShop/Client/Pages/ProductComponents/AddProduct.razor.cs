@@ -1,4 +1,5 @@
 ﻿using illShop.Shared.Dto.DtosRelatedProduct;
+using Microsoft.AspNetCore.Authorization;
 
 namespace illShop.Client.Pages.ProductComponents
 {

@@ -10,11 +10,16 @@ namespace illShop.Shared.BasicServices
     public interface ITokenExtension
     {
         SigningCredentials GetSigningCredentials();
-        List<Claim> GetClaims(IdentityUser user);
+        Task<List<Claim>> GetClaimsAsync(IdentityUser user);
         JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims);
     }
     public class TokenExtension : ITokenExtension
     {
+        private readonly UserManager<IdentityUser> _userManager;
+        public TokenExtension(UserManager<IdentityUser> userManager)
+        {
+            _userManager = userManager;
+        }
         public SigningCredentials GetSigningCredentials()
         {
             var _jwtSettings = new JwtSetting();
@@ -23,12 +28,17 @@ namespace illShop.Shared.BasicServices
 
             return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
         }
-        public List<Claim> GetClaims(IdentityUser user)
+        public async Task<List<Claim>> GetClaimsAsync(IdentityUser user)
         {
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.Email)
             };
+            var roles = await _userManager.GetRolesAsync(user);
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
             return claims;
         }
         public JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)

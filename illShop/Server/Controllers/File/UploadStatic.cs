@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http.Headers;
 
@@ -6,6 +6,7 @@ namespace illShop.Server.Controllers.File
 {
     [Route("UploadStaticFileHandler")]
     [ApiController]
+    [Authorize(Roles = "Administrator")]
     public class UploadStatic : ControllerBase
     {
         [HttpPost]

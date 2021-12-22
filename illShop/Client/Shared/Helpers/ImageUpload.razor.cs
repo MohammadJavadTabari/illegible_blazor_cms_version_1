@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using System.Net.Http.Headers;
 using Tewr.Blazor.FileReader;
 
 namespace illShop.Client.Shared.Helpers
 {
+    [Authorize(Roles = "Administrator")]
     public partial class ImageUpload
     {
         private ElementReference _input;
