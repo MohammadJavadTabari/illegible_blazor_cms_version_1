@@ -1,4 +1,22 @@
-﻿@if (ProductDtoList.Any())
+﻿
+@*<MudTable Items="@ProductDtoList" Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true">*@
+@*   <MudTable ServerData="@(new Func<TableState, Task<TableData<Product>>>(GetServerData))"
+          Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true" 
+          @ref="_table" RowsPerPage="4">
+    <HeaderContent>
+        <MudTh>Image</MudTh>
+        <MudTh>Name</MudTh>
+        <MudTh>Price</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Image">
+            <MudAvatar Color="Color.Transparent" Size="Size.Large" Image="@context.ImageUrl" />
+        </MudTd>
+        <MudTd DataLabel="Name">@context.ProductName</MudTd>
+        <MudTd DataLabel="Price">$@context.Price</MudTd>
+    </RowTemplate>
+</MudTable>*@
+@*@if (ProductDtoList.Any())
 {
     <table class="table">
         <thead>
@@ -37,4 +55,4 @@ else
     <span>
         Loading products...
     </span>
-}
+}*@

@@ -1,20 +1,40 @@
 ﻿@page "/Products"
+@using illShop.Shared.Dto.DtosRelatedProduct
 
-<div class="row">
+@*<div class="row">
     <div class="col-md-5">
-        <Search OnSearchChanged="SearchChanged" />
+    <Search OnSearchChanged="SearchChanged" />
     </div>
     <div class="col-md-5">
-        <Sort OnSortChanged="SortChanged" />
+    <Sort OnSortChanged="SortChanged" />
     </div>
-</div>
+    </div>*@
 <div class="row">
     <div class="col">
-        <ProductTable ProductDtoList="ProductDtoList" OnDeleted="DeleteProduct"/>
+        <MudTable ServerData="@(new Func<TableState, Task<TableData<ProductDto>>>(GetServerData))"
+                  Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true"
+                  @ref="_table" RowsPerPage="4">
+            <HeaderContent>
+                <MudTh>Image</MudTh>
+                <MudTh>Name</MudTh>
+                <MudTh>Price</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Image">
+                    <MudAvatar Color="Color.Transparent" Size="Size.Large" Image="@context.ImageUrl" />
+                </MudTd>
+                <MudTd DataLabel="Name">@context.ProductName</MudTd>
+                <MudTd DataLabel="Price">$@context.Price</MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager PageSizeOptions="@_pageSizeOption" RowsPerPageString="Products per page" />
+            </PagerContent>
+        </MudTable>
+
     </div>
 </div>
-<div class="row">
+@*<div class="row">
     <div class="col">
-        <Pagination MetaDataParameter="MetaData" Spread="2" SelectedPage="SelectedPage" />
+    <Pagination MetaDataParameter="MetaData" Spread="2" SelectedPage="SelectedPage" />
     </div>
-</div>
+    </div>*@

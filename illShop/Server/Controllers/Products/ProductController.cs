@@ -9,7 +9,6 @@ namespace illShop.Server.Controllers.Products
 {
     [Route("ProductHandlers")]
     [ApiController]
-    [Authorize(Roles = "Administrator")]
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
@@ -21,6 +20,7 @@ namespace illShop.Server.Controllers.Products
 
         [HttpPost]
         [Route("AddProduct")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AddProduct([FromBody] ProductDto productDto)
         {
             var product = await _productRepository.AddProductAsync(productDto);
@@ -44,6 +44,7 @@ namespace illShop.Server.Controllers.Products
 
         [HttpPut]
         [Route("EditProduct")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> UpdateProduct([FromBody] ProductDto product)
         {
             await _productRepository.UpdateProduct(product);
@@ -51,6 +52,7 @@ namespace illShop.Server.Controllers.Products
         }
         [HttpDelete]
         [Route("RemoveProduct/{id}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteProduct([FromRoute] int id)
         {
             await _productRepository.DeleteProduct(id);
