@@ -19,9 +19,13 @@
             </HeaderContent>
             <RowTemplate>
                 <MudTd DataLabel="Image">
-                    <MudAvatar Color="Color.Transparent" Size="Size.Large" Image="@context.ImageUrl" />
+                    <MudLink Href="@($"product/{context.ProductId}")">
+                        <MudAvatar Color="Color.Transparent" Size="Size.Large" Image="@context.ImageUrl" />
+                    </MudLink>
                 </MudTd>
-                <MudTd DataLabel="Name">@context.ProductName</MudTd>
+                <MudTd DataLabel="Name">
+                    <MudLink Href="@($"product/{context.ProductId}")">@context.ProductName</MudLink>
+                </MudTd>
                 <MudTd DataLabel="Price">$@context.Price</MudTd>
             </RowTemplate>
             <PagerContent>
