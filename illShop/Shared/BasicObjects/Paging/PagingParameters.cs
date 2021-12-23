@@ -17,6 +17,6 @@ namespace illShop.Shared.BasicObjects.Paging
             set { _pageSize = (value > maxPageSize) ? maxPageSize : value; }
         }
         public string? SearchTerm { get; set; }
-        public string OrderBy { get; set; } = "title";
+        public string OrderBy { get; set; } = "productName";
     }
 }

@@ -39,7 +39,7 @@ namespace illShop.Shared.BasicServices
             var queryStringParam = new Dictionary<string, string>
             {
                 ["pageNumber"] = pagingParameters.PageNumber.ToString(),
-                ["searchTerm"] = pagingParameters.SearchTerm == null ? "" : pagingParameters.SearchTerm,
+                ["searchTerm"] = pagingParameters.SearchTerm ?? "",
                 ["orderBy"] = pagingParameters.OrderBy
             };
             var response = await _httpClient.GetAsync(QueryHelpers.AddQueryString(uriAddress, queryStringParam));
