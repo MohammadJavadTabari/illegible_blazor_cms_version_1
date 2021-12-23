@@ -12,5 +12,8 @@ namespace illShop.Shared.Dto.DtosRelatedProduct
         public long Price { get; set; } = 1;
         [Required]
         public string ImageUrl { get; set; } = "ImageUrl";
+        public string Desceription { get; set; } = "There is'nt any desceription for this product";
+        public string Supplier { get; set; } = "illShop";
+        public List<ProductReviewDto>? ProductReviews { get; set; }
     }
 }

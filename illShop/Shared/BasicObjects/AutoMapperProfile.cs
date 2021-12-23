@@ -14,6 +14,7 @@ namespace illShop.Shared.BasicObjects
         public AutoMapperProfile()
         {
             CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<ProductReview, ProductReviewDto>().ReverseMap();
         }
     }
 }
