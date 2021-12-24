@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using System.Net.Http.Headers;
-using Tewr.Blazor.FileReader;
 
 namespace illShop.Client.Shared.Helpers
 {
