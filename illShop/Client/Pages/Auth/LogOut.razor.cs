@@ -9,6 +9,7 @@ namespace illShop.Client.Pages.Auth
             await _authenticationService.Logout();
             _snackbar.Add("you are logout and navigating to home page", Severity.Success);
             NavigationManager.NavigateTo("/");
+            await _sessionStorageService.ClearAsync();
         }
     }
 }

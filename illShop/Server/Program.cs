@@ -1,3 +1,4 @@
+using Blazored.SessionStorage;
 using illShop.Shared.BasicObjects.JWT;
 using illShop.Shared.BasicServices;
 using illShop.Shared.Repositories.Product;
@@ -26,6 +27,7 @@ builder.Services.AddDbContext<IDentityContext>(options =>
 });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductReviewRepository, ProductReviewRepository>();
 builder.Services.AddCors(policy =>
 {
     policy.AddPolicy("IllegibleCors", opt => opt
@@ -34,6 +36,7 @@ builder.Services.AddCors(policy =>
     .AllowAnyMethod()
     .WithExposedHeaders("X-Pagination"));
 });
+builder.Services.AddBlazoredSessionStorage();
 builder.Services.AddScoped<ITokenExtension, TokenExtension>();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IDentityContext>();
 

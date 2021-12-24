@@ -33,9 +33,10 @@ namespace illShop.Client.Pages.ProductComponents
             var rating = reviews.Any() ? reviews.Average(r => r.Rate) : 0;
             return Convert.ToInt32(Math.Round(rating));
         }
+        
         private async Task RatingValueChanged(int value)
         {
-            
+          
         }
     }
 }

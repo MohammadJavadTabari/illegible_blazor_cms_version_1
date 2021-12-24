@@ -1,4 +1,5 @@
 using Blazored.LocalStorage;
+using Blazored.SessionStorage;
 using illShop.Client;
 using illShop.Shared.BasicServices;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor;
 using MudBlazor.Services;
+using System.Text.Json;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -16,6 +18,7 @@ builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<IHttpRequestHandlerService, HttpRequestHandlerService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddBlazoredSessionStorage();
 builder.Services.AddScoped<AuthenticationStateProvider,ApiAuthenticationStateProvider>();
 builder.Services.AddMudServices(config =>
 {

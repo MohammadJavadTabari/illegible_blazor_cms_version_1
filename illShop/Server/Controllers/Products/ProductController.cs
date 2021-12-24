@@ -2,6 +2,7 @@
 using illShop.Shared.Dto.DtosRelatedProduct;
 using illShop.Shared.Repositories.Product;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -12,10 +13,11 @@ namespace illShop.Server.Controllers.Products
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
-
-        public ProductController(IProductRepository productRepository)
+        private readonly UserManager<IdentityUser> _userManager;
+        public ProductController(IProductRepository productRepository, UserManager<IdentityUser> userManager)
         {
             _productRepository = productRepository;
+            _userManager = userManager;
         }
 
         [HttpPost]
