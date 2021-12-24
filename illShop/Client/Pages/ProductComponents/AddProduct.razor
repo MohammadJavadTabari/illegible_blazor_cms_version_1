@@ -1,30 +1,24 @@
-﻿@page "/addProduct"
+﻿@*@page "/addProduct"
 
-<EditForm Model="ProductDto" OnSubmit="Create" class="card card-body bg-light mt-5">
-    <DataAnnotationsValidator />
-    <div class="form-group row">
-        <label for="title" class="col-md-2 col-form-label">Product Name:</label>
-        <div class="col-md-10">
-            <InputText id="title" class="form-control" @bind-Value="ProductDto.ProductName" />
-            <ValidationMessage For="@(() => ProductDto.ProductName)" />
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="postContext" class="col-md-2 col-form-label">PostContext:</label>
-        <div class="col-md-10">
-            <InputNumber id="postContext" class="form-control" @bind-Value="ProductDto.Price" />
-            <ValidationMessage For="@(() => ProductDto.Price)" />
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="image" class="col-md-2 col-form-label">Image:</label>
-        <div class="col-md-10">
-            <ImageUpload OnChange="AssignImageUrl" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-right">
-            <button type="submit" class="btn btn-success">Create</button>
-        </div>
-    </div>
-</EditForm>
+
+<section style="width:600px; margin: 0 auto;">
+    <EditForm Model="ProductDto" OnValidSubmit="Create">
+        <DataAnnotationsValidator />
+        <MudCard>
+            <MudCardContent>
+                <MudTextField Label="Product Name" @bind-Value="ProductDto.ProductName"
+                              For="@(() => ProductDto.ProductName)" />
+                <MudTextField Label="Supplier" @bind-Value="ProductDto.Supplier"
+                              For="@(() => ProductDto.Supplier)" />
+                <MudTextField Label="Price" @bind-Value="ProductDto.Price" HelperText="Between 5 and 1000"
+                              Adornment="Adornment.Start" AdornmentIcon="@Icons.Filled.AttachMoney"
+                              InputType="InputType.Number" For="@(() => ProductDto.Price)" />
+                <MudDatePicker Label="Manufacture date" @bind-Date="_date" />
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" 
+                           Class="ml-auto">Create Product</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+</section>*@

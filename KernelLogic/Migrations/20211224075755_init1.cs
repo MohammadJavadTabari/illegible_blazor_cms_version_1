@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -18,7 +19,8 @@ namespace KernelLogic.Migrations
                     Price = table.Column<long>(type: "bigint", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Desceription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Supplier = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Supplier = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ManufactureDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,7 +28,7 @@ namespace KernelLogic.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductReview",
+                name: "ProductReviews",
                 columns: table => new
                 {
                     ProductReviewId = table.Column<int>(type: "int", nullable: false)
@@ -39,9 +41,9 @@ namespace KernelLogic.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductReview", x => x.ProductReviewId);
+                    table.PrimaryKey("PK_ProductReviews", x => x.ProductReviewId);
                     table.ForeignKey(
-                        name: "FK_ProductReview_Products_ProductId",
+                        name: "FK_ProductReviews_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
@@ -49,15 +51,15 @@ namespace KernelLogic.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductReview_ProductId",
-                table: "ProductReview",
+                name: "IX_ProductReviews_ProductId",
+                table: "ProductReviews",
                 column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ProductReview");
+                name: "ProductReviews");
 
             migrationBuilder.DropTable(
                 name: "Products");

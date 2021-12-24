@@ -15,5 +15,6 @@ namespace KernelLogic.DataBaseObjects
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductReview> ProductReviews { get; set; }
     }
 }
