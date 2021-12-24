@@ -1,4 +1,4 @@
-﻿@*@page "/addProduct"
+﻿@page "/addProduct"
 
 
 <section style="width:600px; margin: 0 auto;">
@@ -16,9 +16,11 @@
                 <MudDatePicker Label="Manufacture date" @bind-Date="_date" />
             </MudCardContent>
             <MudCardActions>
-                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" 
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary"
                            Class="ml-auto">Create Product</MudButton>
             </MudCardActions>
+            <br />
+            <ImageUpload OnChange="AssignImageUrl" />
         </MudCard>
     </EditForm>
-</section>*@
+</section>

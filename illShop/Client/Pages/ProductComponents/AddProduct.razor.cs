@@ -6,7 +6,7 @@ namespace illShop.Client.Pages.ProductComponents
     public partial class AddProduct
     {
         public ProductDto ProductDto = new();
-
+        private DateTime? _date = DateTime.Today;
         private async Task Create()
         {
             await _httpRequestHandler.PostAsHttpJsonAsync(ProductDto, "ProductHandlers/AddProduct");

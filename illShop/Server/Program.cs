@@ -36,6 +36,7 @@ builder.Services.AddCors(policy =>
 });
 builder.Services.AddScoped<ITokenExtension, TokenExtension>();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IDentityContext>();
+
 #region IDentity with jwt
 
 var jwtSetting = new JwtSetting();
@@ -58,6 +59,7 @@ builder.Services.AddAuthentication(opt =>
 });
 
 #endregion
+
 #endregion
 
 #region appConfigs
@@ -84,10 +86,10 @@ app.UseStaticFiles(new StaticFileOptions()
     RequestPath = new PathString("/StaticFiles")
 });
 
+app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
-
-app.UseRouting();
 
 app.MapRazorPages();
 app.MapControllers();

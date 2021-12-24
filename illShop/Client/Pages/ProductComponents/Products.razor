@@ -1,5 +1,10 @@
 ﻿@page "/Products"
 @using illShop.Shared.Dto.DtosRelatedProduct
+<MudTooltip Text="Create Product">
+    <MudLink Href="/addProduct">
+        <MudFab Icon="@Icons.Filled.Add" Color="Color.Secondary" Size="Size.Large" />
+    </MudLink>
+</MudTooltip>
 <div class="row">
     <div class="col">
         <MudTable ServerData="@(new Func<TableState, Task<TableData<ProductDto>>>(GetServerData))"
