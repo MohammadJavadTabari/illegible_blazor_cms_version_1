@@ -4,6 +4,7 @@ using illShop.Shared.BasicServices;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using MudBlazor;
 using MudBlazor.Services;
 using Tewr.Blazor.FileReader;
 
@@ -18,5 +19,11 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddFileReaderService(o => o.UseWasmSharedBuffer = false);
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped<AuthenticationStateProvider,ApiAuthenticationStateProvider>();
-builder.Services.AddMudServices();
+builder.Services.AddMudServices(config =>
+{
+    config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.TopRight;
+    config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
+    config.SnackbarConfiguration.ShowCloseIcon = true;
+    config.SnackbarConfiguration.MaxDisplayedSnackbars = 1;
+});
 await builder.Build().RunAsync();
