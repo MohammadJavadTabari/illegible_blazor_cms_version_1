@@ -19,7 +19,7 @@ builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped<AuthenticationStateProvider,ApiAuthenticationStateProvider>();
 builder.Services.AddMudServices(config =>
 {
-    config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.TopRight;
+    config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.TopCenter;
     config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
     config.SnackbarConfiguration.ShowCloseIcon = true;
     config.SnackbarConfiguration.MaxDisplayedSnackbars = 1;

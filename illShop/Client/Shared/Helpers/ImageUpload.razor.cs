@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using MudBlazor;
 using System.Net.Http.Headers;
 
 namespace illShop.Client.Shared.Helpers
@@ -31,6 +32,7 @@ namespace illShop.Client.Shared.Helpers
                     }
                 }
             }
+            _snackbar.Add("Image uploaded successfully.", Severity.Success);
         }
     }
 }
