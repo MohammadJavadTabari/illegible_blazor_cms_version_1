@@ -1,5 +1,7 @@
-﻿using illShop.Shared.Dto.DtosRelatedProduct;
+﻿using illShop.Client.Shared.Helpers;
+using illShop.Shared.Dto.DtosRelatedProduct;
 using Microsoft.AspNetCore.Components;
+using MudBlazor;
 
 namespace illShop.Client.Pages.ProductComponents
 {
@@ -31,7 +33,9 @@ namespace illShop.Client.Pages.ProductComponents
             var rating = reviews.Any() ? reviews.Average(r => r.Rate) : 0;
             return Convert.ToInt32(Math.Round(rating));
         }
-        private void RatingValueChanged(int value) =>
-            Console.WriteLine($"The product is rated with {value} thumbs.");
+        private async Task RatingValueChanged(int value)
+        {
+            
+        }
     }
 }

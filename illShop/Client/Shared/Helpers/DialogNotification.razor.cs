@@ -15,5 +15,7 @@ namespace illShop.Client.Shared.Helpers
         public Color ButtonColor { get; set; }
         private void Submit() =>
             MudDialog.Close(DialogResult.Ok(true));
+        private void Cancel() =>
+            MudDialog.Close(DialogResult.Ok(false));
     }
 }
