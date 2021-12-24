@@ -1,5 +1,6 @@
 ﻿using illShop.Shared.Dto.DtosRelatedProduct;
 using Microsoft.AspNetCore.Authorization;
+using MudBlazor;
 
 namespace illShop.Client.Pages.ProductComponents
 {
@@ -10,6 +11,7 @@ namespace illShop.Client.Pages.ProductComponents
         private async Task Create()
         {
             await _httpRequestHandler.PostAsHttpJsonAsync(ProductDto, "ProductHandlers/AddProduct");
+            _snackbar.Add("Image uploaded successfully.", Severity.Success);
         }
         private void AssignImageUrl(string imgUrl) => ProductDto.ImageUrl = imgUrl;
     }
