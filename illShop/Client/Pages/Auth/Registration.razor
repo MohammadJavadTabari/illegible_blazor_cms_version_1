@@ -1,40 +1,21 @@
 ﻿@page "/registration"
-<h3>Registration</h3>
-@if (ShowRegistrationErrors)
-{
-    <div class="alert alert-danger" role="alert">
-        @foreach (var error in Errors)
-        {
-            <p>@error</p>
-        }
-    </div>
-}
-<EditForm Model="_userForRegistration" OnValidSubmit="Register" class="card card-body bg-light mt-5">
-    <DataAnnotationsValidator />
-    <div class="form-group row">
-        <label for="email" class="col-md-2 col-form-label">Email:</label>
-        <div class="col-md-10">
-            <InputText id="email" class="form-control" @bind-Value="_userForRegistration.Email" />
-            <ValidationMessage For="@(() => _userForRegistration.Email)" />
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="password" class="col-md-2 col-form-label">Password:</label>
-        <div class="col-md-10">
-            <InputText type="password" id="password" class="form-control" @bind-Value="_userForRegistration.Password" />
-            <ValidationMessage For="@(() => _userForRegistration.Password)" />
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="confirm" class="col-md-2 col-form-label">Confirm Password:</label>
-        <div class="col-md-10">
-            <InputText type="password" id="confirm" class="form-control" @bind-Value="_userForRegistration.ConfirmPassword" />
-            <ValidationMessage For="@(() => _userForRegistration.ConfirmPassword)" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-right">
-            <button type="submit" class="btn btn-success">Register</button>
-        </div>
-    </div>
-</EditForm>
+<section class="IW7 Imarginauto">
+    <EditForm Model="_userForRegistration" OnValidSubmit="Register">
+        <DataAnnotationsValidator />
+        <MudCard>
+            <MudCardHeader>
+                <h3 class="IFArchitectsDaughter-Regular">Register</h3>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudTextField Label="Email" @bind-Value="_userForRegistration.Email"
+                              For="@(() => _userForRegistration.Email)" />
+                <MudTextField Label="Password" @bind-Value="_userForRegistration.Password" For="@(() => _userForRegistration.Password)" />
+                <MudTextField Label="ConfirmPassword" @bind-Value="_userForRegistration.ConfirmPassword" For="@(() => _userForRegistration.ConfirmPassword)" />
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Dark"
+                           Class="ml-auto">Register</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+</section>

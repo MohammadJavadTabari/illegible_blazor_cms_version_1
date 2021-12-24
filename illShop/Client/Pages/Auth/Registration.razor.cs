@@ -1,4 +1,5 @@
 ﻿using illShop.Shared.Dto.DtosRelatedIdentity;
+using MudBlazor;
 
 namespace illShop.Client.Pages.Auth
 {
@@ -14,11 +15,11 @@ namespace illShop.Client.Pages.Auth
             var result = await _authenticationService.RegisterUser(_userForRegistration);
             if (!result.IsSuccessfulRegistration)
             {
-                Errors = result.Errors;
-                ShowRegistrationErrors = true;
+                _snackbar.Add("Registration Error! Please Fill Inputs Correctly", Severity.Error);
             }
             else
             {
+                _snackbar.Add("Wellcome, you are navigating to home page", Severity.Success);
                 NavigationManager.NavigateTo("/");
             }
         }

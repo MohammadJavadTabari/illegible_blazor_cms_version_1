@@ -1,34 +1,20 @@
 ﻿@page "/login"
-<h3>Login</h3>
-
-@if (ShowAuthError)
-{
-    <div class="alert alert-danger" role="alert">
-        <p>@Error</p>
-    </div>
-}
-
-<EditForm Model="loginModelDto" OnValidSubmit="ExecuteLogin" class="card card-body bg-light mt-5">
-    <DataAnnotationsValidator />
-    <div class="form-group row">
-        <label for="email" class="col-md-2 col-form-label">Email:</label>
-        <div class="col-md-10">
-            <InputText id="email" class="form-control" @bind-Value="loginModelDto.Email" />
-            <ValidationMessage For="@(() => loginModelDto.Email)" />
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="password" class="col-md-2 col-form-label">Password:</label>
-        <div class="col-md-10">
-            <InputText type="password" id="password" class="form-control" @bind-Value="loginModelDto.Password" />
-            <ValidationMessage For="@(() => loginModelDto.Password)" />
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12 text-right">
-            <button type="submit" class="btn btn-success">Login</button>
-        </div>
-    </div>
-</EditForm>
+<section class="IW7 Imarginauto" >
+    <EditForm Model="loginModelDto" OnValidSubmit="ExecuteLogin">
+        <DataAnnotationsValidator />
+        <MudCard>
+            <MudCardHeader>
+                <h3 class="IFArchitectsDaughter-Regular">Login</h3>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudTextField Label="Email" @bind-Value="loginModelDto.Email"
+                              For="@(() => loginModelDto.Email)" />
+                <MudTextField Label="Supplier" @bind-Value="loginModelDto.Password"For="@(() => loginModelDto.Password)" />
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Dark"
+                           Class="ml-auto">Login</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+</section>
