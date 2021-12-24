@@ -5,25 +5,23 @@
     </MudDrawerHeader>
     <MudNavMenu>
         <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Filled.Home">Home</MudNavLink>
-        <MudNavLink Href="/products" Icon="@Icons.Filled.DashboardCustomize">Products</MudNavLink>
+        <MudNavLink Href="/products" Icon="@Icons.Filled.ArtTrack">Products</MudNavLink>
         <MudNavGroup Title="Expanding" Icon="@Icons.Filled.DashboardCustomize" Expanded="false">
             <MudNavLink Href="#" Icon="@Icons.Filled.Camera">Photos</MudNavLink>
             <MudNavLink Href="#" Icon="@Icons.Filled.Celebration">Party</MudNavLink>
         </MudNavGroup>
         <AuthorizeView>
             <Authorized>
-                <MudNavLink Href="/logout" Icon="@Icons.Filled.DashboardCustomize">Logout</MudNavLink>
+                <MudNavLink Href="/logout" Icon="@Icons.Filled.ArtTrack">Logout</MudNavLink>
             </Authorized>
             <NotAuthorized>
-                <MudNavLink Href="/login" Icon="@Icons.Filled.DashboardCustomize">Login</MudNavLink>
-                <MudNavLink Href="/registration" Icon="@Icons.Filled.DashboardCustomize">Registration</MudNavLink>
+                <MudNavLink Href="/login" Icon="@Icons.Outlined.AccountBox">Login</MudNavLink>
+                <MudNavLink Href="/registration" Icon="@Icons.Filled.AddReaction">Registration</MudNavLink>
             </NotAuthorized>
         </AuthorizeView>
         <AuthorizeView Roles="Administrator">
             <Authorized>
-                <div class="nav-item px-3">
-                    <MudNavLink Href="/addProduct" Icon="@Icons.Filled.Storage">AddProduct</MudNavLink>
-                </div>
+                <MudNavLink Href="/addProduct" Icon="@Icons.Filled.Storage">AddProduct</MudNavLink>
             </Authorized>
         </AuthorizeView>
     </MudNavMenu>
