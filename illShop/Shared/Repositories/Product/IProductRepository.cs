@@ -31,10 +31,10 @@ namespace illShop.Shared.Repositories.Product
 
         public async Task<int> AddProductAsync(ProductDto productDto)
         {
-            var entity = _mapper.Map<ProductDto,KernelLogic.DataBaseObjects.Entities.Product>(productDto);
+            var entity = _mapper.Map<ProductDto, KernelLogic.DataBaseObjects.Entities.Product>(productDto);
             await _products.AddAsync(entity);
             await _dataContext.SaveChangesAsync();
-            return entity.ProductId;
+            return entity.Id;
         }
 
         public async Task<PagedList<ProductDto>> GetPagedBlogPosts(PagingParameters pagingParameters)
@@ -46,7 +46,7 @@ namespace illShop.Shared.Repositories.Product
 
         public async Task<ProductDto> GetProduct(int id)
         {
-            return _mapper.Map<ProductDto>(await _products.FirstOrDefaultAsync(p => p.ProductId.Equals(id)));
+            return _mapper.Map<ProductDto>(await _products.FirstOrDefaultAsync(p => p.Id.Equals(id)));
         }
 
         public async Task UpdateProduct(ProductDto productDto)
@@ -58,8 +58,8 @@ namespace illShop.Shared.Repositories.Product
 
         public async Task DeleteProduct(int id)
         {
-            _products.Remove(await _products.FirstOrDefaultAsync(p => p.ProductId.Equals(id)));
-            await _dataContext.SaveChangesAsync();            
+            _products.Remove(await _products.FirstOrDefaultAsync(p => p.Id.Equals(id)));
+            await _dataContext.SaveChangesAsync();
         }
     }
 }

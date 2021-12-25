@@ -35,11 +35,11 @@ namespace illShop.Shared.Repositories.Product
 
         public async Task<int> AddProductReviewAsync(ProductReviewDto productReviewDto)
         {
-                var entity = _mapper.Map<ProductReviewDto, ProductReview>(productReviewDto);
-                await _productReviews.AddAsync(entity);
-                await _dataContext.SaveChangesAsync();
-                return entity.ProductReviewId;
-            }
+            var entity = _mapper.Map<ProductReviewDto, ProductReview>(productReviewDto);
+            await _productReviews.AddAsync(entity);
+            await _dataContext.SaveChangesAsync();
+            return entity.Id;
+        }
 
         public Task<PagedList<ProductReviewDto>> GetPagedProductReviews(PagingParameters pagingParameters)
         {

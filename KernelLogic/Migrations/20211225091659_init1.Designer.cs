@@ -12,13 +12,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KernelLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211224075755_init1")]
+    [Migration("20211225091659_init1")]
     partial class init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("dbo")
                 .HasAnnotation("ProductVersion", "6.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -26,11 +27,11 @@ namespace KernelLogic.Migrations
 
             modelBuilder.Entity("KernelLogic.DataBaseObjects.Entities.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Desceription")
                         .IsRequired()
@@ -54,18 +55,18 @@ namespace KernelLogic.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product", "dbo");
                 });
 
             modelBuilder.Entity("KernelLogic.DataBaseObjects.Entities.ProductReview", b =>
                 {
-                    b.Property<int>("ProductReviewId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductReviewId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -76,18 +77,50 @@ namespace KernelLogic.Migrations
                     b.Property<string>("UserComment")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProductReviewId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductReviews");
+                    b.ToTable("ProductReview", "dbo");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IdentityRole", "dbo");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "643e34cb-ccb9-4ad1-a980-536484fec2ce",
+                            ConcurrencyStamp = "8f881ed2-781b-45e6-a8a0-76b7dc868018",
+                            Name = "Viewer",
+                            NormalizedName = "VIEWER"
+                        },
+                        new
+                        {
+                            Id = "8c5bbb4f-43df-4afe-b570-653aac994597",
+                            ConcurrencyStamp = "9db66bab-2290-4285-8574-354262c52361",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
                 });
 
             modelBuilder.Entity("KernelLogic.DataBaseObjects.Entities.ProductReview", b =>

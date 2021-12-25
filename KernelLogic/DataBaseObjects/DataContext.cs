@@ -1,4 +1,5 @@
 ﻿using KernelLogic.DataBaseObjects.Entities;
+using KernelLogic.DataBaseObjects.ReflectionHelper;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,18 @@ namespace KernelLogic.DataBaseObjects
         {
         }
 
-        public DbSet<Product> Products { get; set; }
-        public DbSet<ProductReview> ProductReviews { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.HasDefaultSchema("dbo");
+
+            var assembly = typeof(IBaseEntity).Assembly;
+            //dbset entities
+            modelBuilder.RegisterAllEntities<IBaseEntity>(assembly);
+
+            //config entities (config shiits like IEntityTypeConfiguration,.....)
+            modelBuilder.RegisterEntityTypeConfiguration(assembly);
+
+        }
     }
 }
