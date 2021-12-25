@@ -7,8 +7,6 @@ namespace KernelLogic.DataBaseObjects.Entities
         [Key]
         public int ProductReviewId { get; set; }
         [Required]
-        public string? UserId { get; set; }
-        [Required]
         public string UserName { get; set; } = "User Of IllShop";
         public string? UserComment { get; set; }
         [Required]

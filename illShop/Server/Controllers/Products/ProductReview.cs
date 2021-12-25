@@ -9,7 +9,6 @@ namespace illShop.Server.Controllers.Products
 {
     [Route("Review")]
     [ApiController]
-    [Authorize]
     public class ProductReview : ControllerBase
     {
         private readonly IProductReviewRepository _productReviewRepository;
@@ -32,7 +31,6 @@ namespace illShop.Server.Controllers.Products
             else
             {
                 productReviewDto.UserName = userName;
-                productReviewDto.UserId = Guid.Parse(_userManager.GetUserId(User));
                 var productReview = await _productReviewRepository.AddProductReviewAsync(productReviewDto);
                 return Created("", productReview);
             }
