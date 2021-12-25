@@ -13,21 +13,6 @@ namespace KernelLogic.Migrations
                 name: "dbo");
 
             migrationBuilder.CreateTable(
-                name: "IdentityRole",
-                schema: "dbo",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IdentityRole", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Product",
                 schema: "dbo",
                 columns: table => new
@@ -70,18 +55,6 @@ namespace KernelLogic.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                schema: "dbo",
-                table: "IdentityRole",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "643e34cb-ccb9-4ad1-a980-536484fec2ce", "8f881ed2-781b-45e6-a8a0-76b7dc868018", "Viewer", "VIEWER" });
-
-            migrationBuilder.InsertData(
-                schema: "dbo",
-                table: "IdentityRole",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "8c5bbb4f-43df-4afe-b570-653aac994597", "9db66bab-2290-4285-8574-354262c52361", "Administrator", "ADMINISTRATOR" });
-
             migrationBuilder.CreateIndex(
                 name: "IX_ProductReview_ProductId",
                 schema: "dbo",
@@ -91,10 +64,6 @@ namespace KernelLogic.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "IdentityRole",
-                schema: "dbo");
-
             migrationBuilder.DropTable(
                 name: "ProductReview",
                 schema: "dbo");

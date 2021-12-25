@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace KernelLogic.DataBaseObjects
 {
-
     public interface IBaseEntity
     {
     }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KernelLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211225091659_init1")]
+    [Migration("20211225101602_init1")]
     partial class init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -86,41 +86,6 @@ namespace KernelLogic.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductReview", "dbo");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IdentityRole", "dbo");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "643e34cb-ccb9-4ad1-a980-536484fec2ce",
-                            ConcurrencyStamp = "8f881ed2-781b-45e6-a8a0-76b7dc868018",
-                            Name = "Viewer",
-                            NormalizedName = "VIEWER"
-                        },
-                        new
-                        {
-                            Id = "8c5bbb4f-43df-4afe-b570-653aac994597",
-                            ConcurrencyStamp = "9db66bab-2290-4285-8574-354262c52361",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        });
                 });
 
             modelBuilder.Entity("KernelLogic.DataBaseObjects.Entities.ProductReview", b =>

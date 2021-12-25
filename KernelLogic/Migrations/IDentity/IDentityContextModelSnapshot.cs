@@ -51,15 +51,15 @@ namespace KernelLogic.Migrations.IDentity
                     b.HasData(
                         new
                         {
-                            Id = "3aba5873-a7ab-44a3-9924-0aa40fdc8ee3",
-                            ConcurrencyStamp = "8b6be016-4598-4a12-9fb4-6b7b1e748f31",
+                            Id = "92908673-8c73-4190-bdba-5ec0b42260c7",
+                            ConcurrencyStamp = "ccd9989a-1618-4a05-b4d4-5b3da5e04686",
                             Name = "Viewer",
                             NormalizedName = "VIEWER"
                         },
                         new
                         {
-                            Id = "013cd01c-a92d-48a9-8f81-0c319fc96bd5",
-                            ConcurrencyStamp = "ac1689da-9b33-4c75-86f2-0a5098303d21",
+                            Id = "6b8de714-d528-41c1-b92b-ce12bf646421",
+                            ConcurrencyStamp = "ac5113c0-e552-424b-9ead-182ea2f8356e",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
