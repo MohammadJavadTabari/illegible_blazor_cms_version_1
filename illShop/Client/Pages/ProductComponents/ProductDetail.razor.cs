@@ -8,6 +8,7 @@ namespace illShop.Client.Pages.ProductComponents
     public partial class ProductDetail
     {
         public ProductDto Product { get; set; } = new();
+        public ProductReviewDto ProductReviewDto { get; set; } = new();
 
         [Parameter]
         public int ProductId { get; set; }
@@ -36,7 +37,8 @@ namespace illShop.Client.Pages.ProductComponents
         
         private async Task RatingValueChanged(int value)
         {
-          
+            ProductReviewDto.Rate = value;
+            await _httpRequestHandler.PostAsHttpJsonAsync(ProductReviewDto, "Review/AddUserReview");
         }
     }
 }

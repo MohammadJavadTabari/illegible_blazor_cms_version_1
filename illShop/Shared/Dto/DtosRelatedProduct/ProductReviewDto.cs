@@ -12,7 +12,7 @@ namespace illShop.Shared.Dto.DtosRelatedProduct
         [Key]
         public int ProductReviewId { get; set; }
         [Required]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         [Required]
         public string UserName { get; set; } = "User Of IllShop";
         public string? UserComment { get; set; }
