@@ -6,6 +6,15 @@
     <MudNavMenu Class="IBGCBlack IBGOpacity90">
         <MudNavLink Href="/" Match="NavLinkMatch.All" Class="ITshadowBlack" Icon="@Icons.Filled.Home">Home</MudNavLink>
         <MudNavLink Href="/products" Class="ITshadowBlack" Icon="@Icons.Filled.ArtTrack">Products</MudNavLink>
+
+        <MudNavGroup Title="Product Category" Class="ITshadowBlack" Icon="@Icons.Filled.Category" Expanded="false">
+            @{
+                foreach (var cat in CategoryDtoList)
+                {
+                    <MudNavLink Href="/products" Class="ITshadowBlack" Icon="@Icons.Filled.Cabin">@cat.CategoryName</MudNavLink>
+                }
+            }
+        </MudNavGroup>
         <AuthorizeView>
             <Authorized>
                 <MudNavLink Href="/logout" Class="ITshadowBlack" Icon="@Icons.Filled.ArtTrack">Logout</MudNavLink>

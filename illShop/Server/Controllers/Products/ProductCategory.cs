@@ -22,5 +22,13 @@ namespace illShop.Server.Controllers.Products
             var product = await _productCategoryRepository.AddProductCategoryAsync(productCategoryDto);
             return Created("", product);
         }
+
+        [HttpGet]
+        [Route("GetProductCategories")]
+        public async Task<IActionResult> GetAllCategory()
+        {
+            var productCategories = await _productCategoryRepository.GetAllProductCategoryAsync();
+            return Ok(productCategories); ;
+        }
     }
 }

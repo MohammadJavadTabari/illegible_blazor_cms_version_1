@@ -11,6 +11,7 @@ namespace illShop.Shared.BasicServices
     {
         Task<bool> PostAsHttpJsonAsync(object Dto, string uriAddress);
         Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress);
+        Task<List<T>> GetListData<T>(string uriAddress);
         Task<string> UploadImage(MultipartFormDataContent content, string uriAddress);
         Task<T> GetById<T>(int id, string uriAddress);
         Task UpdateByDto(object data, string uriAddress);
@@ -80,8 +81,8 @@ namespace illShop.Shared.BasicServices
             {
                 throw new ApplicationException(content);
             }
-            var productDto = JsonSerializer.Deserialize<T>(content, _options);
-            return productDto;
+            var dto = JsonSerializer.Deserialize<T>(content, _options);
+            return dto;
         }
 
         public async Task UpdateByDto(object data, string uriAddress)
@@ -106,6 +107,18 @@ namespace illShop.Shared.BasicServices
             {
                 throw new ApplicationException(deleteContent);
             }
+        }
+
+        public async Task<List<T>> GetListData<T>(string uriAddress)
+        {
+            var response = await _httpClient.GetAsync(uriAddress);
+            var content = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content);
+            }
+            var dto = JsonSerializer.Deserialize<List<T>>(content, _options);
+            return dto;
         }
     }
 }

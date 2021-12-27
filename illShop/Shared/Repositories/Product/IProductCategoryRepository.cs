@@ -9,6 +9,7 @@ namespace illShop.Shared.Repositories.Product
     public interface IProductCategoryRepository
     {
         Task<int> AddProductCategoryAsync(ProductCategoryDto productCategoryDto);
+        Task<List<ProductCategoryDto>> GetAllProductCategoryAsync();
     }
     public class ProductCategoryRepository : IProductCategoryRepository
     {
@@ -28,6 +29,11 @@ namespace illShop.Shared.Repositories.Product
             await _productCategory.AddAsync(entity);
             await _dataContext.SaveChangesAsync();
             return entity.Id;
+        }
+
+        public async Task<List<ProductCategoryDto>> GetAllProductCategoryAsync()
+        {
+            return _mapper.Map<List<ProductCategoryDto>>(await _productCategory.ToListAsync());
         }
     }
 }
