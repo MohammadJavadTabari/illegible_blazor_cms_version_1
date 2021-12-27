@@ -10,7 +10,7 @@ namespace illShop.Shared.Repositories.Product
     public interface IProductRepository
     {
         Task<int> AddProductAsync(ProductDto productDto);
-        Task<PagedList<ProductDto>> GetPagedBlogPosts(PagingParameters pagingParameters);
+        Task<PagedList<ProductDto>> GetPagedProducts(PagingParameters pagingParameters);
         Task<ProductDto> GetProduct(int id);
         Task UpdateProduct(ProductDto productDto);
         Task DeleteProduct(int id);
@@ -37,7 +37,7 @@ namespace illShop.Shared.Repositories.Product
             return entity.Id;
         }
 
-        public async Task<PagedList<ProductDto>> GetPagedBlogPosts(PagingParameters pagingParameters)
+        public async Task<PagedList<ProductDto>> GetPagedProducts(PagingParameters pagingParameters)
         {
             var products = await _products.Include(x=>x.ProductReviews).Search(pagingParameters.SearchTerm).Sort(pagingParameters.OrderBy).ToListAsync();
             var productDtoList = _mapper.Map<List<ProductDto>>(products);

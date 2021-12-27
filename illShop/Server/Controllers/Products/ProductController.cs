@@ -13,11 +13,9 @@ namespace illShop.Server.Controllers.Products
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
-        private readonly UserManager<IdentityUser> _userManager;
-        public ProductController(IProductRepository productRepository, UserManager<IdentityUser> userManager)
+        public ProductController(IProductRepository productRepository)
         {
             _productRepository = productRepository;
-            _userManager = userManager;
         }
 
         [HttpPost]
@@ -32,7 +30,7 @@ namespace illShop.Server.Controllers.Products
         [HttpGet("GetPagedProducts")]
         public async Task<IActionResult> GetPagedProducts([FromQuery] PagingParameters pagingParameters)
         {
-            var products = await _productRepository.GetPagedBlogPosts(pagingParameters);
+            var products = await _productRepository.GetPagedProducts(pagingParameters);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(products.MetaData));
             return Ok(products);
         }

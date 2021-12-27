@@ -1,12 +1,12 @@
-﻿using illShop.Shared.Dto.DtosRelatedProduct;
+﻿using illShop.Shared.Dto.DtosRelatedIdentity;
+using illShop.Shared.Dto.DtosRelatedProduct;
+using MudBlazor;
 
 namespace illShop.Client.Pages.AdminComponents
 {
     public partial class UsersHandler
     {
-        //private MudTable<ProductDto>? _table = new();
-        //private PagingParameters _pagingParameters = new();
-        //private readonly int[] _pageSizeOption = { 4, 6, 10 };
+        //private MudTable<UserDetailDto>? _table = new();
         //private async Task<TableData<ProductDto>> GetServerData(TableState state)
         //{
         //    _pagingParameters.PageSize = state.PageSize;
@@ -16,21 +16,16 @@ namespace illShop.Client.Pages.AdminComponents
         //    state.SortLabel + " desc" :
         //    state.SortLabel;
 
-        //    var pagingResponse = await _httpRequestHandler.GetPagedData(_pagingParameters, "ProductHandlers/GetPagedProducts");
+        //    var pagingResponse = await _httpRequestHandler.GetListData<UserDetailDto>("AccountHandelMethods/GetAllSiteUsers");
         //    return new TableData<ProductDto>
         //    {
-        //        Items = pagingResponse.Items,
+        //        Items = pagingResponse,
         //        TotalItems = pagingResponse.MetaData.TotalCount
         //    };
         //}
-        //private void OnSearch(string searchTerm)
+        //protected override async Task OnInitializedAsync()
         //{
-        //    _pagingParameters.SearchTerm = searchTerm;
-        //    _table.ReloadServerData();
+        //    _table = 
         //}
-        protected override async Task OnInitializedAsync()
-        {
-            var aa = _httpRequestHandler.GetListData<ProductDto>("AccountHandelMethods/GetAllSiteUsers");
-        }
     }
 }

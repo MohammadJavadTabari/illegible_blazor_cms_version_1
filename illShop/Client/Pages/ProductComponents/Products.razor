@@ -8,14 +8,12 @@
 <div class="row">
     <div class="col">
         <MudTable ServerData="@(new Func<TableState, Task<TableData<ProductDto>>>(GetServerData))"
-                  Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true"
-                  @ref="_table" RowsPerPage="4">
+                  Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true" @ref="_table" RowsPerPage="4">
             <ToolBarContent>
                 <MudText Typo="Typo.h6">Products</MudText>
                 <MudSpacer />
                 <MudTextField OnDebounceIntervalElapsed="OnSearch" Placeholder="Search" Adornment="Adornment.Start"
-                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium"
-                              Class="mt-0" T="string" DebounceInterval="500"></MudTextField>
+                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0" T="string" DebounceInterval="500"></MudTextField>
             </ToolBarContent>
             <HeaderContent>
                 <MudTh>Image</MudTh>
