@@ -8,8 +8,15 @@ namespace illShop.Client.Pages.AdminComponents
     {
         public ProductDto ProductDto = new();
         private DateTime? _date = DateTime.Today;
+        private List<ProductCategoryDto> ProductCategoryDtoList = new();
+        public int CategoryId { get; set; }
+        protected override async Task OnInitializedAsync()
+        {
+            ProductCategoryDtoList = await _httpRequestHandler.GetListData<ProductCategoryDto>("CategoryHandler/GetProductCategories");
+        }
         private async Task Create()
         {
+            ProductDto.ProductCategoryId = CategoryId;
             await _httpRequestHandler.PostAsHttpJsonAsync(ProductDto, "ProductHandlers/AddProduct");
             await ExecuteDialog();
         }

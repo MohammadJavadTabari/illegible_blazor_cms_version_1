@@ -15,5 +15,7 @@ namespace illShop.Shared.Dto.DtosRelatedProduct
         public string Supplier { get; set; } = "illShop";
         public DateTime ManufactureDate { get; set; }
         public List<ProductReviewDto>? ProductReviews { get; set; }
+        public int ProductCategoryId { get; set; }
+        public ProductCategoryDto? ProductCategory { get; set; }
     }
 }

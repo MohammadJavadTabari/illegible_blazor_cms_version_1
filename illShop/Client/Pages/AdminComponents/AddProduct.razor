@@ -4,6 +4,14 @@
         <DataAnnotationsValidator />
         <MudCard>
             <MudCardContent>
+                <MudSelect @bind-Value="CategoryId" Label="Product Category" OffsetY="true" Dense="true" Class="ml-4">
+                    @{
+                        foreach (var ProductCategoryDto in ProductCategoryDtoList)
+                        {
+                            <MudSelectItem Value="ProductCategoryDto.Id">@ProductCategoryDto.CategoryName</MudSelectItem>
+                        }
+                    }                    
+                </MudSelect>
                 <MudTextField Label="Product Name" @bind-Value="ProductDto.ProductName"
                               For="@(() => ProductDto.ProductName)" />
                 <MudTextField Label="Supplier" @bind-Value="ProductDto.Supplier"
