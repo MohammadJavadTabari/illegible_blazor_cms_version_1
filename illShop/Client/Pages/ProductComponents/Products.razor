@@ -24,12 +24,12 @@
             </HeaderContent>
             <RowTemplate>
                 <MudTd DataLabel="Image">
-                    <MudLink Href="@($"product/{context.ProductId}")">
+                    <MudLink Href="@($"product/{context.Id}")">
                         <MudAvatar Color="Color.Transparent" Size="Size.Large" Image="@context.ImageUrl" />
                     </MudLink>
                 </MudTd>
                 <MudTd DataLabel="Name">
-                    <MudLink Href="@($"product/{context.ProductId}")">@context.ProductName</MudLink>
+                    <MudLink Href="@($"product/{context.Id}")">@context.ProductName</MudLink>
                 </MudTd>
                 <MudTd DataLabel="Price">$@context.Price</MudTd>
             </RowTemplate>

@@ -38,7 +38,9 @@ namespace illShop.Client.Pages.ProductComponents
         private async Task RatingValueChanged(int value)
         {
             ProductReviewDto.Rate = value;
+            ProductReviewDto.ProductId = ProductId;
             await _httpRequestHandler.PostAsHttpJsonAsync(ProductReviewDto, "Review/AddUserReview");
+            _snackbar.Add("Thanks for rating this product",Severity.Info);
         }
     }
 }
