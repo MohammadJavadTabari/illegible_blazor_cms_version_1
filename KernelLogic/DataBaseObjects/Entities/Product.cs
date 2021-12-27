@@ -13,7 +13,12 @@ namespace KernelLogic.DataBaseObjects.Entities
         public string Desceription { get; set; } = "There is'nt any desceription for this product";
         public string? Supplier { get; set; }
         public DateTime ManufactureDate { get; set; }
+
+        #region relations
         public List<ProductReview>? ProductReviews { get; set; }
+        public int ProductCategoryId { get; set; }
+        public ProductCategory? ProductCategory { get; set; }
+        #endregion
     }
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
@@ -24,6 +29,8 @@ namespace KernelLogic.DataBaseObjects.Entities
             builder.Property(b => b.ImageUrl).IsRequired();
             builder.Property(b => b.Supplier).IsRequired();
             builder.Property(b => b.ManufactureDate).IsRequired();
+
+            builder.HasOne(x => x.ProductCategory).WithMany(x => x.Products).HasForeignKey(x => x.ProductCategoryId);
         }
     }
 }

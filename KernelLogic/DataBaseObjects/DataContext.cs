@@ -1,11 +1,6 @@
 ﻿using KernelLogic.DataBaseObjects.Entities;
 using KernelLogic.DataBaseObjects.ReflectionHelper;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KernelLogic.DataBaseObjects
 {
