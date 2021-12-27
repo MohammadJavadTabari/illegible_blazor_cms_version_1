@@ -1,5 +1,5 @@
 ﻿@page "/addProduct"
-<section class="IW7 Imarginauto" >
+<section class="IW7 Imarginauto">
     <EditForm Model="ProductDto" OnValidSubmit="Create">
         <DataAnnotationsValidator />
         <MudCard>
@@ -8,7 +8,8 @@
                               For="@(() => ProductDto.ProductName)" />
                 <MudTextField Label="Supplier" @bind-Value="ProductDto.Supplier"
                               For="@(() => ProductDto.Supplier)" />
-                <MudTextField Label="Price" @bind-Value="ProductDto.Price" HelperText="Between 5 and 1000"
+                <MudTextField Label="Desceription" @bind-Value="ProductDto.Desceription" For="@(() => ProductDto.Desceription)" />
+                <MudTextField Label="Price" @bind-Value="ProductDto.Price" HelperText="Between 1 and 1000"
                               Adornment="Adornment.Start" AdornmentIcon="@Icons.Filled.AttachMoney"
                               InputType="InputType.Number" For="@(() => ProductDto.Price)" />
                 <MudDatePicker Label="Manufacture date" @bind-Date="_date" />
