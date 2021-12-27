@@ -4,6 +4,7 @@ using illShop.Shared.BasicObjects.Paging;
 using Microsoft.AspNetCore.WebUtilities;
 using illShop.Shared.Dto.DtosRelatedProduct;
 using System.Text;
+using illShop.Shared.Dto.DtosRelatedIdentity;
 
 namespace illShop.Shared.BasicServices
 {
@@ -11,6 +12,7 @@ namespace illShop.Shared.BasicServices
     {
         Task<bool> PostAsHttpJsonAsync(object Dto, string uriAddress);
         Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress);
+        Task<PagingResponse<UserDetailDto>> GetPagedUserData(PagingParameters pagingParameters, string uriAddress);
         Task<List<T>> GetListData<T>(string uriAddress);
         Task<string> UploadImage(MultipartFormDataContent content, string uriAddress);
         Task<T> GetById<T>(int id, string uriAddress);
@@ -119,6 +121,28 @@ namespace illShop.Shared.BasicServices
             }
             var dto = JsonSerializer.Deserialize<List<T>>(content, _options);
             return dto;
+        }
+
+        public async Task<PagingResponse<UserDetailDto>> GetPagedUserData(PagingParameters pagingParameters, string uriAddress)
+        {
+            var queryStringParam = new Dictionary<string, string>
+            {
+                ["pageNumber"] = pagingParameters.PageNumber.ToString(),
+                ["searchTerm"] = pagingParameters.SearchTerm ?? "",
+                ["orderBy"] = pagingParameters.OrderBy
+            };
+            var response = await _httpClient.GetAsync(QueryHelpers.AddQueryString(uriAddress, queryStringParam));
+            var content = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content);
+            }
+            var pagingResponse = new PagingResponse<UserDetailDto>
+            {
+                Items = JsonSerializer.Deserialize<List<UserDetailDto>>(content, _options),
+                MetaData = JsonSerializer.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First(), _options)
+            };
+            return pagingResponse;
         }
     }
 }

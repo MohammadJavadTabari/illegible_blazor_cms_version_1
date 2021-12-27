@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using illShop.Shared.BasicObjects.Paging;
 using illShop.Shared.Dto.DtosRelatedIdentity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace illShop.Server.Controllers.Identity
 {
@@ -36,9 +38,12 @@ namespace illShop.Server.Controllers.Identity
 
         [HttpGet]
         [Route("GetAllSiteUsers")]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetUsers([FromQuery] PagingParameters pagingParameters)
         {
-            return Ok(_mapper.Map<List<UserDetailDto>>(await _userManager.Users.AsNoTracking().ToListAsync()));
+            var userDetailDtoList = _mapper.Map<List<UserDetailDto>>(await _userManager.Users.AsNoTracking().ToListAsync());
+            var pagedData = PagedList<UserDetailDto>.ToPagedList(userDetailDtoList, pagingParameters.PageNumber, pagingParameters.PageSize);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(pagedData.MetaData));
+            return Ok(pagedData);
         }
     }
 }
