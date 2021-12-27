@@ -1,6 +1,6 @@
 ﻿using illShop.Shared.Dto.DtosRelatedProduct;
 
-namespace illShop.Client.Pages.ProductComponents
+namespace illShop.Client.Pages.AdminComponents
 {
     public partial class ProductCategory
     {

@@ -1,7 +1,7 @@
 ﻿using illShop.Shared.Dto.DtosRelatedProduct;
 using Microsoft.AspNetCore.Components;
 
-namespace illShop.Client.Pages.ProductComponents
+namespace illShop.Client.Pages.AdminComponents
 {
     public partial class UpdateProduct
     {

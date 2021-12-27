@@ -2,7 +2,7 @@
 using illShop.Shared.Dto.DtosRelatedProduct;
 using MudBlazor;
 
-namespace illShop.Client.Pages.ProductComponents
+namespace illShop.Client.Pages.AdminComponents
 {
     public partial class AddProduct
     {
