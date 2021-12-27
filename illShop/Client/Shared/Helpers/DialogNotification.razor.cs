@@ -6,11 +6,11 @@ namespace illShop.Client.Shared.Helpers
     public partial class DialogNotification
     {
         [CascadingParameter]
-        public MudDialogInstance MudDialog { get; set; }
+        public MudDialogInstance? MudDialog { get; set; }
         [Parameter]
-        public string Content { get; set; }
+        public string? Content { get; set; }
         [Parameter]
-        public string ButtonText { get; set; }
+        public string? ButtonText { get; set; }
         [Parameter]
         public Color ButtonColor { get; set; }
         private void Submit() =>

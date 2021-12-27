@@ -8,7 +8,7 @@ namespace illShop.Client.Pages.Auth
         private LoginModelDto loginModelDto = new LoginModelDto();
      
         public bool ShowAuthError { get; set; }
-        public string Error { get; set; }
+        public string? Error { get; set; }
         public async Task ExecuteLogin()
         {
             ShowAuthError = false;

@@ -9,7 +9,7 @@ namespace illShop.Client.Pages.ProductComponents
 
         [Parameter]
         public int ProductId { get; set; }
-        protected async override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
             _product = await _httpRequestHandler.GetById<ProductDto>(ProductId, "ProductHandlers/GetProductById");
         }

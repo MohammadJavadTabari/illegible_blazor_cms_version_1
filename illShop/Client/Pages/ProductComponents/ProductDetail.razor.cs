@@ -17,7 +17,7 @@ namespace illShop.Client.Pages.ProductComponents
         private int _reviewCount;
         private int _commentCount;
 
-        protected async override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
             Product = await _httpRequestHandler.GetById<ProductDto>(ProductId, "ProductHandlers/GetProductById");
             
