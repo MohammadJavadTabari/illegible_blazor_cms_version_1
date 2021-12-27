@@ -1,5 +1,17 @@
-﻿<h3>ProductCategory</h3>
+﻿@page "/addCategory"
 
-@code {
-
-}
+<section class="IW7 Imarginauto">
+    <EditForm Model="ProductCategoryDto" OnValidSubmit="Create">
+        <DataAnnotationsValidator />
+        <MudCard>
+            <MudCardContent>
+                <MudTextField Label="Category Name" @bind-Value="ProductCategoryDto.CategoryName"
+                              For="@(() => ProductCategoryDto.CategoryName)" />
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Success"
+                           Class="ml-auto">Create Category</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+</section>

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using illShop.Shared.Dto.DtosRelatedProduct;
+using illShop.Shared.Repositories.Product;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace illShop.Server.Controllers.Products
@@ -7,6 +9,18 @@ namespace illShop.Server.Controllers.Products
     [ApiController]
     public class ProductCategory : ControllerBase
     {
-
+        private readonly IProductCategoryRepository _productCategoryRepository;
+        public ProductCategory(IProductCategoryRepository productCategoryRepository)
+        {
+            _productCategoryRepository = productCategoryRepository;
+        }
+        [HttpPost]
+        [Route("AddProductCategory")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> AddCategory([FromBody] ProductCategoryDto productCategoryDto)
+        {
+            var product = await _productCategoryRepository.AddProductCategoryAsync(productCategoryDto);
+            return Created("", product);
+        }
     }
 }

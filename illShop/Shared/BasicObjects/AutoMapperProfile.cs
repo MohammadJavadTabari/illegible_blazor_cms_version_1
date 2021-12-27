@@ -15,6 +15,7 @@ namespace illShop.Shared.BasicObjects
         {
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<ProductReview, ProductReviewDto>().ReverseMap();
+            CreateMap<ProductCategory, ProductCategoryDto>().ReverseMap();
         }
     }
 }

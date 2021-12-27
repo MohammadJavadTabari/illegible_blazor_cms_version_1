@@ -10,5 +10,6 @@
 
 .IBorder1 { border: 1px solid black; border-radius: 15px; }  .IBorder3 { border: 3px solid black; border-radius: 15px; }  .IBorder5 { border: 5px solid black; border-radius: 15px; }  .IBorder7 { border: 7px solid black; border-radius: 15px; }  .IBorder9 { border: 9px solid black; border-radius: 15px; }  .IBorder11 { border: 11px solid black; border-radius: 15px; }
 
-.ITalignCenter{text-align: center}
+.ITalignCenter{text-align: center} .ITshadowBlack{ text-shadow: 5px 5px 10px black; color:white } 
+
 .Imarginauto {margin: 0 auto;}

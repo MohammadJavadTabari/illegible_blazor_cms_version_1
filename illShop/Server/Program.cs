@@ -29,6 +29,7 @@ builder.Services.AddDbContext<IDentityContext>(options =>
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductReviewRepository, ProductReviewRepository>();
+builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
 builder.Services.AddCors(policy =>
 {
     policy.AddPolicy("IllegibleCors", opt => opt

@@ -16,10 +16,6 @@ namespace illShop.Shared.Repositories.Product
     public interface IProductReviewRepository
     {
         Task<int> AddProductReviewAsync(ProductReviewDto productReviewDto);
-        Task<PagedList<ProductReviewDto>> GetPagedProductReviews(PagingParameters pagingParameters);
-        Task<ProductReviewDto> GetProductReview(int id);
-        Task UpdateProductReview(ProductReviewDto productReviewDto);
-        Task DeleteProductReview(int id);
     }
     public class ProductReviewRepository : IProductReviewRepository
     {
@@ -40,25 +36,6 @@ namespace illShop.Shared.Repositories.Product
             await _productReviews.AddAsync(entity);
             await _dataContext.SaveChangesAsync();
             return entity.Id;
-        }
-        public Task<PagedList<ProductReviewDto>> GetPagedProductReviews(PagingParameters pagingParameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ProductReviewDto> GetProductReview(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateProductReview(ProductReviewDto productDto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteProductReview(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }
