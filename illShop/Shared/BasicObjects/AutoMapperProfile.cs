@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using illShop.Shared.Dto.DtosRelatedIdentity;
 using illShop.Shared.Dto.DtosRelatedProduct;
 using KernelLogic.DataBaseObjects.Entities;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,7 @@ namespace illShop.Shared.BasicObjects
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<ProductReview, ProductReviewDto>().ReverseMap();
             CreateMap<ProductCategory, ProductCategoryDto>().ReverseMap();
+            CreateMap<IdentityUser, UserDetailDto>().ReverseMap();
         }
     }
 }

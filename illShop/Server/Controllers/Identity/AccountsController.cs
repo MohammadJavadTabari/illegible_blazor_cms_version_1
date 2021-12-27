@@ -1,7 +1,8 @@
-﻿using illShop.Shared.Dto.DtosRelatedIdentity;
-using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using illShop.Shared.Dto.DtosRelatedIdentity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace illShop.Server.Controllers.Identity
 {
@@ -10,9 +11,11 @@ namespace illShop.Server.Controllers.Identity
     public class AccountsController : ControllerBase
     {
         private readonly UserManager<IdentityUser> _userManager;
-        public AccountsController(UserManager<IdentityUser> userManager)
+        private readonly IMapper _mapper;
+        public AccountsController(UserManager<IdentityUser> userManager, IMapper mapper)
         {
             _userManager = userManager;
+            _mapper = mapper;
         }
         [HttpPost]
         [Route("Registration")]
@@ -29,6 +32,13 @@ namespace illShop.Server.Controllers.Identity
             }
             await _userManager.AddToRoleAsync(user, "Viewer");
             return StatusCode(201);
+        }
+
+        [HttpGet]
+        [Route("GetAllSiteUsers")]
+        public async Task<IActionResult> GetUsers()
+        {
+            return Ok(_mapper.Map<List<UserDetailDto>>(await _userManager.Users.AsNoTracking().ToListAsync()));
         }
     }
 }
