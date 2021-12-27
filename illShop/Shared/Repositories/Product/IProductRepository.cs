@@ -39,14 +39,14 @@ namespace illShop.Shared.Repositories.Product
 
         public async Task<PagedList<ProductDto>> GetPagedBlogPosts(PagingParameters pagingParameters)
         {
-            var products = await _products.Search(pagingParameters.SearchTerm).Sort(pagingParameters.OrderBy).ToListAsync();
+            var products = await _products.Include(x=>x.ProductReviews).Search(pagingParameters.SearchTerm).Sort(pagingParameters.OrderBy).ToListAsync();
             var productDtoList = _mapper.Map<List<ProductDto>>(products);
             return PagedList<ProductDto>.ToPagedList(productDtoList, pagingParameters.PageNumber, pagingParameters.PageSize);
         }
 
         public async Task<ProductDto> GetProduct(int id)
         {
-            return _mapper.Map<ProductDto>(await _products.FirstOrDefaultAsync(p => p.Id.Equals(id)));
+            return _mapper.Map<ProductDto>(await _products.Include(x => x.ProductReviews).FirstOrDefaultAsync(p => p.Id.Equals(id)));
         }
 
         public async Task UpdateProduct(ProductDto productDto)

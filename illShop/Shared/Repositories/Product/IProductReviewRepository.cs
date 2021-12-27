@@ -3,6 +3,7 @@ using illShop.Shared.BasicObjects.Paging;
 using illShop.Shared.Dto.DtosRelatedProduct;
 using KernelLogic.DataBaseObjects;
 using KernelLogic.DataBaseObjects.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,6 @@ namespace illShop.Shared.Repositories.Product
             await _dataContext.SaveChangesAsync();
             return entity.Id;
         }
-
         public Task<PagedList<ProductReviewDto>> GetPagedProductReviews(PagingParameters pagingParameters)
         {
             throw new NotImplementedException();

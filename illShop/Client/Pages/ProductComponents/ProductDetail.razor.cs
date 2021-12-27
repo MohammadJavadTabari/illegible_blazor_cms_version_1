@@ -15,7 +15,7 @@ namespace illShop.Client.Pages.ProductComponents
 
         private int _currentRating;
         private int _reviewCount;
-        private int _questionCount;
+        private int _commentCount;
 
         protected async override Task OnInitializedAsync()
         {
@@ -25,7 +25,7 @@ namespace illShop.Client.Pages.ProductComponents
             {
                 var reviews = Product.ProductReviews;
                 _reviewCount = reviews.Count() ;
-                _questionCount =reviews.Where(x => string.IsNullOrWhiteSpace(x.UserComment)).Count();
+                _commentCount = reviews.Where(x => !string.IsNullOrWhiteSpace(x.UserComment)).Count();
                 _currentRating = CalculateRating(reviews);
             }
         }
