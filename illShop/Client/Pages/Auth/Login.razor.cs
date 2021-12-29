@@ -6,9 +6,12 @@ namespace illShop.Client.Pages.Auth
     public partial class Login
     {
         private LoginModelDto loginModelDto = new LoginModelDto();
-     
+
         public bool ShowAuthError { get; set; }
         public string? Error { get; set; }
+        bool PasswordVisibility;
+        InputType PasswordInput = InputType.Password;
+        string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
         public async Task ExecuteLogin()
         {
             ShowAuthError = false;
@@ -21,6 +24,21 @@ namespace illShop.Client.Pages.Auth
             {
                 _snackbar.Add("Wellcome, you are navigating to home page", Severity.Success);
                 NavigationManager.NavigateTo("/");
+            }
+        }
+        void TogglePasswordVisibility()
+        {
+            if (PasswordVisibility)
+            {
+                PasswordVisibility = false;
+                PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+                PasswordInput = InputType.Password;
+            }
+            else
+            {
+                PasswordVisibility = true;
+                PasswordInputIcon = Icons.Material.Filled.Visibility;
+                PasswordInput = InputType.Text;
             }
         }
     }
