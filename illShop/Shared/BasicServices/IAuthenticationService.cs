@@ -1,13 +1,9 @@
 ﻿using Blazored.LocalStorage;
 using illShop.Shared.Dto.DtosRelatedIdentity;
 using Microsoft.AspNetCore.Components.Authorization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace illShop.Shared.BasicServices
 {
