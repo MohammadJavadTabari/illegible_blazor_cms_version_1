@@ -25,7 +25,7 @@ namespace illShop.Server.Controllers.Identity
         {
             if (userForRegistration == null || !ModelState.IsValid)
                 return BadRequest();
-            var user = new IdentityUser { UserName = userForRegistration.Email, Email = userForRegistration.Email };
+            var user = new IdentityUser { UserName = userForRegistration.UserName, Email = userForRegistration.Email };
             var result = await _userManager.CreateAsync(user, userForRegistration.Password);
             if (!result.Succeeded)
             {

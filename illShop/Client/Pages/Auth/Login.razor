@@ -1,10 +1,9 @@
 ﻿@page "/login"
-@page "/authentication/login"
 @layout LoginLayout
 
 <MudText Typo="Typo.h4" GutterBottom="true">Sign In</MudText>
 
-<MudText>Don't have an account? <MudLink Href="/pages/authentication/register">Sign Up</MudLink></MudText>
+<MudText>Don't have an account? <MudLink Href="/registration">Sign Up</MudLink></MudText>
 <EditForm Model="loginModelDto" OnValidSubmit="ExecuteLogin">
         <DataAnnotationsValidator />
         <MudCard>
