@@ -5,6 +5,20 @@
         <DataAnnotationsValidator />
         <MudCard>
             <MudCardContent>
+                <MudSelect T="string" Label="Category Icon" OffsetY="true" Dense="true" Class="ml-4">
+                    <MudSelectItem T="string" Value="@("AdUnits")">
+                        <MudText>Electronic</MudText>
+                        <MudIcon Icon="fas fa-basketball-ball"></MudIcon>
+                    </MudSelectItem>
+                    <MudSelectItem T="string" Value="@("AdUnits")">
+                        <MudText>Electronic</MudText>
+                        <MudIcon Icon="@Icons.Filled.AdUnits"></MudIcon>
+                    </MudSelectItem>
+                    <MudSelectItem T="string" Value="@("Agriculture")">
+                        <MudText>Agricultural implements</MudText>
+                        <MudIcon Icon="@Icons.Filled.Agriculture"></MudIcon>
+                    </MudSelectItem>
+                </MudSelect>
                 <MudTextField Label="Category Name" @bind-Value="ProductCategoryDto.CategoryName"
                               For="@(() => ProductCategoryDto.CategoryName)" />
             </MudCardContent>
