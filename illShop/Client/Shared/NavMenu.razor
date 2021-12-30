@@ -15,19 +15,19 @@
                 }
             }
         </MudNavGroup>
-        <AuthorizeView>
-            <Authorized>
+@*        <AuthorizeView>
+            <Authorized>*@
                 <MudNavLink Href="/logout" Class="ITshadowBlack" Icon="@Icons.Filled.ArtTrack">Logout</MudNavLink>
-            </Authorized>
-            <NotAuthorized>
+@*            </Authorized>
+            <NotAuthorized>*@
                 <MudNavLink Href="/login" Class="ITshadowBlack" Icon="@Icons.Outlined.AccountBox">Login</MudNavLink>
                 <MudNavLink Href="/registration" Class="ITshadowBlack" Icon="@Icons.Filled.AddReaction">Registration</MudNavLink>
-            </NotAuthorized>
-        </AuthorizeView>
-        <AuthorizeView Roles="Administrator">
-            <Authorized>
+@*            </NotAuthorized>
+        </AuthorizeView>*@
+@*        <AuthorizeView Roles="Administrator">
+            <Authorized>*@
                 <MudNavLink Href="/IllegibleAdminDashboard" Class="ITshadowBlack" Icon="@Icons.Filled.DashboardCustomize">Illegible Dashboard</MudNavLink>
-            </Authorized>
-        </AuthorizeView>
+@*            </Authorized>
+        </AuthorizeView>*@
     </MudNavMenu>
 </MudDrawer>

@@ -6,7 +6,7 @@ namespace illShop.Server.Controllers.File
 {
     [Route("UploadStaticFileHandler")]
     [ApiController]
-    [Authorize(Roles = "Administrator")]
+    //[Authorize(Roles = "Administrator")]
     public class UploadStatic : ControllerBase
     {
         [HttpPost]

@@ -22,7 +22,7 @@ namespace illShop.Server.Controllers.Identity
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginModelDto loginModelDto)
         {
-            var user = await _userManager.FindByNameAsync(loginModelDto.Email);
+            var user = await _userManager.FindByEmailAsync(loginModelDto.Email);
             if (user == null || !await _userManager.CheckPasswordAsync(user, loginModelDto.Password))
                 return Unauthorized(new LoginResultDto { Error = "Invalid Authentication" });
             var signingCredentials = _tokenExtension.GetSigningCredentials();

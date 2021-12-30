@@ -16,7 +16,7 @@ namespace illShop.Server.Controllers.Products
         }
         [HttpPost]
         [Route("AddProductCategory")]
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AddCategory([FromBody] ProductCategoryDto productCategoryDto)
         {
             var product = await _productCategoryRepository.AddProductCategoryAsync(productCategoryDto);

@@ -154,16 +154,6 @@ namespace KernelLogic.Migrations.IDentity
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "6b8de714-d528-41c1-b92b-ce12bf646421", "ac5113c0-e552-424b-9ead-182ea2f8356e", "Administrator", "ADMINISTRATOR" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "92908673-8c73-4190-bdba-5ec0b42260c7", "ccd9989a-1618-4a05-b4d4-5b3da5e04686", "Viewer", "VIEWER" });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
