@@ -1,26 +1,30 @@
 ﻿@page "/IllShopProductCategory"
 
-<section class="IW7 Imarginauto">
-    <EditForm Model="ProductCategoryDto" OnValidSubmit="Create">
-        <DataAnnotationsValidator />
+<MudExpansionPanel Text="Add Product Category" Icon="@Icons.Material.Filled.Category">
+    <section class="IW7 Imarginauto">
         <MudCard>
-            <MudCardContent>
-                <MudSelect @bind-Value="Icon" AdornmentIcon="@Icons.Material.Filled.Category" AdornmentColor="Color.Primary" Label="Category Icon" OffsetY="true" Dense="true" Class="ml-4">
-                    @foreach (var icon in iconsList)
-                    {
-                        <MudSelectItem Value="@(icon)">
-                            <MudText>@icon</MudText>
-                            <MudIcon Icon=@icon></MudIcon>
-                        </MudSelectItem>
-                    }
-                </MudSelect>
-                <MudTextField Label="Category Name" @bind-Value="ProductCategoryDto.CategoryName"
-                              For="@(() => ProductCategoryDto.CategoryName)" />
-            </MudCardContent>
-            <MudCardActions>
-                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Success"
-                           Class="ml-auto">Create Category</MudButton>
-            </MudCardActions>
+            <MudSelect @bind-Value="Icon" AdornmentIcon="@Icons.Material.Filled.Category" AdornmentColor="Color.Primary" Label="Category Icon" OffsetY="true" Dense="true" Class="ml-4">
+                @foreach (var icon in iconsList)
+                {
+                    <MudSelectItem Value="@(icon)">
+                        <MudText>@icon</MudText>
+                        <MudIcon Icon=@icon></MudIcon>
+                    </MudSelectItem>
+                }
+            </MudSelect>
         </MudCard>
-    </EditForm>
-</section>
+        <EditForm Model="ProductCategoryDto" OnValidSubmit="Create">
+            <DataAnnotationsValidator />
+            <MudCard>
+                <MudCardContent>
+                    <MudTextField Label="Category Name" @bind-Value="ProductCategoryDto.CategoryName"
+                                  For="@(() => ProductCategoryDto.CategoryName)" />
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Success"
+                               Class="ml-auto">Create Category</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </EditForm>
+    </section>
+</MudExpansionPanel>

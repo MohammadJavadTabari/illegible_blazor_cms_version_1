@@ -10,7 +10,12 @@ namespace illShop.Client.Shared
         public List<ProductCategoryDto> CategoryDtoList { get; set; } = new();
         protected override async Task OnInitializedAsync()
         {
-            CategoryDtoList = await _httpRequestHandler.GetListData<ProductCategoryDto>("CategoryHandler/GetProductCategories");
+            CategoryDtoList = await GetProductCategoryDtos();
+        }
+
+        public async Task<List<ProductCategoryDto>> GetProductCategoryDtos()
+        {
+            return await _httpRequestHandler.GetListData<ProductCategoryDto>("CategoryHandler/GetProductCategories");
         }
     }
 }

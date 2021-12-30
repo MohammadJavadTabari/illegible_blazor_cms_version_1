@@ -11,7 +11,7 @@
             @{
                 foreach (var cat in CategoryDtoList)
                 {
-                    <MudNavLink Href="/products" Class="ITshadowBlack" Icon="@Icons.Filled.Cabin">@cat.CategoryName</MudNavLink>
+                    <MudNavLink Href="/products" Class="ITshadowBlack" Icon="@cat.Icon">@cat.CategoryName</MudNavLink>
                 }
             }
         </MudNavGroup>
