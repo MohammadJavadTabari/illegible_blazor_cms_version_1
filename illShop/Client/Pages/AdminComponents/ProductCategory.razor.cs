@@ -5,8 +5,10 @@ namespace illShop.Client.Pages.AdminComponents
     public partial class ProductCategory
     {
         public ProductCategoryDto ProductCategoryDto = new();
+        public string Icon { get; set; } = "fas fa-basketball-ball";
         private async Task Create()
         {
+            ProductCategoryDto.Icon = Icon;
             await _httpRequestHandler.PostAsHttpJsonAsync(ProductCategoryDto, "CategoryHandler/AddProductCategory");
             _snackbar.Add("Product Category Added Successfully",MudBlazor.Severity.Success);
         }

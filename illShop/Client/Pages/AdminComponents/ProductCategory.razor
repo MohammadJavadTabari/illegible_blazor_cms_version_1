@@ -5,10 +5,10 @@
         <DataAnnotationsValidator />
         <MudCard>
             <MudCardContent>
-                <MudSelect AdornmentIcon="@Icons.Material.Filled.Category" AdornmentColor="Color.Primary" T="string" Label="Category Icon" OffsetY="true" Dense="true" Class="ml-4">
+                <MudSelect @bind-Value="Icon" AdornmentIcon="@Icons.Material.Filled.Category" AdornmentColor="Color.Primary" Label="Category Icon" OffsetY="true" Dense="true" Class="ml-4">
                     @foreach (var icon in iconsList)
                     {
-                        <MudSelectItem T="string" Value="@icon">
+                        <MudSelectItem Value="@(icon)">
                             <MudText>@icon</MudText>
                             <MudIcon Icon=@icon></MudIcon>
                         </MudSelectItem>
