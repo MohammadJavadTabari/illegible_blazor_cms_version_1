@@ -30,7 +30,10 @@
                 <MudTd DataLabel="Name">
                     <MudLink Href="@($"product/{context.Id}")">@context.ProductName</MudLink>
                 </MudTd>
-                <MudTd DataLabel="Price">$@context.Price</MudTd>
+                <MudTd DataLabel="Price">
+                    $@context.Price
+                </MudTd>
+                
             </RowTemplate>
             <PagerContent>
                 <MudTablePager PageSizeOptions="@_pageSizeOption" RowsPerPageString="Products per page" />
