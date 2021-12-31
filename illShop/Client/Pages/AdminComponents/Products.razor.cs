@@ -2,7 +2,7 @@
 using illShop.Shared.Dto.DtosRelatedProduct;
 using MudBlazor;
 
-namespace illShop.Client.Pages.ProductComponents
+namespace illShop.Client.Pages.AdminComponents
 {
     public partial class Products
     {
@@ -30,5 +30,30 @@ namespace illShop.Client.Pages.ProductComponents
             _pagingParameters.SearchTerm = searchTerm;
             _table.ReloadServerData();
         }
+
+        public ProductDto ProductDto = new();
+        private DateTime? _date = DateTime.Today;
+        private List<ProductCategoryDto> ProductCategoryDtoList = new();
+        public int CategoryId { get; set; }
+        protected override async Task OnInitializedAsync()
+        {
+            ProductCategoryDtoList = await _httpRequestHandler.GetListData<ProductCategoryDto>("CategoryHandler/GetProductCategories");
+        }
+        private async Task Create()
+        {
+            ProductDto.ProductCategoryId = CategoryId;
+            var result = await _httpRequestHandler.PostAsHttpJsonAsync(ProductDto, "ProductHandlers/AddProduct");
+            if (result)
+            {
+                _snackbar.Add("Product Added Seccessfully", Severity.Success);
+                _table.ReloadServerData();
+            }
+            else
+            {
+                _snackbar.Add("Operation Faild", Severity.Error);
+            }
+        }
+
+        private void AssignImageUrl(string imgUrl) => ProductDto.ImageUrl = imgUrl;
     }
 }

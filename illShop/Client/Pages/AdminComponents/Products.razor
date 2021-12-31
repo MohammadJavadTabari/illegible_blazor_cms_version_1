@@ -1,0 +1,80 @@
+﻿@page "/products"
+@page "/ProductManagment"
+
+<MudPaper Class="pa-8 ma-2" Elevation="3">
+    <div class=row>
+        <div class="col">
+            <MudExpansionPanel Text="Click Here To Add New Product Category" Icon="@Icons.Material.Filled.Category">
+                <section class="IW7 Imarginauto">
+                    <EditForm Model="ProductDto" OnValidSubmit="Create">
+                        <DataAnnotationsValidator />
+                        <MudCard>
+                            <MudCardContent>
+                                <MudSelect @bind-Value="CategoryId" Label="Product Category" OffsetY="true" Dense="true" Class="ml-4">
+                                    @{
+                                        foreach (var ProductCategoryDto in ProductCategoryDtoList)
+                                        {
+                                            <MudSelectItem Value="ProductCategoryDto.Id">@ProductCategoryDto.CategoryName</MudSelectItem>
+                                        }
+                                    }
+                                </MudSelect>
+                                <MudTextField Label="Product Name" @bind-Value="ProductDto.ProductName"
+                                              For="@(() => ProductDto.ProductName)" />
+                                <MudTextField Label="Supplier" @bind-Value="ProductDto.Supplier"
+                                              For="@(() => ProductDto.Supplier)" />
+                                <MudTextField Label="Desceription" @bind-Value="ProductDto.Desceription" For="@(() => ProductDto.Desceription)" />
+                                <MudTextField Label="Price" @bind-Value="ProductDto.Price" HelperText="Between 1 and 1000"
+                                              Adornment="Adornment.Start" AdornmentIcon="@Icons.Filled.AttachMoney"
+                                              InputType="InputType.Number" For="@(() => ProductDto.Price)" />
+                                <MudDatePicker Label="Manufacture date" @bind-Date="_date" />
+                            </MudCardContent>
+                            <MudCardActions>
+                                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary"
+                                           Class="ml-auto">Create Product</MudButton>
+                            </MudCardActions>
+                            <br />
+                            <ImageUpload OnChange="AssignImageUrl" />
+                        </MudCard>
+                    </EditForm>
+                </section>
+            </MudExpansionPanel>
+        </div>
+    </div>
+</MudPaper>
+
+<br />
+<div class="row">
+    <div class="col">
+        <MudTable ServerData="@(new Func<TableState, Task<TableData<ProductDto>>>(GetServerData))"
+                  Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true" @ref="_table" RowsPerPage="4">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Products</MudText>
+                <MudSpacer />
+                <MudTextField OnDebounceIntervalElapsed="OnSearch" Placeholder="Search" Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0" T="string" DebounceInterval="500"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh>Image</MudTh>
+                <MudTh><MudTableSortLabel SortLabel="productName" T="ProductDto">Name</MudTableSortLabel></MudTh>
+                <MudTh><MudTableSortLabel SortLabel="price" T="ProductDto">Price</MudTableSortLabel></MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Image">
+                    <MudLink Href="@($"product/{context.Id}")">
+                        <MudAvatar Color="Color.Transparent" Size="Size.Large" Image="@context.ImageUrl" />
+                    </MudLink>
+                </MudTd>
+                <MudTd DataLabel="Name">
+                    <MudLink Href="@($"product/{context.Id}")">@context.ProductName</MudLink>
+                </MudTd>
+                <MudTd DataLabel="Price">
+                    $@context.Price
+                </MudTd>
+
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager PageSizeOptions="@_pageSizeOption" RowsPerPageString="Products per page" />
+            </PagerContent>
+        </MudTable>
+    </div>
+</div>
