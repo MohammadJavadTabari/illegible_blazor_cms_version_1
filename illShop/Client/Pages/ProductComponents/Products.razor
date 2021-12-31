@@ -1,6 +1,6 @@
 ﻿@page "/products"
 @page "/ProductManagment"
-@using illShop.Shared.Dto.DtosRelatedProduct
+
 <MudTooltip Text="Create Product">
     <MudLink Href="/addProduct">
         <MudFab Icon="@Icons.Filled.Add" Color="Color.Secondary" Size="Size.Large" />
@@ -36,6 +36,5 @@
                 <MudTablePager PageSizeOptions="@_pageSizeOption" RowsPerPageString="Products per page" />
             </PagerContent>
         </MudTable>
-
     </div>
 </div>

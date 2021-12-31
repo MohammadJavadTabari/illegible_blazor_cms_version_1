@@ -28,3 +28,32 @@
         </EditForm>
     </section>
 </MudExpansionPanel>
+
+<div class="row">
+    <div class="col">
+        <MudTable ServerData="@(new Func<TableState, Task<TableData<ProductCategoryDto>>>(GetServerData))"
+                  Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true" @ref="_table" RowsPerPage="4">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Products</MudText>
+                <MudSpacer />
+                <MudTextField OnDebounceIntervalElapsed="OnSearch" Placeholder="Search" Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0" T="string" DebounceInterval="500"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh>Category Icon</MudTh>
+                <MudTh><MudTableSortLabel SortLabel="Category Name" T="ProductCategoryDto">Category Name</MudTableSortLabel></MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Icon">
+                    <MudIcon Icon="@context.Icon"></MudIcon>
+                </MudTd>
+                <MudTd DataLabel="Category Name">
+                    <MudText>@context.CategoryName</MudText>
+                </MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager PageSizeOptions="@_pageSizeOption" RowsPerPageString="Products per page" />
+            </PagerContent>
+        </MudTable>
+    </div>
+</div>

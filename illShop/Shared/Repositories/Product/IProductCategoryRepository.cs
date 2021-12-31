@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using illShop.Shared.BasicObjects.Paging;
+using illShop.Shared.BasicServices;
 using illShop.Shared.Dto.DtosRelatedProduct;
 using KernelLogic.DataBaseObjects;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +12,7 @@ namespace illShop.Shared.Repositories.Product
     {
         Task<int> AddProductCategoryAsync(ProductCategoryDto productCategoryDto);
         Task<List<ProductCategoryDto>> GetAllProductCategoryAsync();
+        Task<PagedList<ProductCategoryDto>> GetPagedProducts(PagingParameters pagingParameters);
     }
     public class ProductCategoryRepository : IProductCategoryRepository
     {
@@ -34,6 +37,13 @@ namespace illShop.Shared.Repositories.Product
         public async Task<List<ProductCategoryDto>> GetAllProductCategoryAsync()
         {
             return _mapper.Map<List<ProductCategoryDto>>(await _productCategory.ToListAsync());
+        }
+
+        public async Task<PagedList<ProductCategoryDto>> GetPagedProducts(PagingParameters pagingParameters)
+        {
+            var productCategoryList = await _productCategory.Search(pagingParameters.SearchTerm).Sort(pagingParameters.OrderBy).ToListAsync();
+            var productCategoryDtoList = _mapper.Map<List<ProductCategoryDto>>(productCategoryList);
+            return PagedList<ProductCategoryDto>.ToPagedList(productCategoryDtoList, pagingParameters.PageNumber, pagingParameters.PageSize);
         }
     }
 }

@@ -10,17 +10,29 @@ namespace illShop.Shared.BasicServices
 {
     public interface IHttpRequestHandlerService
     {
+        #region common
+
         Task<bool> PostAsHttpJsonAsync(object Dto, string uriAddress);
-        Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress);
-        Task<PagingResponse<UserDetailDto>> GetPagedUserData(PagingParameters pagingParameters, string uriAddress);
         Task<List<T>> GetListData<T>(string uriAddress);
         Task<string> UploadImage(MultipartFormDataContent content, string uriAddress);
         Task<T> GetById<T>(int id, string uriAddress);
         Task UpdateByDto(object data, string uriAddress);
         Task DeleteById(int id, string uriAddress);
+
+        #endregion
+
+        #region pagination
+
+        Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress);
+        Task<PagingResponse<UserDetailDto>> GetPagedUserData(PagingParameters pagingParameters, string uriAddress);
+        Task<PagingResponse<ProductCategoryDto>> GetPagedProductCategory(PagingParameters pagingParameters, string uriAddress);
+
+        #endregion
+
     }
     public class HttpRequestHandlerService : IHttpRequestHandlerService
     {
+        #region DI / Ctor
         private readonly HttpClient _httpClient;
         private readonly JsonSerializerOptions _options;
 
@@ -29,6 +41,9 @@ namespace illShop.Shared.BasicServices
             _httpClient = httpClient;
             _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         }
+        #endregion
+
+        #region common
         public async Task<bool> PostAsHttpJsonAsync(object Dto, string uriAddress)
         {
             bool isdone = false;
@@ -36,27 +51,6 @@ namespace illShop.Shared.BasicServices
             if (responseMessage.IsSuccessStatusCode)
                 isdone = true;
             return isdone;
-        }
-        public async Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress)
-        {
-            var queryStringParam = new Dictionary<string, string>
-            {
-                ["pageNumber"] = pagingParameters.PageNumber.ToString(),
-                ["searchTerm"] = pagingParameters.SearchTerm ?? "",
-                ["orderBy"] = pagingParameters.OrderBy
-            };
-            var response = await _httpClient.GetAsync(QueryHelpers.AddQueryString(uriAddress, queryStringParam));
-            var content = await response.Content.ReadAsStringAsync();
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new ApplicationException(content);
-            }
-            var pagingResponse = new PagingResponse<ProductDto>
-            {
-                Items = JsonSerializer.Deserialize<List<ProductDto>>(content, _options),
-                MetaData = JsonSerializer.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First(), _options)
-            };
-            return pagingResponse;
         }
 
         public async Task<string> UploadImage(MultipartFormDataContent content, string uriAddress)
@@ -122,6 +116,31 @@ namespace illShop.Shared.BasicServices
             var dto = JsonSerializer.Deserialize<List<T>>(content, _options);
             return dto;
         }
+        #endregion
+
+        #region pagination
+
+        public async Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress)
+        {
+            var queryStringParam = new Dictionary<string, string>
+            {
+                ["pageNumber"] = pagingParameters.PageNumber.ToString(),
+                ["searchTerm"] = pagingParameters.SearchTerm ?? "",
+                ["orderBy"] = pagingParameters.OrderBy
+            };
+            var response = await _httpClient.GetAsync(QueryHelpers.AddQueryString(uriAddress, queryStringParam));
+            var content = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content);
+            }
+            var pagingResponse = new PagingResponse<ProductDto>
+            {
+                Items = JsonSerializer.Deserialize<List<ProductDto>>(content, _options),
+                MetaData = JsonSerializer.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First(), _options)
+            };
+            return pagingResponse;
+        }
 
         public async Task<PagingResponse<UserDetailDto>> GetPagedUserData(PagingParameters pagingParameters, string uriAddress)
         {
@@ -144,5 +163,29 @@ namespace illShop.Shared.BasicServices
             };
             return pagingResponse;
         }
+
+        public async Task<PagingResponse<ProductCategoryDto>> GetPagedProductCategory(PagingParameters pagingParameters, string uriAddress)
+        {
+            var queryStringParam = new Dictionary<string, string>
+            {
+                ["pageNumber"] = pagingParameters.PageNumber.ToString(),
+                ["searchTerm"] = pagingParameters.SearchTerm ?? "",
+                ["orderBy"] = pagingParameters.OrderBy
+            };
+            var response = await _httpClient.GetAsync(QueryHelpers.AddQueryString(uriAddress, queryStringParam));
+            var content = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content);
+            }
+            var pagingResponse = new PagingResponse<ProductCategoryDto>
+            {
+                Items = JsonSerializer.Deserialize<List<ProductCategoryDto>>(content, _options),
+                MetaData = JsonSerializer.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First(), _options)
+            };
+            return pagingResponse;
+        }
+
+        #endregion
     }
 }

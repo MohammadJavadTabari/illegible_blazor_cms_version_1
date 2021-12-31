@@ -1,7 +1,9 @@
-﻿using illShop.Shared.Dto.DtosRelatedProduct;
+﻿using illShop.Shared.BasicObjects.Paging;
+using illShop.Shared.Dto.DtosRelatedProduct;
 using illShop.Shared.Repositories.Product;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace illShop.Server.Controllers.Products
 {
@@ -29,6 +31,14 @@ namespace illShop.Server.Controllers.Products
         {
             var productCategories = await _productCategoryRepository.GetAllProductCategoryAsync();
             return Ok(productCategories); ;
+        }
+
+        [HttpGet("GetPagedProductCategories")]
+        public async Task<IActionResult> GetPagedProducts([FromQuery] PagingParameters pagingParameters)
+        {
+            var products = await _productCategoryRepository.GetPagedProducts(pagingParameters);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(products.MetaData));
+            return Ok(products);
         }
     }
 }
