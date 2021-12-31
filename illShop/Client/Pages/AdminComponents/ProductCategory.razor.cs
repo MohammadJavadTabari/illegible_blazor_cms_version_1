@@ -32,7 +32,6 @@ namespace illShop.Client.Pages.AdminComponents
             _table.ReloadServerData();
         }
 
-
         public ProductCategoryDto ProductCategoryDto = new();
         public string Icon { get; set; } = "fas fa-basketball-ball";
         private async Task Create()
@@ -64,6 +63,34 @@ namespace illShop.Client.Pages.AdminComponents
             "fas fa-shoe-prints",
             "fas fa-hat-cowboy"
         };
-
+        private bool dense = false;
+        private bool hover = true;
+        private bool ronly = false;
+        private ProductCategoryDto elementBeforeEdit;
+        private ProductCategoryDto selectedItem = null;
+        private void BackupItem(object element)
+        {
+            elementBeforeEdit = new()
+            {
+                Icon = ((ProductCategoryDto)element).Icon,
+                CategoryName = ((ProductCategoryDto)element).CategoryName,
+            };
+        }
+        private void ResetItemToOriginalValues(object element)
+        {
+            ((ProductCategoryDto)element).Icon = elementBeforeEdit.Icon;
+            ((ProductCategoryDto)element).CategoryName = elementBeforeEdit.CategoryName;
+        }
+        private async void ItemHasBeenCommitted(object element)
+        {
+            var pc = new ProductCategoryDto()
+            {
+                Id = ((ProductCategoryDto)element).Id,
+                CategoryName = ((ProductCategoryDto)element).CategoryName,
+                Icon = ((ProductCategoryDto)element).Icon,
+            };
+            await _httpRequestHandler.UpdateByDto(pc, "CategoryHandler/UpdateCategory");
+            await _table.ReloadServerData();
+        }
     }
 }

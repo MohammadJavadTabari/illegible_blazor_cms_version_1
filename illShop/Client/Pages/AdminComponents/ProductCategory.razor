@@ -82,33 +82,3 @@
 <MudSwitch @bind-Checked="@hover" Color="Color.Primary">Hover</MudSwitch>
 <MudSwitch @bind-Checked="@dense" Color="Color.Secondary">Dense</MudSwitch>
 <MudSwitch @bind-Checked="@ronly" Color="Color.Tertiary">Read Only</MudSwitch>
-@code {
-    private bool dense = false;
-    private bool hover = true;
-    private bool ronly = false;
-    private ProductCategoryDto elementBeforeEdit;
-    private ProductCategoryDto selectedItem = null;
-    private HashSet<ProductCategoryDto> selectedItems = new HashSet<ProductCategoryDto>();
-    private void BackupItem(object element)
-    {
-        elementBeforeEdit = new()
-            {
-                Icon = ((ProductCategoryDto)element).Icon,
-                CategoryName = ((ProductCategoryDto)element).CategoryName,
-            };
-    }
-    private void ResetItemToOriginalValues(object element)
-    {
-        ((ProductCategoryDto)element).Icon = elementBeforeEdit.Icon;
-        ((ProductCategoryDto)element).CategoryName = elementBeforeEdit.CategoryName;
-    }
-    private void ItemHasBeenCommitted(object element)
-    {
-        var pc = new ProductCategoryDto()
-            {
-                CategoryName = ((ProductCategoryDto)element).CategoryName,
-                Icon = ((ProductCategoryDto)element).Icon,
-            };
-        var aa = pc;
-    }
-}

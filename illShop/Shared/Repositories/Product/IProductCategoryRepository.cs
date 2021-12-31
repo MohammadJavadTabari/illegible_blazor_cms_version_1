@@ -12,7 +12,8 @@ namespace illShop.Shared.Repositories.Product
     {
         Task<int> AddProductCategoryAsync(ProductCategoryDto productCategoryDto);
         Task<List<ProductCategoryDto>> GetAllProductCategoryAsync();
-        Task<PagedList<ProductCategoryDto>> GetPagedProducts(PagingParameters pagingParameters);
+        Task<PagedList<ProductCategoryDto>> GetPagedProductCategories(PagingParameters pagingParameters);
+        Task UpdateProductCategory(ProductCategoryDto productCategoryDto);
     }
     public class ProductCategoryRepository : IProductCategoryRepository
     {
@@ -39,11 +40,18 @@ namespace illShop.Shared.Repositories.Product
             return _mapper.Map<List<ProductCategoryDto>>(await _productCategory.ToListAsync());
         }
 
-        public async Task<PagedList<ProductCategoryDto>> GetPagedProducts(PagingParameters pagingParameters)
+        public async Task<PagedList<ProductCategoryDto>> GetPagedProductCategories(PagingParameters pagingParameters)
         {
             var productCategoryList = await _productCategory.Search(pagingParameters.SearchTerm).Sort(pagingParameters.OrderBy).ToListAsync();
             var productCategoryDtoList = _mapper.Map<List<ProductCategoryDto>>(productCategoryList);
             return PagedList<ProductCategoryDto>.ToPagedList(productCategoryDtoList, pagingParameters.PageNumber, pagingParameters.PageSize);
+        }
+
+        public async Task UpdateProductCategory(ProductCategoryDto productCategoryDto)
+        {
+            var data = _mapper.Map<KernelLogic.DataBaseObjects.Entities.ProductCategory>(productCategoryDto);
+            _productCategory.Update(data);
+            await _dataContext.SaveChangesAsync();
         }
     }
 }
