@@ -14,6 +14,7 @@ namespace illShop.Shared.Repositories.Product
         Task<List<ProductCategoryDto>> GetAllProductCategoryAsync();
         Task<PagedList<ProductCategoryDto>> GetPagedProductCategories(PagingParameters pagingParameters);
         Task UpdateProductCategory(ProductCategoryDto productCategoryDto);
+        Task DeleteProductCategory(int id);
     }
     public class ProductCategoryRepository : IProductCategoryRepository
     {
@@ -51,6 +52,12 @@ namespace illShop.Shared.Repositories.Product
         {
             var data = _mapper.Map<KernelLogic.DataBaseObjects.Entities.ProductCategory>(productCategoryDto);
             _productCategory.Update(data);
+            await _dataContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteProductCategory(int id)
+        {
+            _productCategory.Remove(await _productCategory.FirstOrDefaultAsync(p => p.Id.Equals(id)));
             await _dataContext.SaveChangesAsync();
         }
     }

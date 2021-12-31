@@ -1,39 +1,48 @@
 ﻿@page "/IllShopProductCategory"
 
-<MudExpansionPanel Text="Add Product Category" Icon="@Icons.Material.Filled.Category">
-    <section class="IW7 Imarginauto">
-        <MudCard>
-            <MudSelect @bind-Value="Icon" AdornmentIcon="@Icons.Material.Filled.Category" AdornmentColor="Color.Primary" Label="Category Icon" OffsetY="true" Dense="true" Class="ml-4">
-                @foreach (var icon in iconsList)
-                {
-                    <MudSelectItem Value="@(icon)">
-                        <MudText>@icon</MudText>
-                        <MudIcon Icon=@icon></MudIcon>
-                    </MudSelectItem>
-                }
-            </MudSelect>
-        </MudCard>
-        <EditForm Model="ProductCategoryDto" OnValidSubmit="Create">
-            <DataAnnotationsValidator />
-            <MudCard>
-                <MudCardContent>
-                    <MudTextField Label="Category Name" @bind-Value="ProductCategoryDto.CategoryName"
-                                  For="@(() => ProductCategoryDto.CategoryName)" />
-                </MudCardContent>
-                <MudCardActions>
-                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Success"
-                               Class="ml-auto">Create Category</MudButton>
-                </MudCardActions>
-            </MudCard>
-        </EditForm>
-    </section>
-</MudExpansionPanel>
-<MudSpacer/>
+<MudPaper Class="pa-8 ma-2" Elevation="3">
+    <div class=row>
+        <div class="col">
+            <MudExpansionPanel Text="Click Here To Add New Product Category" Icon="@Icons.Material.Filled.Category">
+                <section class="IW7 Imarginauto">
+                    <MudCard>
+                        <MudSelect @bind-Value="Icon" AdornmentIcon="@Icons.Material.Filled.Category" AdornmentColor="Color.Primary" Label="Category Icon" OffsetY="true" Dense="true" Class="ml-4">
+                            @foreach (var icon in iconsList)
+                            {
+                                <MudSelectItem Value="@(icon)">
+                                    <MudText>@icon</MudText>
+                                    <MudIcon Icon=@icon></MudIcon>
+                                </MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudCard>
+                    <EditForm Model="ProductCategoryDto" OnValidSubmit="Create">
+                        <DataAnnotationsValidator />
+                        <MudCard>
+                            <MudCardContent>
+                                <MudTextField Label="Category Name" @bind-Value="ProductCategoryDto.CategoryName"
+                                              For="@(() => ProductCategoryDto.CategoryName)" />
+                            </MudCardContent>
+                            <MudCardActions>
+                                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Success"
+                                           Class="ml-auto">Create Category</MudButton>
+                            </MudCardActions>
+                        </MudCard>
+                    </EditForm>
+                </section>
+            </MudExpansionPanel>
+        </div>
+    </div>
+</MudPaper>
+
+<br />
 <div class="row">
     <div class="col">
         <MudTable ServerData="@(new Func<TableState, Task<TableData<ProductCategoryDto>>>(GetServerData))"
+                  Loading="true"
                   Breakpoint="Breakpoint.Sm" RightAlignSmall="true" @ref="_table" RowsPerPage="4"
                   Dense="@dense" Hover="@hover" ReadOnly="@ronly" CanCancelEdit="true"
+                  Bordered="@bordered" Striped="@striped"
                   @bind-SelectedItem="selectedItem" SortLabel="Sort By"
                   CommitEditTooltip="Commit Edit"
                   RowEditPreview="BackupItem"
@@ -48,6 +57,7 @@
             <HeaderContent>
                 <MudTh>Category Icon</MudTh>
                 <MudTh><MudTableSortLabel SortLabel="Category Name" T="ProductCategoryDto">Category Name</MudTableSortLabel></MudTh>
+                <MudTh>Table Actions</MudTh>
             </HeaderContent>
             <RowTemplate>
                 <MudTd DataLabel="Icon">
@@ -56,8 +66,17 @@
                 <MudTd DataLabel="Category Name">
                     <MudText>@context.CategoryName</MudText>
                 </MudTd>
+                <MudTd DataLabel="Table Actions">
+                    <MudIcon Color="Color.Error" Icon="fas fa-angle-double-down"></MudIcon>
+                </MudTd>
             </RowTemplate>
             <RowEditingTemplate>
+                 <MudTd DataLabel="Delete Category">
+                    <MudButton Color="Color.Error" OnClick="@(() => DeleteCategory(context.Id))">
+                        <MudIcon Icon="fas fa-skull-crossbones"></MudIcon>
+                        <MudText>Delete Category</MudText>
+                    </MudButton>
+                </MudTd>
                 <MudTd DataLabel="Icon">
                     <MudSelect @bind-Value="@Icon" AdornmentIcon="@Icons.Material.Filled.Category" AdornmentColor="Color.Primary" Label="Category Icon" OffsetY="true" Dense="true" Class="ml-4">
                         @foreach (var icon in iconsList)
@@ -82,3 +101,5 @@
 <MudSwitch @bind-Checked="@hover" Color="Color.Primary">Hover</MudSwitch>
 <MudSwitch @bind-Checked="@dense" Color="Color.Secondary">Dense</MudSwitch>
 <MudSwitch @bind-Checked="@ronly" Color="Color.Tertiary">Read Only</MudSwitch>
+<MudSwitch @bind-Checked="@striped" Color="Color.Tertiary">Striped</MudSwitch>
+<MudSwitch @bind-Checked="@bordered" Color="Color.Warning">Bordered</MudSwitch>

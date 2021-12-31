@@ -1,4 +1,5 @@
-﻿using illShop.Shared.BasicObjects.Paging;
+﻿using illShop.Client.Shared.Helpers;
+using illShop.Shared.BasicObjects.Paging;
 using illShop.Shared.Dto.DtosRelatedProduct;
 using MudBlazor;
 
@@ -38,7 +39,7 @@ namespace illShop.Client.Pages.AdminComponents
         {
             ProductCategoryDto.Icon = Icon;
             await _httpRequestHandler.PostAsHttpJsonAsync(ProductCategoryDto, "CategoryHandler/AddProductCategory");
-            _snackbar.Add("Product Category Added Successfully",MudBlazor.Severity.Success);
+            _snackbar.Add("Product Category Added Successfully", MudBlazor.Severity.Success);
         }
         List<string> iconsList = new List<string>()
         {
@@ -66,6 +67,8 @@ namespace illShop.Client.Pages.AdminComponents
         private bool dense = false;
         private bool hover = true;
         private bool ronly = false;
+        private bool striped = false;
+        private bool bordered = false;
         private ProductCategoryDto elementBeforeEdit;
         private ProductCategoryDto selectedItem = null;
         private void BackupItem(object element)
@@ -91,6 +94,27 @@ namespace illShop.Client.Pages.AdminComponents
             };
             await _httpRequestHandler.UpdateByDto(pc, "CategoryHandler/UpdateCategory");
             await _table.ReloadServerData();
+        }
+
+        private async void DeleteCategory(int Id)
+        {
+            var parameters = new DialogParameters
+        {
+            { "Content", "Are You Sure Wanna Delete This Category? All Related Products Will Be Delete" },
+            { "ButtonColor", Color.Warning },
+            { "ButtonText", "Delete Category" }
+        };
+            var dialog = _dialogService.Show<DialogNotification>("Delete Category Warning", parameters);
+            var result = await dialog.Result;
+            if (!result.Cancelled)
+            {
+                await _httpRequestHandler.DeleteById(Id, "CategoryHandler/DeleteCategory");
+                _snackbar.Add("Category Deleted Successfully", Severity.Success);
+            }
+            else
+            {
+                _snackbar.Add("Deleted Canceled", Severity.Info);
+            }
         }
     }
 }

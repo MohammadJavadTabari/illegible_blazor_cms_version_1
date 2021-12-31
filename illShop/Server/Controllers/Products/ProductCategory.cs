@@ -33,17 +33,27 @@ namespace illShop.Server.Controllers.Products
             return Ok(productCategories); ;
         }
 
-        [HttpGet("GetPagedProductCategories")]
+        [HttpGet]
+        [Route("GetPagedProductCategories")]
         public async Task<IActionResult> GetProductCategories([FromQuery] PagingParameters pagingParameters)
         {
             var products = await _productCategoryRepository.GetPagedProductCategories(pagingParameters);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(products.MetaData));
             return Ok(products);
         }
-        [HttpPut("UpdateCategory")]
+        [HttpPut]
+        [Route("UpdateCategory")]
         public async Task<IActionResult> UpdateProductCategory([FromBody] ProductCategoryDto productCategoryDto)
         {
             await _productCategoryRepository.UpdateProductCategory(productCategoryDto);
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Route("DeleteCategory/{id}")]
+        public async Task<IActionResult> DeleteProductCategory([FromRoute] int id)
+        {
+            await _productCategoryRepository.DeleteProductCategory(id);
             return NoContent();
         }
     }

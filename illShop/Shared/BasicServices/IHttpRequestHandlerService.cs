@@ -28,8 +28,8 @@ namespace illShop.Shared.BasicServices
         Task<PagingResponse<ProductCategoryDto>> GetPagedProductCategory(PagingParameters pagingParameters, string uriAddress);
 
         #endregion
-
     }
+
     public class HttpRequestHandlerService : IHttpRequestHandlerService
     {
         #region DI / Ctor
