@@ -28,11 +28,17 @@
         </EditForm>
     </section>
 </MudExpansionPanel>
-
+<MudSpacer/>
 <div class="row">
     <div class="col">
         <MudTable ServerData="@(new Func<TableState, Task<TableData<ProductCategoryDto>>>(GetServerData))"
-                  Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true" @ref="_table" RowsPerPage="4">
+                  Breakpoint="Breakpoint.Sm" RightAlignSmall="true" @ref="_table" RowsPerPage="4"
+                  Dense="@dense" Hover="@hover" ReadOnly="@ronly" CanCancelEdit="true"
+                  @bind-SelectedItem="selectedItem" SortLabel="Sort By"
+                  CommitEditTooltip="Commit Edit"
+                  RowEditPreview="BackupItem"
+                  RowEditCancel="ResetItemToOriginalValues"
+                  RowEditCommit="ItemHasBeenCommitted">
             <ToolBarContent>
                 <MudText Typo="Typo.h6">Products</MudText>
                 <MudSpacer />
@@ -51,9 +57,58 @@
                     <MudText>@context.CategoryName</MudText>
                 </MudTd>
             </RowTemplate>
+            <RowEditingTemplate>
+                <MudTd DataLabel="Icon">
+                    <MudSelect @bind-Value="@Icon" AdornmentIcon="@Icons.Material.Filled.Category" AdornmentColor="Color.Primary" Label="Category Icon" OffsetY="true" Dense="true" Class="ml-4">
+                        @foreach (var icon in iconsList)
+                        {
+                            <MudSelectItem Value="@(icon)">
+                                <MudText>@icon</MudText>
+                                <MudIcon Icon=@icon></MudIcon>
+                            </MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudTd>
+                <MudTd DataLabel="Category Name">
+                    <MudTextField @bind-Value="@context.CategoryName" Required />
+                </MudTd>
+            </RowEditingTemplate>
             <PagerContent>
                 <MudTablePager PageSizeOptions="@_pageSizeOption" RowsPerPageString="Products per page" />
             </PagerContent>
         </MudTable>
     </div>
 </div>
+<MudSwitch @bind-Checked="@hover" Color="Color.Primary">Hover</MudSwitch>
+<MudSwitch @bind-Checked="@dense" Color="Color.Secondary">Dense</MudSwitch>
+<MudSwitch @bind-Checked="@ronly" Color="Color.Tertiary">Read Only</MudSwitch>
+@code {
+    private bool dense = false;
+    private bool hover = true;
+    private bool ronly = false;
+    private ProductCategoryDto elementBeforeEdit;
+    private ProductCategoryDto selectedItem = null;
+    private HashSet<ProductCategoryDto> selectedItems = new HashSet<ProductCategoryDto>();
+    private void BackupItem(object element)
+    {
+        elementBeforeEdit = new()
+            {
+                Icon = ((ProductCategoryDto)element).Icon,
+                CategoryName = ((ProductCategoryDto)element).CategoryName,
+            };
+    }
+    private void ResetItemToOriginalValues(object element)
+    {
+        ((ProductCategoryDto)element).Icon = elementBeforeEdit.Icon;
+        ((ProductCategoryDto)element).CategoryName = elementBeforeEdit.CategoryName;
+    }
+    private void ItemHasBeenCommitted(object element)
+    {
+        var pc = new ProductCategoryDto()
+            {
+                CategoryName = ((ProductCategoryDto)element).CategoryName,
+                Icon = ((ProductCategoryDto)element).Icon,
+            };
+        var aa = pc;
+    }
+}
