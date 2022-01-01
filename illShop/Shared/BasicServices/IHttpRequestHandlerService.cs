@@ -16,8 +16,8 @@ namespace illShop.Shared.BasicServices
         Task<List<T>> GetListData<T>(string uriAddress);
         Task<string> UploadImage(MultipartFormDataContent content, string uriAddress);
         Task<T> GetById<T>(int id, string uriAddress);
-        Task UpdateByDto(object data, string uriAddress);
-        Task DeleteById(int id, string uriAddress);
+        Task<bool> UpdateByDto(object data, string uriAddress);
+        Task<bool> DeleteById(int id, string uriAddress);
 
         #endregion
 
@@ -81,28 +81,27 @@ namespace illShop.Shared.BasicServices
             return dto;
         }
 
-        public async Task UpdateByDto(object data, string uriAddress)
+        public async Task<bool> UpdateByDto(object data, string uriAddress)
         {
+            bool isdone = false;
             var content = JsonSerializer.Serialize(data);
             var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
             var putResult = await _httpClient.PutAsync(uriAddress, bodyContent);
-            var putContent = await putResult.Content.ReadAsStringAsync();
-            if (!putResult.IsSuccessStatusCode)
-            {
-                throw new ApplicationException(putContent);
-            }
+           // var putContent = await putResult.Content.ReadAsStringAsync();
+            if (putResult.IsSuccessStatusCode)
+                isdone = true;
+            return isdone;
         }
 
-        public async Task DeleteById(int id, string uriAddress)
+        public async Task<bool> DeleteById(int id, string uriAddress)
         {
+            var isDnoe = false;
             var url = Path.Combine(uriAddress, id.ToString());
-
             var deleteResult = await _httpClient.DeleteAsync(url);
-            var deleteContent = await deleteResult.Content.ReadAsStringAsync();
-            if (!deleteResult.IsSuccessStatusCode)
-            {
-                throw new ApplicationException(deleteContent);
-            }
+            //var deleteContent = await deleteResult.Content.ReadAsStringAsync();
+            if (deleteResult.IsSuccessStatusCode)
+                isDnoe = true;
+            return isDnoe;
         }
 
         public async Task<List<T>> GetListData<T>(string uriAddress)

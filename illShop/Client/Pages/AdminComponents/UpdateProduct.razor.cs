@@ -1,5 +1,6 @@
 ﻿using illShop.Shared.Dto.DtosRelatedProduct;
 using Microsoft.AspNetCore.Components;
+using MudBlazor;
 
 namespace illShop.Client.Pages.AdminComponents
 {
@@ -19,8 +20,16 @@ namespace illShop.Client.Pages.AdminComponents
 
         private async Task Update()
         {
-           await _httpRequestHandler.UpdateByDto(ProductDto, "ProductHandlers/EditProduct");
-
+           var response = await _httpRequestHandler.UpdateByDto(ProductDto, "ProductHandlers/EditProduct");
+            if (response)
+            {
+                _snackbar.Add("Product Updated Successfully", Severity.Success);
+                NavigationManager.NavigateTo("ProductManagment");
+            }
+            else
+            {
+                _snackbar.Add("Updated Faild", Severity.Error);
+            }
         }
         private void AssignImageUrl(string imgUrl) => ProductDto.ImageUrl = imgUrl;
     }

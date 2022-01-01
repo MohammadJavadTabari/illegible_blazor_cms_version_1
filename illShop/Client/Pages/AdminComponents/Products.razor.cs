@@ -46,7 +46,7 @@ namespace illShop.Client.Pages.AdminComponents
             var result = await _httpRequestHandler.PostAsHttpJsonAsync(ProductDto, "ProductHandlers/AddProduct");
             if (result)
             {
-                _snackbar.Add("Product Added Seccessfully", Severity.Success);
+                _snackbar.Add("Product Added Successfully", Severity.Success);
                 await _table.ReloadServerData();
             }
             else
@@ -70,9 +70,17 @@ namespace illShop.Client.Pages.AdminComponents
             var result = await dialog.Result;
             if (!result.Cancelled)
             {
-                await _httpRequestHandler.DeleteById(id, "ProductHandlers/RemoveProduct");
-                _snackbar.Add("Product Deleted Successfully", Severity.Success);
-                await _table.ReloadServerData();
+                var response = await _httpRequestHandler.DeleteById(id, "ProductHandlers/RemoveProduct");
+                if (response)
+                {
+                    _snackbar.Add("Product Deleted Successfully", Severity.Success);
+                    await _table.ReloadServerData();
+                }
+                else
+                {
+                    _snackbar.Add("Deleted Faild", Severity.Error);
+                }
+
             }
             else
             {

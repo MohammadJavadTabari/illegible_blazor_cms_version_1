@@ -92,8 +92,16 @@ namespace illShop.Client.Pages.AdminComponents
                 CategoryName = ((ProductCategoryDto)element).CategoryName,
                 Icon = ((ProductCategoryDto)element).Icon,
             };
-            await _httpRequestHandler.UpdateByDto(pc, "CategoryHandler/UpdateCategory");
-            await _table.ReloadServerData();
+            var response = await _httpRequestHandler.UpdateByDto(pc, "CategoryHandler/UpdateCategory");
+            if (response)
+            {
+                _snackbar.Add("Category Edited Successfully", Severity.Success);
+                await _table.ReloadServerData();
+            }
+            else
+            {
+                _snackbar.Add("Edit Faild",Severity.Error);
+            }
         }
 
         private async void DeleteCategory(int Id)
@@ -108,8 +116,15 @@ namespace illShop.Client.Pages.AdminComponents
             var result = await dialog.Result;
             if (!result.Cancelled)
             {
-                await _httpRequestHandler.DeleteById(Id, "CategoryHandler/DeleteCategory");
-                _snackbar.Add("Category Deleted Successfully", Severity.Success);
+                var response = await _httpRequestHandler.DeleteById(Id, "CategoryHandler/DeleteCategory");
+                if (response)
+                {
+                    _snackbar.Add("Category Deleted Successfully", Severity.Success);
+                }
+                else
+                {
+                    _snackbar.Add("Deleted Faild", Severity.Error);
+                }
             }
             else
             {
