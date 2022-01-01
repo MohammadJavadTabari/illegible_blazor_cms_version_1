@@ -1,0 +1,21 @@
+﻿@page "/products"
+<h3>ProductUserView</h3>
+
+
+
+<MudGrid>
+    @foreach (var product in ProductDtoList)
+    {
+        <MudItem xs="4">
+            <MudPaper>
+                <MudText Color="Color.Tertiary" Align="Align.Center">
+                    <div class="IFArchitectsDaughter-Regular">@product.ProductName</div>
+                </MudText>
+                <MudText Typo="Typo.caption" Align="Align.Left">
+                    @product.Desceription
+                </MudText>
+                <img style="text-align:left" class="IBorder1" src="@product.ImageUrl" alt="@product.ProductName" />
+            </MudPaper>
+        </MudItem>
+    }
+</MudGrid>

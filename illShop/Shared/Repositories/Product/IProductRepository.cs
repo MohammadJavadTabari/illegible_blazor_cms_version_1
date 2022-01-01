@@ -11,6 +11,7 @@ namespace illShop.Shared.Repositories.Product
     {
         Task<int> AddProductAsync(ProductDto productDto);
         Task<PagedList<ProductDto>> GetPagedProducts(PagingParameters pagingParameters);
+        Task<List<ProductDto>> GetProducts();
         Task<ProductDto> GetProduct(int id);
         Task UpdateProduct(ProductDto productDto);
         Task DeleteProduct(int id);
@@ -60,6 +61,12 @@ namespace illShop.Shared.Repositories.Product
         {
             _products.Remove(await _products.FirstOrDefaultAsync(p => p.Id.Equals(id)));
             await _dataContext.SaveChangesAsync();
+        }
+
+        public async Task<List<ProductDto>> GetProducts()
+        {
+            var products = await _products.ToListAsync();
+            return _mapper.Map<List<ProductDto>>(products);
         }
     }
 }

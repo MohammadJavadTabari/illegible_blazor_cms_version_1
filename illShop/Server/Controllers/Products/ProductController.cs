@@ -35,6 +35,13 @@ namespace illShop.Server.Controllers.Products
             return Ok(products);
         }
         [HttpGet]
+        [Route("GetAllproducts")]
+        public async Task<IActionResult> GetAllProduct()
+        {
+            var product = await _productRepository.GetProducts();
+            return Ok(product);
+        }
+        [HttpGet]
         [Route("GetProductById/{id}")]
         public async Task<IActionResult> GetProduct([FromRoute] int id)
         {
