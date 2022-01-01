@@ -1,4 +1,5 @@
-﻿using illShop.Shared.BasicObjects.Paging;
+﻿using illShop.Client.Shared.Helpers;
+using illShop.Shared.BasicObjects.Paging;
 using illShop.Shared.Dto.DtosRelatedProduct;
 using MudBlazor;
 
@@ -46,7 +47,7 @@ namespace illShop.Client.Pages.AdminComponents
             if (result)
             {
                 _snackbar.Add("Product Added Seccessfully", Severity.Success);
-                _table.ReloadServerData();
+                await _table.ReloadServerData();
             }
             else
             {
@@ -55,5 +56,32 @@ namespace illShop.Client.Pages.AdminComponents
         }
 
         private void AssignImageUrl(string imgUrl) => ProductDto.ImageUrl = imgUrl;
+
+        private async Task DeleteProduct(int id)
+        {
+
+            var parameters = new DialogParameters
+        {
+            { "Content", "Are You Sure Wanna Delete This Product?" },
+            { "ButtonColor", Color.Warning },
+            { "ButtonText", "Delete Product" }
+        };
+            var dialog = _dialogService.Show<DialogNotification>("Delete Product Warning", parameters);
+            var result = await dialog.Result;
+            if (!result.Cancelled)
+            {
+                await _httpRequestHandler.DeleteById(id, "ProductHandlers/RemoveProduct");
+                _snackbar.Add("Product Deleted Successfully", Severity.Success);
+                await _table.ReloadServerData();
+            }
+            else
+            {
+                _snackbar.Add("Deleted Canceled", Severity.Info);
+            }
+        }
+        private async Task EditProduct(int id)
+        {
+            NavigationManager.NavigateTo($"/updateProduct/{id}");
+        }
     }
 }

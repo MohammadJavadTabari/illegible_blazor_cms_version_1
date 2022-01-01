@@ -57,6 +57,12 @@
                 <MudTh>Image</MudTh>
                 <MudTh><MudTableSortLabel SortLabel="productName" T="ProductDto">Name</MudTableSortLabel></MudTh>
                 <MudTh><MudTableSortLabel SortLabel="price" T="ProductDto">Price</MudTableSortLabel></MudTh>
+                <MudTh>
+                    <MudText Color="Color.Info">
+                        <MudIcon Icon="@Icons.Filled.Settings"></MudIcon>
+                        Product Handle Actions
+                    </MudText>
+                </MudTh>
             </HeaderContent>
             <RowTemplate>
                 <MudTd DataLabel="Image">
@@ -70,7 +76,16 @@
                 <MudTd DataLabel="Price">
                     $@context.Price
                 </MudTd>
-
+                <MudTd>
+                    <MudButton Color="Color.Error" OnClick="@(() => DeleteProduct(context.Id))">
+                        <MudIcon Icon="fas fa-skull-crossbones"></MudIcon>
+                        <MudText>Delete Product</MudText>
+                    </MudButton>
+                    <MudButton Color="Color.Tertiary" OnClick="@(() => EditProduct(context.Id))">
+                        <MudIcon Icon="fas fa-expand"></MudIcon>
+                        <MudText>Edit Product</MudText>
+                    </MudButton>
+                </MudTd>
             </RowTemplate>
             <PagerContent>
                 <MudTablePager PageSizeOptions="@_pageSizeOption" RowsPerPageString="Products per page" />

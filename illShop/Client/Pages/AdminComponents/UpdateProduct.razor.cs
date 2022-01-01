@@ -5,18 +5,23 @@ namespace illShop.Client.Pages.AdminComponents
 {
     public partial class UpdateProduct
     {
-        private ProductDto _product;
-
         [Parameter]
         public int ProductId { get; set; }
+        public ProductDto ProductDto = new();
+        private DateTime? _date = DateTime.Today;
+        private List<ProductCategoryDto> ProductCategoryDtoList = new();
+        public int CategoryId { get; set; }
         protected override async Task OnInitializedAsync()
         {
-            _product = await _httpRequestHandler.GetById<ProductDto>(ProductId, "ProductHandlers/GetProductById");
+            ProductDto = await _httpRequestHandler.GetById<ProductDto>(ProductId, "ProductHandlers/GetProductById");
+            ProductCategoryDtoList = await _httpRequestHandler.GetListData<ProductCategoryDto>("CategoryHandler/GetProductCategories");
         }
+
         private async Task Update()
         {
-            await _httpRequestHandler.UpdateByDto(_product, "ProductHandlers/EditProduct");
+           await _httpRequestHandler.UpdateByDto(ProductDto, "ProductHandlers/EditProduct");
+
         }
-        private void AssignImageUrl(string imgUrl) => _product.ImageUrl = imgUrl;
+        private void AssignImageUrl(string imgUrl) => ProductDto.ImageUrl = imgUrl;
     }
 }
