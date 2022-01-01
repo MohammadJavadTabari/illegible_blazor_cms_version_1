@@ -9,5 +9,10 @@ namespace illShop.Client.Pages.ProductComponents
         {
             ProductDtoList = await _httpRequestHandler.GetListData<ProductDto>("ProductHandlers/GetAllproducts");
         }
+
+        private void ProductDetail(int id)
+        {
+            NavigationManager.NavigateTo($"product/{id}");
+        }
     }
 }

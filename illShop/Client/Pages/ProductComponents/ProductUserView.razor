@@ -1,7 +1,4 @@
 ﻿@page "/products"
-<h3>ProductUserView</h3>
-
-
 
 <MudGrid>
     @foreach (var product in ProductDtoList)
@@ -11,10 +8,31 @@
                 <MudText Color="Color.Tertiary" Align="Align.Center">
                     <div class="IFArchitectsDaughter-Regular">@product.ProductName</div>
                 </MudText>
-                <MudText Typo="Typo.caption" Align="Align.Left">
-                    @product.Desceription
-                </MudText>
-                <img style="text-align:left" class="IBorder1" src="@product.ImageUrl" alt="@product.ProductName" />
+                    <div class="row m-2">
+                        <img class="ITalignCenter IBorder1 IW9 IH9" src="@product.ImageUrl" alt="@product.ProductName" />
+                    </div>
+                <div>
+                    <div class="col-7">
+                        <MudText Typo="Typo.h4" Align="Align.Left">
+                            Price : 
+                        </MudText>
+                        <MudText Typo="Typo.h6" Align="Align.Center">
+                            $@product.Price
+                        </MudText>
+                        <br />
+                        <div class="row">
+                           <div class="col-4">
+                                <MudIconButton OnClick="@(()=> ProductDetail(product.Id))" Color="Color.Error" Title="See Detail" Icon="fas fa-info-circle"></MudIconButton>
+                           </div>
+                           <div class="col-4">
+                                <MudIconButton Color="Color.Success" Title="Add To Card" Icon="fas fa-shopping-basket"></MudIconButton>
+                           </div>
+                           <div class="col-4">
+                                <MudIconButton Color="Color.Primary" Title="Save For ALater" Icon="far fa-bookmark"></MudIconButton>
+                           </div>
+                        </div>
+                    </div>
+                </div>
             </MudPaper>
         </MudItem>
     }
