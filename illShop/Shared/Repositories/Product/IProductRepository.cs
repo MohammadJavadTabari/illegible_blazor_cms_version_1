@@ -72,7 +72,7 @@ namespace illShop.Shared.Repositories.Product
 
         public List<ProductDto> GetLatestProducts()
         {
-           var latestProducts = _products.OrderByDescending(u => u.ProductName.Count).Take(5);
+            var latestProducts = _products.ToList().OrderByDescending(u => u.ProductName.Count()).Take(10).ToList();
            return _mapper.Map<List<ProductDto>>(latestProducts);
         }
     }
