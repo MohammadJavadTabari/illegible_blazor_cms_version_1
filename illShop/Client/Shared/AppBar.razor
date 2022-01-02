@@ -11,12 +11,20 @@
             <MudAvatar Style="border:2px solid" Image="Images/MohammadJavadTabari1024.jpeg" Alt="Mohammad Javad Tabari"></MudAvatar>
 @*        </Authorized>
     </AuthorizeView>*@
-    @if (_isDarkMode)
+   @* @if (_isDarkMode)
     {
         <MudIconButton Icon="@Icons.Material.Filled.Brightness5" Color="Color.Inherit" OnClick="ToggleTheme" />
     }
     else
     {
         <MudIconButton Icon="@Icons.Material.Filled.Brightness4" Color="Color.Inherit" OnClick="ToggleTheme" />
-    }
+    }*@
+    <MudSelect T="string" @bind-Value="ThemeId" SelectedValuesChanged="@(()=> ValueChanged())">
+        <MudSelectItem Value="@("0")">
+            Dark
+        </MudSelectItem>
+        <MudSelectItem Value="@("1")">
+            Light
+        </MudSelectItem>
+    </MudSelect>
 </MudAppBar>
