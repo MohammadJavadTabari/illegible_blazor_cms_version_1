@@ -1,0 +1,92 @@
+﻿@page "/"
+
+<MudContainer>
+    <MudTabs Elevation="4" Rounded="true" Color="@Color.Secondary">
+        <MudTabPanel Text="BackGround">
+            <MudExpansionPanels>
+                <MudExpansionPanel Text="BackGround Color option">
+                    <div class="ITalignCenter">
+                        <MudColorPicker Label="BackGroundColor" DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
+                    </div>
+                </MudExpansionPanel>
+                <MudExpansionPanel Text="BackGround Color Gradiant option">
+
+                    <MudPaper Elevation="0" Class="mud-width-full mud-height-full d-flex justify-center align-end pb-8" MinHeight="600px" Style="@($"background-image:linear-gradient({degrees}deg, {_gradientPrimary.ToString(MudColorOutputFormats.RGBA)} 0%, {_gradientSecondary.ToString(MudColorOutputFormats.RGBA)} 100%);")">
+                        <MudPaper Class="d-flex">
+                            <MudColorPicker Rounded="true" Class="rounded-tr-0" PickerVariant="PickerVariant.Static" DisableModeSwitch="true" Value="_pickerColor" ValueChanged="UpdateSelectedColor" />
+                            <div class="pa-2">
+                                <MudText Typo="Typo.h6" Class="mx-1">Gradient Colors</MudText>
+
+                                <MudList Clickable="true" SelectedItemChanged="ChangeSelectedColor">
+                                    <MudListItem Text="1">
+                                        <div class="mud-width-full rounded py-4" style="@($"background-color:{_gradientPrimary};")"></div>
+                                    </MudListItem>
+                                    <MudListItem Text="2">
+                                        <div class="mud-width-full rounded py-4" style="@($"background-color:{_gradientSecondary};")"></div>
+                                    </MudListItem>
+                                </MudList>
+                                <MudSlider Min="0" Max="360" Step="1" @bind-Value="@degrees" Class="px-2">Degrees</MudSlider>
+                            </div>
+                        </MudPaper>
+                    </MudPaper>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+        </MudTabPanel>
+        <MudTabPanel Text="Two">
+            <div class="row mt-2">
+                <div class="col-6">
+                    <MudColorPicker Label="Surface"></MudColorPicker>
+                </div>
+                <div class="col-6">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <MudColorPicker Label="DrawerBackground"></MudColorPicker>
+                </div>
+                <div class="col-6">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <MudColorPicker Label="DrawerText"></MudColorPicker>
+                </div>
+                <div class="col-6">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <MudColorPicker Label="DrawerIcon"></MudColorPicker>
+                </div>
+                <div class="col-6">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <MudColorPicker Label="AppbarBackground"></MudColorPicker>
+                </div>
+                <div class="col-6">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <MudColorPicker Label="AppbarText"></MudColorPicker>
+                </div>
+                <div class="col-6">
+                </div>
+            </div>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Three" />
+        <MudTabPanel Text="Four" />
+        <MudTabPanel Text="Five" />
+        <MudTabPanel Text="Six" />
+        <MudTabPanel Text="Seven" />
+        <MudTabPanel Text="Eight" />
+        <MudTabPanel Text="Nine" />
+        <MudTabPanel Text="Ten" />
+        <MudTabPanel Text="Eleven" />
+        <MudTabPanel Text="Thirteen" />
+    </MudTabs>
+
+</MudContainer>
