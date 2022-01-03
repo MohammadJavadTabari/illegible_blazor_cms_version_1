@@ -3,13 +3,121 @@
 <MudContainer>
     <MudTabs Elevation="4" Rounded="true" Color="@Color.Secondary">
         <MudTabPanel Text="BackGround">
-            <MudExpansionPanels>
+            <MudText Typo="Typo.h3" Align="Align.Center">
+                <div class="IFArchitectsDaughter-Regular">
+                    Main BackGround
+                </div>
+            </MudText>
+            <MudExpansionPanels Class="mt-2">
                 <MudExpansionPanel Text="BackGround Color option">
                     <div class="ITalignCenter">
                         <MudColorPicker Label="BackGroundColor" DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
                     </div>
                 </MudExpansionPanel>
                 <MudExpansionPanel Text="BackGround Color Gradiant option">
+
+                    <MudPaper Elevation="0" Class="mud-width-full mud-height-full d-flex justify-center align-end pb-8" MinHeight="600px" Style="@($"background-image:linear-gradient({degrees}deg, {_gradientPrimary.ToString(MudColorOutputFormats.RGBA)} 0%, {_gradientSecondary.ToString(MudColorOutputFormats.RGBA)} 100%);")">
+                        <MudPaper Class="d-flex">
+                            <MudColorPicker Rounded="true" Class="rounded-tr-0" PickerVariant="PickerVariant.Static" DisableModeSwitch="true" Value="_pickerColor" ValueChanged="UpdateSelectedColor" />
+                            <div class="pa-2">
+                                <MudText Typo="Typo.h6" Class="mx-1">Gradient Colors</MudText>
+
+                                <MudList Clickable="true" SelectedItemChanged="ChangeSelectedColor">
+                                    <MudListItem Text="1">
+                                        <div class="mud-width-full rounded py-4" style="@($"background-color:{_gradientPrimary};")"></div>
+                                    </MudListItem>
+                                    <MudListItem Text="2">
+                                        <div class="mud-width-full rounded py-4" style="@($"background-color:{_gradientSecondary};")"></div>
+                                    </MudListItem>
+                                </MudList>
+                                <MudSlider Min="0" Max="360" Step="1" @bind-Value="@degrees" Class="px-2">Degrees</MudSlider>
+                            </div>
+                        </MudPaper>
+                    </MudPaper>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+            
+            <hr class="m-1" style="color: red"/>
+            <MudText Typo="Typo.h3" Align="Align.Center">
+                <div class="IFArchitectsDaughter-Regular">
+                    Shop And Blog BackGround
+                </div>
+            </MudText>
+            <MudExpansionPanels Class="mt-2">
+                <MudExpansionPanel Text="Shop And Blog BackGround Color option">
+                    <div class="ITalignCenter">
+                        <MudColorPicker Label="Shop And Blog BackGround Color" DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
+                    </div>
+                </MudExpansionPanel>
+                <MudExpansionPanel Text="Shop And Blog BackGround Color Gradiant option">
+
+                    <MudPaper Elevation="0" Class="mud-width-full mud-height-full d-flex justify-center align-end pb-8" MinHeight="600px" Style="@($"background-image:linear-gradient({degrees}deg, {_gradientPrimary.ToString(MudColorOutputFormats.RGBA)} 0%, {_gradientSecondary.ToString(MudColorOutputFormats.RGBA)} 100%);")">
+                        <MudPaper Class="d-flex">
+                            <MudColorPicker Rounded="true" Class="rounded-tr-0" PickerVariant="PickerVariant.Static" DisableModeSwitch="true" Value="_pickerColor" ValueChanged="UpdateSelectedColor" />
+                            <div class="pa-2">
+                                <MudText Typo="Typo.h6" Class="mx-1">Gradient Colors</MudText>
+
+                                <MudList Clickable="true" SelectedItemChanged="ChangeSelectedColor">
+                                    <MudListItem Text="1">
+                                        <div class="mud-width-full rounded py-4" style="@($"background-color:{_gradientPrimary};")"></div>
+                                    </MudListItem>
+                                    <MudListItem Text="2">
+                                        <div class="mud-width-full rounded py-4" style="@($"background-color:{_gradientSecondary};")"></div>
+                                    </MudListItem>
+                                </MudList>
+                                <MudSlider Min="0" Max="360" Step="1" @bind-Value="@degrees" Class="px-2">Degrees</MudSlider>
+                            </div>
+                        </MudPaper>
+                    </MudPaper>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+            <hr class="m-1" style="color: red"/>
+            <MudText Typo="Typo.h3" Align="Align.Center">
+                <div class="IFArchitectsDaughter-Regular">
+                    Drawer BackGround
+                </div>
+            </MudText>
+            <MudExpansionPanels Class="mt-2">
+                <MudExpansionPanel Text="Drawer BackGround Color option">
+                    <div class="ITalignCenter">
+                        <MudColorPicker Label="Drawer BackGround Color" DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
+                    </div>
+                </MudExpansionPanel>
+                <MudExpansionPanel Text="Drawer BackGround Color Gradiant option">
+
+                    <MudPaper Elevation="0" Class="mud-width-full mud-height-full d-flex justify-center align-end pb-8" MinHeight="600px" Style="@($"background-image:linear-gradient({degrees}deg, {_gradientPrimary.ToString(MudColorOutputFormats.RGBA)} 0%, {_gradientSecondary.ToString(MudColorOutputFormats.RGBA)} 100%);")">
+                        <MudPaper Class="d-flex">
+                            <MudColorPicker Rounded="true" Class="rounded-tr-0" PickerVariant="PickerVariant.Static" DisableModeSwitch="true" Value="_pickerColor" ValueChanged="UpdateSelectedColor" />
+                            <div class="pa-2">
+                                <MudText Typo="Typo.h6" Class="mx-1">Gradient Colors</MudText>
+
+                                <MudList Clickable="true" SelectedItemChanged="ChangeSelectedColor">
+                                    <MudListItem Text="1">
+                                        <div class="mud-width-full rounded py-4" style="@($"background-color:{_gradientPrimary};")"></div>
+                                    </MudListItem>
+                                    <MudListItem Text="2">
+                                        <div class="mud-width-full rounded py-4" style="@($"background-color:{_gradientSecondary};")"></div>
+                                    </MudListItem>
+                                </MudList>
+                                <MudSlider Min="0" Max="360" Step="1" @bind-Value="@degrees" Class="px-2">Degrees</MudSlider>
+                            </div>
+                        </MudPaper>
+                    </MudPaper>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+            <hr class="m-1" style="color: red"/>
+            <MudText Typo="Typo.h3" Align="Align.Center">
+                <div class="IFArchitectsDaughter-Regular">
+                    AppBar BackGround
+                </div>
+            </MudText>
+            <MudExpansionPanels Class="mt-2">
+                <MudExpansionPanel Text="AppBar BackGround Color option">
+                    <div class="ITalignCenter">
+                        <MudColorPicker Label="AppBar BackGround Color" DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
+                    </div>
+                </MudExpansionPanel>
+                <MudExpansionPanel Text="AppBar BackGround Color Gradiant option">
 
                     <MudPaper Elevation="0" Class="mud-width-full mud-height-full d-flex justify-center align-end pb-8" MinHeight="600px" Style="@($"background-image:linear-gradient({degrees}deg, {_gradientPrimary.ToString(MudColorOutputFormats.RGBA)} 0%, {_gradientSecondary.ToString(MudColorOutputFormats.RGBA)} 100%);")">
                         <MudPaper Class="d-flex">
