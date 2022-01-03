@@ -1,7 +1,7 @@
 ﻿@page "/themeBuilder"
 
 <MudContainer>
-    <MudTabs Elevation="4" Rounded="true" Color="@Color.Secondary">
+    <MudTabs Elevation="4" Rounded="true" Color="@Color.Primary">
         <MudTabPanel Text="BackGround">
             <MudText Typo="Typo.h3" Align="Align.Center">
                 <div class="IFArchitectsDaughter-Regular">
@@ -10,9 +10,7 @@
             </MudText>
             <MudExpansionPanels Class="mt-2">
                 <MudExpansionPanel Text="BackGround Color option">
-                    <div class="ITalignCenter">
-                        <MudColorPicker Label="BackGroundColor" DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
-                    </div>
+                    <MudColorPicker Label="BackGroundColor" DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
                 </MudExpansionPanel>
                 <MudExpansionPanel Text="BackGround Color Gradiant option">
 
@@ -177,7 +175,7 @@
             <hr class="m-1" style="color: red" />
             <MudText Typo="Typo.h3" Align="Align.Center">
                 <div class="IFArchitectsDaughter-Regular">
-                   AppBar Pattern options
+                    AppBar Pattern options
                 </div>
             </MudText>
             <MudExpansionPanels Class="mt-2">
@@ -187,16 +185,98 @@
             </MudExpansionPanels>
         </MudTabPanel>
 
-        <MudTabPanel Text="Three" />
-        <MudTabPanel Text="Four" />
-        <MudTabPanel Text="Five" />
-        <MudTabPanel Text="Six" />
-        <MudTabPanel Text="Seven" />
-        <MudTabPanel Text="Eight" />
-        <MudTabPanel Text="Nine" />
-        <MudTabPanel Text="Ten" />
-        <MudTabPanel Text="Eleven" />
-        <MudTabPanel Text="Thirteen" />
+        <MudTabPanel Text="TextColor">
+            <div class="row">
+                <div class="col-6">
+                    <MudText Color="Color.Success" Typo="Typo.h1">H1 Color</MudText>
+                </div>
+                <div class="col-6">
+                    <MudColorPicker DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <MudText Color="Color.Success" Typo="Typo.h2">H2 Color</MudText>
+                </div>
+                <div class="col-6">
+                    <MudColorPicker DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <MudText Color="Color.Success" Typo="Typo.h3">H3 Color</MudText>
+                </div>
+                <div class="col-6">
+                    <MudColorPicker DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <MudText Color="Color.Success" Typo="Typo.h4">H4 Color</MudText>
+                </div>
+                <div class="col-6">
+                    <MudColorPicker DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <MudText Color="Color.Success" Typo="Typo.h5">H5 Color</MudText>
+                </div>
+                <div class="col-6">
+                    <MudColorPicker DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <MudText Color="Color.Success" Typo="Typo.h6">H6 Color</MudText>
+                </div>
+                <div class="col-6">
+                    <MudColorPicker DisableToolbar="false" DisableAlpha="false" DisableColorField="false" DisablePreview="false" DisableSliders="false" DisableInputs="false" DisableModeSwitch="false" PickerVariant="PickerVariant.Static"></MudColorPicker>
+                </div>
+            </div>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Layout">
+            <MudGrid>
+                <MudItem sm="6" xl="6">
+                    <MudCard>
+                        <MudSkeleton SkeletonType="SkeletonType.Rectangle" Height="200px" />
+                        <MudCardContent>
+                            <MudSkeleton Width="30%" Height="42px;" />
+                            <MudSkeleton Width="80%" />
+                            <MudSkeleton Width="100%" />
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudSkeleton Width="64px" Height="40px" Class="ml-2" />
+                            <MudSkeleton Width="105px" Height="40px" Class="ml-3" />
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+                <MudItem sm="6" xl="6">
+                    <MudCard>
+                        <MudCardHeader>
+                            <CardHeaderAvatar>
+                                <MudSkeleton SkeletonType="SkeletonType.Circle" Animation="Animation.Wave" Height="40px" Width="40px" />
+                            </CardHeaderAvatar>
+                            <CardHeaderContent>
+                                <MudSkeleton Animation="Animation.Wave" Width="40%" />
+                                <MudSkeleton Animation="Animation.Wave" Width="60%" />
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudSkeleton SkeletonType="SkeletonType.Rectangle" Animation="Animation.Wave" Height="250px" />
+                        <MudCardContent>
+                            <MudSkeleton Animation="Animation.Wave" />
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudSkeleton SkeletonType="SkeletonType.Circle" Animation="Animation.Wave" Height="30px" Width="30px" Class="ml-2 mb-2" />
+                            <MudSkeleton SkeletonType="SkeletonType.Circle" Animation="Animation.Wave" Height="30px" Width="30px" Class="ml-3 mb-2" />
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+                <MudItem sm="6" xl="6"></MudItem>
+                <MudItem sm="6" xl="6"></MudItem>
+            </MudGrid>
+        </MudTabPanel>
     </MudTabs>
 
 </MudContainer>
