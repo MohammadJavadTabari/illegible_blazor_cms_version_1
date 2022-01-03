@@ -50,7 +50,6 @@
                     </div>
                 </MudExpansionPanel>
                 <MudExpansionPanel Text="Shop And Blog BackGround Color Gradiant option">
-
                     <MudPaper Elevation="0" Class="mud-width-full mud-height-full d-flex justify-center align-end pb-8" MinHeight="600px" Style="@($"background-image:linear-gradient({degrees}deg, {_gradientPrimary.ToString(MudColorOutputFormats.RGBA)} 0%, {_gradientSecondary.ToString(MudColorOutputFormats.RGBA)} 100%);")">
                         <MudPaper Class="d-flex">
                             <MudColorPicker Rounded="true" Class="rounded-tr-0" PickerVariant="PickerVariant.Static" DisableModeSwitch="true" Value="_pickerColor" ValueChanged="UpdateSelectedColor" />
