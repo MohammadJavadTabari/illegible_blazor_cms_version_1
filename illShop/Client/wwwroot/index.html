@@ -13,14 +13,41 @@
     <link href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" rel="stylesheet">
     <link href="css/IllegibleMinified.css" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+    <style>
+
+        #title {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            color: #FFF;
+            text-align: center;
+            font-family: "lato", sans-serif;
+            font-weight: 300;
+            font-size: 50px;
+            letter-spacing: 10px;
+            margin-top: -60px;
+            padding-left: 10px;
+        }
+
+            #title span {
+                background: -webkit-linear-gradient(white, #38495a);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+    </style>
 </head>
 
 <body>
-    <div id="app">
-
-        <div class="IW10 IH10">
-            <div class="loading loading--full-height"></div>
+    <div id="app" style=" height: 100%; background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); overflow: hidden;">
+        <div>
+            <span>
+                Welcome To Illegible
+            </span>
         </div>
+        <!--<div class="IW10 IH10">
+            <div class="loading loading--full-height"></div>
+        </div>-->
     </div>
 
     <div id="blazor-error-ui">

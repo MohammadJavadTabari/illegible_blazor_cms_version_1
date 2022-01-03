@@ -237,6 +237,10 @@
         </MudTabPanel>
 
         <MudTabPanel Text="Layout">
+            <br />
+            <br />
+            <MudIconButton Color="Color.Success" Size="Size.Large" Icon="@Icons.Outlined.PlusOne"></MudIconButton>
+            <br />
             <MudGrid>
                 <MudItem sm="6" xl="6">
                     <MudCard>
@@ -250,6 +254,7 @@
                             <MudSkeleton Width="64px" Height="40px" Class="ml-2" />
                             <MudSkeleton Width="105px" Height="40px" Class="ml-3" />
                         </MudCardActions>
+                    <MudSwitch Checked="false" Color="Color.Success"></MudSwitch>
                     </MudCard>
                 </MudItem>
                 <MudItem sm="6" xl="6">
@@ -271,10 +276,46 @@
                             <MudSkeleton SkeletonType="SkeletonType.Circle" Animation="Animation.Wave" Height="30px" Width="30px" Class="ml-2 mb-2" />
                             <MudSkeleton SkeletonType="SkeletonType.Circle" Animation="Animation.Wave" Height="30px" Width="30px" Class="ml-3 mb-2" />
                         </MudCardActions>
+                        <MudSwitch Checked="true" Color="Color.Success"></MudSwitch>
                     </MudCard>
                 </MudItem>
-                <MudItem sm="6" xl="6"></MudItem>
-                <MudItem sm="6" xl="6"></MudItem>
+                <MudItem sm="6" xl="6">
+                    <MudCard>
+                        <MudCardHeader>
+                            <CardHeaderAvatar>
+                                <MudSkeleton SkeletonType="SkeletonType.Rectangle" Animation="Animation.Wave" Height="40px" Width="40px" />
+                            </CardHeaderAvatar>
+                            <CardHeaderContent>
+                                <MudSkeleton Animation="Animation.Wave" Width="40%" />
+                                <MudSkeleton Animation="Animation.Wave" Width="60%" />
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudSkeleton SkeletonType="SkeletonType.Circle" Animation="Animation.Wave" Height="250px" />
+                        <MudCardContent>
+                            <MudSkeleton Animation="Animation.Wave" />
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudSkeleton SkeletonType="SkeletonType.Text" Animation="Animation.Wave" Height="30px" Width="30px" Class="ml-2 mb-2" />
+                            <MudSkeleton SkeletonType="SkeletonType.Circle" Animation="Animation.Wave" Height="30px" Width="30px" Class="ml-3 mb-2" />
+                        </MudCardActions>
+                        <MudSwitch Checked="false" Color="Color.Success"></MudSwitch>
+                    </MudCard>
+                </MudItem>
+                <MudItem sm="6" xl="6">
+                     <MudCard>
+                        <MudSkeleton SkeletonType="SkeletonType.Circle" Height="200px" />
+                        <MudCardContent>
+                            <MudSkeleton Width="30%" Height="42px;" />
+                            <MudSkeleton Width="80%" />
+                            <MudSkeleton Width="100%" />
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudSkeleton Width="64px" Height="40px" Class="ml-2" />
+                            <MudSkeleton Width="105px" Height="40px" Class="ml-3" />
+                        </MudCardActions>
+                    <MudSwitch Checked="false" Color="Color.Success"></MudSwitch>
+                    </MudCard>
+                </MudItem>
             </MudGrid>
         </MudTabPanel>
     </MudTabs>
