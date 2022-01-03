@@ -4,6 +4,7 @@ namespace illShop.Client.Shared
 {
     public partial class MainLayout
     {
+        // defualt theme
         private MudTheme _currentTheme = new MudTheme
         {
             Palette = new Palette()

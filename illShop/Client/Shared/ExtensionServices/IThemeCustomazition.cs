@@ -10,6 +10,7 @@ namespace illShop.Client.Shared.ExtensionServices
     {
         private readonly List<MudTheme> mudThemes = new()
         {
+            // dark
             new MudTheme
             {
                 Palette = new Palette()
@@ -27,7 +28,33 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerIcon = "#ffffffb3"
                 }
             },
+            // light
+            new MudTheme(),
+            // pink
+            new MudTheme
+            {
+                Palette = new Palette()
+                {
+                    Background = "#cf2929",
+                    Surface = "#991143",
+                    AppbarBackground = "#f08b81",
+                    DrawerBackground = "#f08b81",
+                }
+            },
+            // new
             new MudTheme()
+            {
+                Palette = new Palette()
+                {
+                    Background = "#00b83a",
+                    BackgroundGrey = "#272c34ff",
+                    Surface = "#00995e",
+                    AppbarBackground = "#00995e",
+                    DrawerBackground = "#ffffffff",
+                    DrawerText = "#424242ff",
+                    DrawerIcon = "#616161ff"
+                }
+            }
         };
         public MudTheme SelectTheme(string themeId)
         {
