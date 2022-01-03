@@ -41,7 +41,7 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerBackground = "#f08b81",
                 }
             },
-            // new
+            // green
             new MudTheme()
             {
                 Palette = new Palette()

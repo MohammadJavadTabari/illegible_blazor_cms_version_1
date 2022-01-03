@@ -1,48 +1,92 @@
 ﻿@page "/IllegibleAdminDashboard"
-<MudCard Class="IW3 IH4">
-    <div class="ITalignCenter">
-        <MudIcon Size="Size.Large" Icon="@Icons.Filled.People"></MudIcon>
-    </div>
-    <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Primary">
-        <div class="IFArchitectsDaughter-Regular">  
-            You Can See And Manage IllShop Users Activity Here
-        </div>
-    </MudText>
-    <MudButton Color="Color.Dark">
-        <MudNavLink Href="/usersDetailForAdminHandler" Class="ITshadowBlack">
-            Illegible Users
-        </MudNavLink>
-    </MudButton>
-</MudCard>
-<br />
-<MudCard Class="IW3 IH4">
-    <div class="ITalignCenter">
-        <MudIcon Size="Size.Large" Icon="@Icons.Filled.Category"></MudIcon>
-    </div>
-    <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
-        <div class="IFArchitectsDaughter-Regular">  
-            You Can See And Manage IllShop Product category Here
-        </div>
-    </MudText>
-    <MudButton Color="Color.Dark">
-        <MudNavLink Href="/IllShopProductCategory" Class="ITshadowBlack">
-            Illegible Product category
-        </MudNavLink>
-    </MudButton>
-</MudCard>
-<br />
-<MudCard Class="IW3 IH3">
-    <div class="ITalignCenter">
-        <MudIcon Size="Size.Large" Icon="@Icons.Filled.ShoppingBasket"></MudIcon>
-    </div>
-    <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
-        <div class="IFArchitectsDaughter-Regular">  
-            You Can See And Manage IllShop Products Here
-        </div>
-    </MudText>
-    <MudButton Color="Color.Dark">
-        <MudNavLink Href="/ProductManagment" Class="ITshadowBlack">
-            Illegible Product Mangment
-        </MudNavLink>
-    </MudButton>
-</MudCard>
+<MudContainer Class="mt-16 px-8" MaxWidth="MaxWidth.False">
+    <MudGrid>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
+                <div class="ITalignCenter">
+                    <MudIcon Size="Size.Large" Icon="@Icons.Filled.People"></MudIcon>
+                </div>
+                <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Primary">
+                    <div class="IFArchitectsDaughter-Regular">
+                        You Can See And Manage IllShop Users Activity Here
+                    </div>
+                </MudText>
+                <MudButton Color="Color.Dark">
+                    <MudNavLink Href="/usersDetailForAdminHandler" Class="ITshadowBlack">
+                        Illegible Users
+                    </MudNavLink>
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
+                <div class="ITalignCenter">
+                    <MudIcon Size="Size.Large" Icon="@Icons.Filled.Category"></MudIcon>
+                </div>
+                <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
+                    <div class="IFArchitectsDaughter-Regular">
+                        You Can See And Manage IllShop Product category Here
+                    </div>
+                </MudText>
+                <MudButton Color="Color.Dark">
+                    <MudNavLink Href="/IllShopProductCategory" Class="ITshadowBlack">
+                        Illegible Product category
+                    </MudNavLink>
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="12" md="4">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 100%">
+                <div class="ITalignCenter">
+                    <MudIcon Size="Size.Large" Icon="@Icons.Filled.ShoppingBasket"></MudIcon>
+                </div>
+                <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
+                    <div class="IFArchitectsDaughter-Regular">
+                        You Can See And Manage IllShop Products Here
+                    </div>
+                </MudText>
+                <MudButton Color="Color.Dark">
+                    <MudNavLink Href="/ProductManagment" Class="ITshadowBlack">
+                        Illegible Product Mangment
+                    </MudNavLink>
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
+                <div class="ITalignCenter">
+                    <MudIcon Size="Size.Large" Icon="@Icons.Filled.DashboardCustomize"></MudIcon>
+                </div>
+                <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
+                    <div class="IFArchitectsDaughter-Regular">
+                        You Can See And Manage IllShop UI Theme's Here
+                    </div>
+                </MudText>
+                <MudButton Color="Color.Dark">
+                    <MudNavLink Href="/ProductManagment" Class="ITshadowBlack">
+                        Illegible Theme Mangment
+                    </MudNavLink>
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="12" md="4">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
