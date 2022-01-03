@@ -5,53 +5,27 @@
         <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">
             <div class="IFArchitectsDaughter-Regular">UI Customization DashBoard</div>
         </MudText>
-        <MudExpansionPanels>
-            <MudExpansionPanel>
-                <TitleContent>
-                    <div class="d-flex">
-                        <MudIcon Icon="@Icons.Material.Filled.Info" class="mr-3"></MudIcon>
-                        <MudText>Panel header as <strong>RenderFragment</strong></MudText>
-                    </div>
-                </TitleContent>
-                <ChildContent>
-                    Panel Content
-                </ChildContent>
-            </MudExpansionPanel>
-            <MudExpansionPanel Text="The icon of this panel is hidden" HideIcon="true">
-                Panel Content
-            </MudExpansionPanel>
-            <MudExpansionPanel HideIcon="true">
-                <TitleContent>
-                    <div class="d-flex">
-                        <MudText Class="mt-1">Inbox</MudText>
-                        <MudBadge Content="3" Color="Color.Primary" Overlap="true" Class="d-flex ml-auto">
-                            <MudIcon Icon="@Icons.Material.Filled.Email" Color="Color.Default" />
-                        </MudBadge>
-                    </div>
-                </TitleContent>
-                <ChildContent>
-                    Panel Content
-                </ChildContent>
-            </MudExpansionPanel>
-            <MudExpansionPanel>
-                <TitleContent>
-                    <div class="d-flex">
-                        <MudText>Overriding standard icon with own icon</MudText>
-
-                    </div>
-                </TitleContent>
-                <ChildContent>
-                    Panel Content
-                </ChildContent>
-            </MudExpansionPanel>
-        </MudExpansionPanels>
+        <MudText Color="Color.Warning" Typo="Typo.h5">
+            there we go !
+            <br />
+            build your own theme for your CMS , Folow this step's :
+            <br />
+            <ol>
+                <li>build basic theme provider options in "Theme Builder" Part</li>
+                <li>build and add your CMS Context Style's Icons Emojies and Typography in "Context" Part</li>
+                <li>go to "Designing" Part and Start design your pages with prepared options in there</li>
+            </ol>
+        </MudText>
     </MudAlert>
     <MudGrid Class="mt-8">
         <MudItem xs="12" sm="6" md="4">
             <MudCard Elevation="25" Class="rounded-lg pb-4">
                 <MudCardHeader>
                     <CardHeaderContent>
-                        <MudText Typo="Typo.h5" Align="Align.Center">Basics</MudText>
+                        <MudText Typo="Typo.h5" Align="Align.Center">
+                            Basics
+                            <MudIcon Icon="fas fa-genderless" Color="Color.Primary" />
+                        </MudText>
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent>
@@ -79,8 +53,10 @@
             <MudCard Elevation="25" Class="rounded-lg pb-4" Style="background-color: #c22317">
                 <MudCardHeader>
                     <CardHeaderContent>
-                        <MudText Typo="Typo.h5" Align="Align.Center" Color="Color.Success">Legend</MudText>
-                        <MudIcon Icon="fas fa-fighter-jet"/>
+                        <MudText Typo="Typo.h5" Align="Align.Center" Color="Color.Success">
+                            Legend
+                            <MudIcon Icon="fas fa-fighter-jet" Color="Color.Primary" />
+                        </MudText>
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent>
@@ -108,7 +84,10 @@
             <MudCard Elevation="25" Class="rounded-lg pb-4">
                 <MudCardHeader>
                     <CardHeaderContent>
-                        <MudText Typo="Typo.h5" Align="Align.Center">Professional</MudText>
+                        <MudText Typo="Typo.h5" Align="Align.Center">
+                            Professional
+                            <MudIcon Color="Color.Error" Size="Size.Large" Icon="fab fa-angrycreative" />
+                        </MudText>
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent>
@@ -133,5 +112,24 @@
             </MudCard>
         </MudItem>
     </MudGrid>
-</MudContainer>
 
+    <MudExpansionPanels Class="mt-8">
+        <MudExpansionPanel HideIcon="true">
+            <TitleContent>
+                <div class="d-flex">
+                    <MudText Class="mt-1" Align="Align.Center">info</MudText>
+                    <MudBadge Content="1" Color="Color.Primary" Overlap="true" Class="d-flex ml-auto">
+                        <MudIcon Icon="@Icons.Material.Filled.Email" Color="Color.Default" />
+                    </MudBadge>
+                </div>
+            </TitleContent>
+            <ChildContent>
+                <h4 class="IFArchitectsDaughter-Regular">
+                    Download the description file for more help:
+                </h4>
+                <MudIconButton Icon="fas fa-download" Size="Size.Large" Color="Color.Error"></MudIconButton>
+            </ChildContent>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+</MudContainer>
+<MudSparkLine StrokeWidth="5" />
