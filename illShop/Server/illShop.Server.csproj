@@ -8,6 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="StaticFiles\Images\MohammadJavadTabari1024.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="StaticFiles\Images\MohammadJavadTabari1024.jpeg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
@@ -19,10 +30,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Client\illShop.Client.csproj" />
     <ProjectReference Include="..\Shared\illShop.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="StaticFiles\Images\" />
   </ItemGroup>
 
 
