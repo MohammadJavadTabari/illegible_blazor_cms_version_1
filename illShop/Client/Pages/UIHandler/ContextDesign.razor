@@ -1,6 +1,62 @@
-﻿
-<h3>ContextDesign</h3>
-
-@code {
-
-}
+﻿@page "/Con/Text/Des/ign"
+<MudContainer>
+    <MudTabs Elevation="4" Rounded="true" Color="@Color.Primary">
+        <MudTabPanel Text="Icons">
+            <br />
+            <MudText Typo="Typo.h3" Class="mt-2" Align="Align.Center">
+                <div class="IFArchitectsDaughter-Regular">
+                    FontAwesome Icons
+                </div>
+            </MudText>
+            <MudExpansionPanels Class="mt-2">
+                <MudExpansionPanel Text="Add New Icons" Icon="@Icons.Filled.ArrowDownward">
+                     <MudTextField T="string" Label="Just Past Font Css Class" Class="mt-2"/>
+                     <MudButton Color="Color.Success" Variant="Variant.Filled" Size="Size.Large" IconClass="@Icons.Filled.HdrPlus" Class="mt-2" ButtonType="ButtonType.Submit">Add New Icon</MudButton>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+            <MudGrid Class="mt-2">
+                @foreach (var icon in iconsList)
+                {
+                    <MudItem xs="6" sm="6" xl="6">
+                        <MudPaper>
+                            <div class="row">
+                                <div class="col-6">
+                                    <MudIcon Icon="@icon" Color="Color.Info" Class="m-1" Size="Size.Large"></MudIcon>
+                                </div>
+                                <div class="col-6">
+                                    <MudText Align="Align.Right" Color="Color.Error" Class="m-1" Typo="Typo.h6">
+                                        @icon
+                                    </MudText>
+                                </div>
+                            </div>
+                        </MudPaper>
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudTabPanel>
+        <MudTabPanel Text="Typography">
+            <br />
+            <MudText Typo="Typo.h3" Align="Align.Center">
+                <div class="IFArchitectsDaughter-Regular">
+                    Site Typography
+                </div>
+            </MudText>
+        </MudTabPanel>
+        <MudTabPanel Text="Dashboard Page Design">
+            <br />
+            <MudText Typo="Typo.h3" Align="Align.Center">
+                <div class="IFArchitectsDaughter-Regular">
+                    Site Emojies
+                </div>
+            </MudText>
+        </MudTabPanel>
+        <MudTabPanel Text="Blog Page Design">
+            <br />
+            <MudText Typo="Typo.h3" Align="Align.Center">
+                <div class="IFArchitectsDaughter-Regular">
+                    Site Dynamic Banners
+                </div>
+            </MudText>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>
