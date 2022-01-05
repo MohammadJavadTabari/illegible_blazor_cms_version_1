@@ -1,0 +1,28 @@
+﻿@page "/ad/min/p0s/tManage"
+
+<MudPaper Class="pa-8 ma-2" Elevation="3">
+    <div class=row>
+        <div class="col">
+            <MudExpansionPanel Text="Click Here To Add New Product Category" Icon="@Icons.Material.Filled.Category">
+                <section class="IW7 Imarginauto">
+                    <EditForm Model="BlogPostDto" OnValidSubmit="Create">
+                        <DataAnnotationsValidator />
+                        <MudCard>
+                            <MudCardContent>
+                                <MudTextField Label="Post Title" @bind-Value="BlogPostDto.Title" For="@(() => BlogPostDto.Title)" />
+                                <MudTextField Label="Summary" @bind-Value="BlogPostDto.Summary" For="@(() => BlogPostDto.Summary)" />
+                                <MudTextField Label="Context" @bind-Value="BlogPostDto.PostContext" For="@(() => BlogPostDto.PostContext)" />
+                            </MudCardContent>
+                            <MudCardActions>
+                                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary"
+                                           Class="ml-auto">Create Product</MudButton>
+                            </MudCardActions>
+                            <br />
+                            <ImageUpload OnChange="AssignImageUrl" />
+                        </MudCard>
+                    </EditForm>
+                </section>
+            </MudExpansionPanel>
+        </div>
+    </div>
+</MudPaper>
