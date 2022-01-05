@@ -1,6 +1,7 @@
 using Blazored.SessionStorage;
 using illShop.Shared.BasicObjects.JWT;
 using illShop.Shared.BasicServices;
+using illShop.Shared.Repositories.BlogPostRepository;
 using illShop.Shared.Repositories.Product;
 using KernelLogic.DataBaseObjects;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -30,6 +31,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductReviewRepository, ProductReviewRepository>();
 builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
+builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
 builder.Services.AddCors(policy =>
 {
     policy.AddPolicy("IllegibleCors", opt => opt
