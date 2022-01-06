@@ -45,11 +45,18 @@ namespace illShop.Server.Controllers.SiteBlog
 
         [HttpGet]
         [Route("GetBlogPost/{postId}")]
-        public async Task<BlogPostDto> GetBlogPostById([FromRoute] long postId)
+        public async Task<BlogPostDto> GetBlogPostById([FromRoute] int postId)
         {
             var blogPost = await _blogPostRepository.GetBlogPostByIdAsync(postId);
             var blogPostDto = _mapper.Map<BlogPostDto>(blogPost);
             return blogPostDto;
+        }
+        [HttpDelete]
+        [Route("DeleteBlogPost/{postId}")]
+        public async Task<IActionResult> DeleteBlogPostById([FromRoute] int postId)
+        {
+            await _blogPostRepository.DeleteBlogPostAsync(postId);
+            return NoContent();
         }
         [HttpGet]
         [Route("GetPagedBlogPosts")]

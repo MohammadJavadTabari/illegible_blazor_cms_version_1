@@ -19,10 +19,10 @@ namespace illShop.Client.Pages.AdminComponents
             state.SortLabel + " desc" :
             state.SortLabel;
 
-            var pagingResponse = await _httpRequestHandler.GetPagedPost(_pagingParameters, "ProductHandlers/GetPagedProducts");
+            var pagingResponse = await _httpRequestHandler.GetPagedPost(_pagingParameters, "blogPostHandler/GetPagedBlogPosts");
             return new TableData<BlogPostDto>
             {
-                //Items = pagingResponse.Items,
+                Items = pagingResponse.Items,
                 TotalItems = pagingResponse.MetaData.TotalCount
             };
         }
@@ -52,7 +52,7 @@ namespace illShop.Client.Pages.AdminComponents
 
         private void AssignImageUrl(string imgUrl) => BlogPostDto.PostImageUrl = imgUrl;
 
-        private async Task DeleteProduct(int id)
+        private async Task DeletePost(int id)
         {
 
             var parameters = new DialogParameters
@@ -65,7 +65,7 @@ namespace illShop.Client.Pages.AdminComponents
             var result = await dialog.Result;
             if (!result.Cancelled)
             {
-                var response = await _httpRequestHandler.DeleteById(id, "ProductHandlers/RemoveProduct");
+                var response = await _httpRequestHandler.DeleteById(id, "blogPostHandler/DeleteBlogPost");
                 if (response)
                 {
                     _snackbar.Add("Post Deleted Successfully", Severity.Success);
