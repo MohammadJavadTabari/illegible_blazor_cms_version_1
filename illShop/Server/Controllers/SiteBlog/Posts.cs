@@ -25,16 +25,17 @@ namespace illShop.Server.Controllers.SiteBlog
             _userManager = userManager;
         }
 
-        [HttpPost("AddBlogPost")]
+        [HttpPost]
+        [Route("AddBlogPost")]
         public async Task<IActionResult> AddBlogPost([FromBody] BlogPostDto blogPostDto)
         {
             blogPostDto.Author = "Illegible";//_userManager.GetUserName(User);
-            var blogPost = _mapper.Map<BlogPost>(blogPostDto);
-            await _blogPostRepository.AddBlogPostAsync(blogPost);
+            var blogPost =await _blogPostRepository.AddBlogPostAsync(blogPostDto);
             return Created("", blogPost);
         }
 
-        [HttpGet("GetAllBlogPost")]
+        [HttpGet]
+        [Route("GetAllBlogPost")]
         public async Task<IEnumerable<BlogPostDto>> GetAllBlogPost()
         {
             var blogPostList = await _blogPostRepository.GetAllBlogPostAsync();
@@ -42,14 +43,16 @@ namespace illShop.Server.Controllers.SiteBlog
             return blogPostDtoList;
         }
 
-        [HttpGet("GetBlogPost/{postId}")]
+        [HttpGet]
+        [Route("GetBlogPost/{postId}")]
         public async Task<BlogPostDto> GetBlogPostById([FromRoute] long postId)
         {
             var blogPost = await _blogPostRepository.GetBlogPostByIdAsync(postId);
             var blogPostDto = _mapper.Map<BlogPostDto>(blogPost);
             return blogPostDto;
         }
-        [HttpGet("GetPagedBlogPosts")]
+        [HttpGet]
+        [Route("GetPagedBlogPosts")]
         public async Task<IActionResult> GetPagedBlogPosts([FromQuery] PagingParameters pagingParameters)
         {
             var products = await _blogPostRepository.GetPagingPost(pagingParameters);

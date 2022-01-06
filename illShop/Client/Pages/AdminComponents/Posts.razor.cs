@@ -38,7 +38,7 @@ namespace illShop.Client.Pages.AdminComponents
 
         private async Task Create()
         {
-            var result = await _httpRequestHandler.PostAsHttpJsonAsync(BlogPostDto, "ProductHandlers/AddProduct");
+            var result = await _httpRequestHandler.PostAsHttpJsonAsync(BlogPostDto, "blogPostHandler/AddBlogPost");
             if (result)
             {
                 _snackbar.Add("Product Added Successfully", Severity.Success);

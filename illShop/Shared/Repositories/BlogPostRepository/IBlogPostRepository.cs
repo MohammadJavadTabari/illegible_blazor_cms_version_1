@@ -1,5 +1,7 @@
-﻿using illShop.Shared.BasicObjects.Paging;
+﻿using AutoMapper;
+using illShop.Shared.BasicObjects.Paging;
 using illShop.Shared.BasicServices;
+using illShop.Shared.Dto.DtosRelatedBlog;
 using KernelLogic.DataBaseObjects;
 using KernelLogic.DataBaseObjects.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +10,7 @@ namespace illShop.Shared.Repositories.BlogPostRepository
 {
     public interface IBlogPostRepository
     {
-        Task<long> AddBlogPostAsync(BlogPost entity);
+        Task<long> AddBlogPostAsync(BlogPostDto dto);
         Task<BlogPost> GetBlogPostByIdAsync(long id);
         Task<List<BlogPost>> GetAllBlogPostAsync();
         //pagination
@@ -19,15 +21,18 @@ namespace illShop.Shared.Repositories.BlogPostRepository
     {
         private DataContext _dataContext;
         private DbSet<BlogPost> _blogPost;
+        private readonly IMapper _mapper;
 
-        public BlogPostRepository(DataContext dataContext) : base()
+        public BlogPostRepository(DataContext dataContext,IMapper mapper) : base()
         {
             _dataContext = dataContext;
             _blogPost = _dataContext.Set<BlogPost>();
+            _mapper = mapper;
         }
 
-        public async Task<long> AddBlogPostAsync(BlogPost entity)
+        public async Task<long> AddBlogPostAsync(BlogPostDto dto)
         {
+            var entity = _mapper.Map<BlogPost>(dto);
             await _blogPost.AddAsync(entity);
             await _dataContext.SaveChangesAsync();
             return entity.Id;
