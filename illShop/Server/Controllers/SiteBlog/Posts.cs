@@ -2,8 +2,6 @@
 using illShop.Shared.BasicObjects.Paging;
 using illShop.Shared.Dto.DtosRelatedBlog;
 using illShop.Shared.Repositories.BlogPostRepository;
-using KernelLogic.DataBaseObjects.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
