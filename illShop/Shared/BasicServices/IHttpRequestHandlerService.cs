@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using illShop.Shared.Dto.DtosRelatedProduct;
 using System.Text;
 using illShop.Shared.Dto.DtosRelatedIdentity;
+using illShop.Shared.Dto.DtosRelatedBlog;
 
 namespace illShop.Shared.BasicServices
 {
@@ -26,6 +27,7 @@ namespace illShop.Shared.BasicServices
         Task<PagingResponse<ProductDto>> GetPagedData(PagingParameters pagingParameters, string uriAddress);
         Task<PagingResponse<UserDetailDto>> GetPagedUserData(PagingParameters pagingParameters, string uriAddress);
         Task<PagingResponse<ProductCategoryDto>> GetPagedProductCategory(PagingParameters pagingParameters, string uriAddress);
+        Task<PagingResponse<BlogPostDto>> GetPagedPost(PagingParameters pagingParameters, string uriAddress);
 
         #endregion
     }
@@ -180,6 +182,28 @@ namespace illShop.Shared.BasicServices
             var pagingResponse = new PagingResponse<ProductCategoryDto>
             {
                 Items = JsonSerializer.Deserialize<List<ProductCategoryDto>>(content, _options),
+                MetaData = JsonSerializer.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First(), _options)
+            };
+            return pagingResponse;
+        }
+
+        public async Task<PagingResponse<BlogPostDto>> GetPagedPost(PagingParameters pagingParameters, string uriAddress)
+        {
+            var queryStringParam = new Dictionary<string, string>
+            {
+                ["pageNumber"] = pagingParameters.PageNumber.ToString(),
+                ["searchTerm"] = pagingParameters.SearchTerm ?? "",
+                ["orderBy"] = pagingParameters.OrderBy
+            };
+            var response = await _httpClient.GetAsync(QueryHelpers.AddQueryString(uriAddress, queryStringParam));
+            var content = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content);
+            }
+            var pagingResponse = new PagingResponse<BlogPostDto>
+            {
+                Items = JsonSerializer.Deserialize<List<BlogPostDto>>(content, _options),
                 MetaData = JsonSerializer.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First(), _options)
             };
             return pagingResponse;

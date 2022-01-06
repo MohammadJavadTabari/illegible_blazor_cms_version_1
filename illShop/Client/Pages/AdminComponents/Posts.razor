@@ -28,3 +28,55 @@
         </div>
     </div>
 </MudPaper>
+
+
+<div class="row">
+    <div class="col">
+        <MudTable ServerData="@(new Func<TableState, Task<TableData<BlogPostDto>>>(GetServerData))"
+                  Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true" @ref="_table" RowsPerPage="4">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Products</MudText>
+                <MudSpacer />
+                <MudTextField OnDebounceIntervalElapsed="OnSearch" Placeholder="Search" Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0" T="string" DebounceInterval="500"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh>Image</MudTh>
+                <MudTh><MudTableSortLabel SortLabel="Post Title" T="BlogPostDto">Title</MudTableSortLabel></MudTh>
+                <MudTh>Summary</MudTh>
+                <MudTh>
+                    <MudText Color="Color.Info">
+                        <MudIcon Icon="@Icons.Filled.Settings"></MudIcon>
+                        Product Handle Actions
+                    </MudText>
+                </MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Image">
+                    <MudLink Href="@($"product/{context.Id}")">
+                        <MudAvatar Color="Color.Transparent" Size="Size.Large" Image="@context.PostImageUrl" />
+                    </MudLink>
+                </MudTd>
+                <MudTd DataLabel="Title">
+                    <MudLink Href="@($"product/{context.Id}")">@context.Title</MudLink>
+                </MudTd>
+                <MudTd DataLabel="Summary">
+                    $@context.Summary
+                </MudTd>
+                <MudTd>
+                    <MudButton Color="Color.Error" OnClick="@(() => DeleteProduct(context.Id))">
+                        <MudIcon Icon="fas fa-skull-crossbones"></MudIcon>
+                        <MudText>Delete Product</MudText>
+                    </MudButton>
+                    <MudButton Color="Color.Tertiary" OnClick="@(() => EditProduct(context.Id))">
+                        <MudIcon Icon="fas fa-expand"></MudIcon>
+                        <MudText>Edit Product</MudText>
+                    </MudButton>
+                </MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager PageSizeOptions="@_pageSizeOption" RowsPerPageString="Products per page" />
+            </PagerContent>
+        </MudTable>
+    </div>
+</div>

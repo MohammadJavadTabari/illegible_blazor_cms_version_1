@@ -19,7 +19,7 @@ namespace illShop.Client.Pages.AdminComponents
             state.SortLabel + " desc" :
             state.SortLabel;
 
-            var pagingResponse = await _httpRequestHandler.GetPagedData(_pagingParameters, "ProductHandlers/GetPagedProducts");
+            var pagingResponse = await _httpRequestHandler.GetPagedPost(_pagingParameters, "ProductHandlers/GetPagedProducts");
             return new TableData<BlogPostDto>
             {
                 //Items = pagingResponse.Items,
@@ -41,7 +41,7 @@ namespace illShop.Client.Pages.AdminComponents
             var result = await _httpRequestHandler.PostAsHttpJsonAsync(BlogPostDto, "blogPostHandler/AddBlogPost");
             if (result)
             {
-                _snackbar.Add("Product Added Successfully", Severity.Success);
+                _snackbar.Add("Post Added Successfully", Severity.Success);
                 await _table.ReloadServerData();
             }
             else
@@ -57,18 +57,18 @@ namespace illShop.Client.Pages.AdminComponents
 
             var parameters = new DialogParameters
         {
-            { "Content", "Are You Sure Wanna Delete This Product?" },
+            { "Content", "Are You Sure Wanna Delete This Post?" },
             { "ButtonColor", Color.Warning },
-            { "ButtonText", "Delete Product" }
+            { "ButtonText", "Delete Post" }
         };
-            var dialog = _dialogService.Show<DialogNotification>("Delete Product Warning", parameters);
+            var dialog = _dialogService.Show<DialogNotification>("Delete Post Warning", parameters);
             var result = await dialog.Result;
             if (!result.Cancelled)
             {
                 var response = await _httpRequestHandler.DeleteById(id, "ProductHandlers/RemoveProduct");
                 if (response)
                 {
-                    _snackbar.Add("Product Deleted Successfully", Severity.Success);
+                    _snackbar.Add("Post Deleted Successfully", Severity.Success);
                     await _table.ReloadServerData();
                 }
                 else

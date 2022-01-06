@@ -9,6 +9,7 @@ namespace illShop.Shared.Dto.DtosRelatedBlog
 {
     public class BlogPostDto
     {
+        public int Id { get; set; }
         [Required]
         public string? Title { get; set; }
         public string? Author { get; set; }
