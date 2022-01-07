@@ -62,5 +62,12 @@ namespace illShop.Server.Controllers.SiteBlog
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(products.MetaData));
             return Ok(products);
         }
+        [HttpPut]
+        [Route("UpdateBlogPost")]
+        public async Task<IActionResult> EditBlogPost([FromBody] BlogPostDto blogPostDto)
+        {
+            await _blogPostRepository.UpdateBlogPostAsync(blogPostDto);
+            return NoContent();
+        }
     }
 }

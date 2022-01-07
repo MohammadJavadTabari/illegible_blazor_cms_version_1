@@ -82,9 +82,9 @@ namespace illShop.Client.Pages.AdminComponents
                 _snackbar.Add("Deleted Canceled", Severity.Info);
             }
         }
-        private async Task EditProduct(int id)
+        private async Task EditPost(int id)
         {
-            NavigationManager.NavigateTo($"/updateProduct/{id}");
+            NavigationManager.NavigateTo($"/updatePost/{id}");
         }
     }
 }

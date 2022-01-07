@@ -17,7 +17,7 @@
                             </MudCardContent>
                             <MudCardActions>
                                 <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary"
-                                           Class="ml-auto">Create Product</MudButton>
+                                           Class="ml-auto">Create Post</MudButton>
                             </MudCardActions>
                             <br />
                             <ImageUpload OnChange="AssignImageUrl" />
@@ -35,7 +35,7 @@
         <MudTable ServerData="@(new Func<TableState, Task<TableData<BlogPostDto>>>(GetServerData))"
                   Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true" @ref="_table" RowsPerPage="4">
             <ToolBarContent>
-                <MudText Typo="Typo.h6">Products</MudText>
+                <MudText Typo="Typo.h6">Posts</MudText>
                 <MudSpacer />
                 <MudTextField OnDebounceIntervalElapsed="OnSearch" Placeholder="Search" Adornment="Adornment.Start"
                               AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0" T="string" DebounceInterval="500"></MudTextField>
@@ -47,7 +47,7 @@
                 <MudTh>
                     <MudText Color="Color.Info">
                         <MudIcon Icon="@Icons.Filled.Settings"></MudIcon>
-                        Product Handle Actions
+                        Post Handle Actions
                     </MudText>
                 </MudTh>
             </HeaderContent>
@@ -68,14 +68,14 @@
                         <MudIcon Icon="fas fa-skull-crossbones"></MudIcon>
                         <MudText>Delete Post</MudText>
                     </MudButton>
-                    <MudButton Color="Color.Tertiary" OnClick="@(() => EditProduct(context.Id))">
+                    <MudButton Color="Color.Tertiary" OnClick="@(() => EditPost(context.Id))">
                         <MudIcon Icon="fas fa-expand"></MudIcon>
-                        <MudText>Edit Product</MudText>
+                        <MudText>Edit Post</MudText>
                     </MudButton>
                 </MudTd>
             </RowTemplate>
             <PagerContent>
-                <MudTablePager PageSizeOptions="@_pageSizeOption" RowsPerPageString="Products per page" />
+                <MudTablePager PageSizeOptions="@_pageSizeOption" RowsPerPageString="Posts per page" />
             </PagerContent>
         </MudTable>
     </div>

@@ -1,0 +1,24 @@
+﻿@page "/updatePost/{Id:int}"
+
+<MudPaper>
+    <section class="IW7 Imarginauto">
+        <EditForm Model="BlogPostDto" OnValidSubmit="Update">
+            <DataAnnotationsValidator />
+            <MudCard>
+                <MudCardContent>
+                    <MudTextField Label="Post Title" @bind-Value="BlogPostDto.Title" For="@(() => BlogPostDto.Title)" />
+                    <MudTextField Label="Summary" @bind-Value="BlogPostDto.Summary" For="@(() => BlogPostDto.Summary)" />
+                    <MudTextField Label="Context" @bind-Value="BlogPostDto.PostContext" For="@(() => BlogPostDto.PostContext)" />
+                    <MudTextField Label="Context" @bind-Value="BlogPostDto.PostContext" For="@(() => BlogPostDto.PostVideoUrl)" />
+                    <MudTextField Label="Context" @bind-Value="BlogPostDto.PostContext" For="@(() => BlogPostDto.PostAttachedLinkUrl)" />
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary"
+                               Class="ml-auto">Edit Post</MudButton>
+                </MudCardActions>
+                <br />
+                <ImageUpload OnChange="AssignImageUrl" />
+            </MudCard>
+        </EditForm>
+    </section>
+</MudPaper>
