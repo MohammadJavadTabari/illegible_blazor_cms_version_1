@@ -45,9 +45,7 @@ namespace illShop.Server.Controllers.SiteBlog
         [Route("GetBlogPost/{postId}")]
         public async Task<BlogPostDto> GetBlogPostById([FromRoute] int postId)
         {
-            var blogPost = await _blogPostRepository.GetBlogPostByIdAsync(postId);
-            var blogPostDto = _mapper.Map<BlogPostDto>(blogPost);
-            return blogPostDto;
+            return await _blogPostRepository.GetBlogPostByIdAsync(postId);
         }
         [HttpDelete]
         [Route("DeleteBlogPost/{postId}")]

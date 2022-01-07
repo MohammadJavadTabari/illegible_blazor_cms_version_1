@@ -11,7 +11,7 @@ namespace illShop.Shared.Repositories.BlogPostRepository
     public interface IBlogPostRepository
     {
         Task<long> AddBlogPostAsync(BlogPostDto dto);
-        Task<BlogPost> GetBlogPostByIdAsync(long id);
+        Task<BlogPostDto> GetBlogPostByIdAsync(long id);
         Task<List<BlogPost>> GetAllBlogPostAsync();
         Task DeleteBlogPostAsync(int id);
         //pagination
@@ -44,8 +44,10 @@ namespace illShop.Shared.Repositories.BlogPostRepository
             return _blogPost.ToListAsync();
         }
 
-        public async Task<BlogPost> GetBlogPostByIdAsync(long id) => await _blogPost.FirstOrDefaultAsync(b => b.Id == id);
-
+        public async Task<BlogPostDto> GetBlogPostByIdAsync(long id)
+        {
+            return  _mapper.Map<BlogPostDto>(await _blogPost.FirstOrDefaultAsync(b => b.Id == id));
+        }
         public async Task<PagedList<BlogPost>> GetPagingPost(PagingParameters pagingParameters)
         {
             var posts = await _blogPost.Search(pagingParameters.SearchTerm).Sort(pagingParameters.OrderBy).ToListAsync();

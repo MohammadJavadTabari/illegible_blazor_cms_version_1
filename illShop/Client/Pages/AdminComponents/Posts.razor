@@ -53,12 +53,12 @@
             </HeaderContent>
             <RowTemplate>
                 <MudTd DataLabel="Image">
-                    <MudLink Href="@($"product/{context.Id}")">
+                    <MudLink Href="@($"PostDetail/{context.Id}")">
                         <MudAvatar Color="Color.Transparent" Size="Size.Large" Image="@context.PostImageUrl" />
                     </MudLink>
                 </MudTd>
                 <MudTd DataLabel="Title">
-                    <MudLink Href="@($"product/{context.Id}")">@context.Title</MudLink>
+                    <MudLink Href="@($"PostDetail/{context.Id}")">@context.Title</MudLink>
                 </MudTd>
                 <MudTd DataLabel="Summary">
                     $@context.Summary

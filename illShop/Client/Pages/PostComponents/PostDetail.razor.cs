@@ -7,6 +7,11 @@ namespace illShop.Client.Pages.PostComponents
     {
         [Parameter]
         public int Id { get; set; }
-        private readonly BlogPostDto blogPostDto = new();
+        public BlogPostDto blogPostDto = new();
+
+        protected override async Task OnInitializedAsync()
+        {
+            blogPostDto = await _httpRequestHandler.GetById<BlogPostDto>(Id, "blogPostHandler/GetBlogPost");
+        }
     }
 }
