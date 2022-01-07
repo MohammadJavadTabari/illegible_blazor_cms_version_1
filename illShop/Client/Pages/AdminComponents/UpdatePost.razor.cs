@@ -27,6 +27,7 @@ namespace illShop.Client.Pages.AdminComponents
                 _snackbar.Add("Edit Faild!", Severity.Error);
             }
         }
+
         private void AssignImageUrl(string imgUrl) => BlogPostDto.PostImageUrl = imgUrl;
     }
 }

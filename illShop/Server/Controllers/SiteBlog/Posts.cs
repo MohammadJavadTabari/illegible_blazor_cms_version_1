@@ -36,9 +36,7 @@ namespace illShop.Server.Controllers.SiteBlog
         [Route("GetAllBlogPost")]
         public async Task<IEnumerable<BlogPostDto>> GetAllBlogPost()
         {
-            var blogPostList = await _blogPostRepository.GetAllBlogPostAsync();
-            var blogPostDtoList = _mapper.Map<IEnumerable<BlogPostDto>>(blogPostList);
-            return blogPostDtoList;
+            return await _blogPostRepository.GetAllBlogPostAsync();
         }
 
         [HttpGet]

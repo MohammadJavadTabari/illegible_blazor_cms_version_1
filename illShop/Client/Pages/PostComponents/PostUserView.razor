@@ -1,0 +1,38 @@
+﻿@page "/IllegibleBlog"
+
+<MudGrid>
+    @foreach (var blogPostDto in blogPostDtos)
+    {
+        <MudItem xs="12" sm="12" xl="12">
+            <MudPaper>
+                <div class="row">
+                    <MudText Align="Align.Center" Typo="Typo.h2" Color="Color.Primary">
+                        @blogPostDto.Title
+                    </MudText>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4">
+                        <img src="@blogPostDto.PostImageUrl" class="IW9 IH9"/>
+                    </div>
+                    <div class="col-8">
+                        <MudText Typo="Typo.body1" Color="Color.Dark">
+                            @blogPostDto.Summary
+                        </MudText>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-6">
+                        <MudText Typo="Typo.h5" Align="Align.Left">
+                            Author : @blogPostDto.Author
+                        </MudText>
+                    </div>
+                    <div class="col-6">
+                         <MudText Typo="Typo.h5" Align="Align.Left">
+                            Write Time : @blogPostDto.WriteTime
+                        </MudText>
+                    </div>
+                </div>
+            </MudPaper>
+        </MudItem>
+    }
+</MudGrid>
