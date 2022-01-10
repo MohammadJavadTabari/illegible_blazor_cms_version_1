@@ -8,7 +8,7 @@
         <div class="IFArchitectsDaughter-Regular">Welcome Illegible</div>
     </MudText>
     <MudSpacer />
-    <MudAvatar Style="border:2px solid" Image="Images/MohammadJavadTabari1024.jpeg" Alt="Mohammad Javad Tabari"></MudAvatar>
+    <MudAvatar Style="border:2px solid" Class="m-1" Image="Images/MohammadJavadTabari1024.jpeg" Alt="Mohammad Javad Tabari"></MudAvatar>
     @*        </Authorized>
         </AuthorizeView>*@
     @* @if (_isDarkMode)
@@ -19,18 +19,93 @@
         {
         <MudIconButton Icon="@Icons.Material.Filled.Brightness4" Color="Color.Inherit" OnClick="ToggleTheme" />
         }*@
-    <MudSelect T="string" @bind-Value="ThemeId" SelectedValuesChanged="@(()=> ValueChanged())">
+   <div>
+        <MudSelect T="string" @bind-Value="ThemeId" FullWidth="false" Style="background-color:darkkhaki ;border:1px solid black ; border-radius:20px;" SelectedValuesChanged="@(()=> ValueChanged())">
         <MudSelectItem Value="@("0")">
-            Dark
+            <div class="row ml-1 mr-1">
+                <div class="col-1 ml-1 IW2">
+                    <div class="rounded-xl" style="background-color:#27272f">
+                        <MudText Align="Align.Center">.</MudText>
+                    </div>
+                </div>
+                <div class="col-1 ml-1">
+                    <div class="rounded-xl" style="background-color:#32333d">
+                        <MudText Align="Align.Center">.</MudText>
+                    </div>
+                </div>
+                <div class="col-1 ml-1">
+                    <div class="rounded-xl" style="background-color:#27272f">
+                        <MudText Align="Align.Center">.</MudText>
+                    </div>
+                </div>
+                <div class="col-1 ml-1">
+                    <div class="rounded-xl" style="background-color:#373740">
+                        <MudText Align="Align.Center">.</MudText>
+                    </div>
+                </div>
+                <div class="col-1 ml-1">
+                    <div class="rounded-xl" style="background-color:#ffffffb3">
+                        <MudText Align="Align.Center">.</MudText>
+                    </div>
+                </div>
+                <div class="col-1 ml-1">
+                    <div class="rounded-xl" style="background-color:#27272f">
+                        <MudText Align="Align.Center">.</MudText>
+                    </div>
+                </div>
+                <div class="col-1 ml-1">
+                    <div class="rounded-xl" style="background-color:#ffffffb3">
+                        <MudText Align="Align.Center">.</MudText>
+                    </div>
+                </div>
+            </div>
         </MudSelectItem>
-        <MudSelectItem Value="@("1")">
+        @*        <MudSelectItem Value="@("1")">
             Light
-        </MudSelectItem>
-        <MudSelectItem Value="@("2")">
+            </MudSelectItem>*@
+        @*        <MudSelectItem Value="@("2")">
             Pink
-        </MudSelectItem>
-         <MudSelectItem Value="@("3")">
+            </MudSelectItem>
+            <MudSelectItem Value="@("3")">
             Green
+            </MudSelectItem>*@
+        <MudSelectItem Value="@("10")">
+            10
+        </MudSelectItem>
+        <MudSelectItem Value="@("4")">
+            <div class="row">
+                <div class="col-3">
+                    <div class="rounded-xl" style="background-color:#F44336">
+                        <MudText Align="Align.Center">.</MudText>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="rounded-xl" style="background-color:#F44336">
+                        <MudText Align="Align.Center">.</MudText>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="py-4 px-6 mx-4 rounded-xl" style="background-color:#F44336">
+                        <MudText Align="Align.Center">.rounded-xl</MudText>
+                    </div>
+                </div>
+            </div>
+        </MudSelectItem>
+        <MudSelectItem Value="@("5")">
+            5
+        </MudSelectItem>
+        <MudSelectItem Value="@("6")">
+            6
+        </MudSelectItem>
+        <MudSelectItem Value="@("7")">
+            7
+        </MudSelectItem>
+        <MudSelectItem Value="@("8")">
+            8
+        </MudSelectItem>
+        <MudSelectItem Value="@("9")">
+            9
         </MudSelectItem>
     </MudSelect>
+   </div>
 </MudAppBar>
