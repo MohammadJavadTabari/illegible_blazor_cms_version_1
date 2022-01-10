@@ -1,11 +1,16 @@
 ﻿<MudDrawer @bind-Open="SideBarOpen" Elevation="1" Class="IIsometricPattern">
-    <MudDrawerHeader>
-        <MudAvatar Color="Color.Transparent" Size="Size.Large" Image="Images/shopping.png" />
-        <MudText Typo="Typo.h6" Color="Color.Primary" Style="margin-top:10px; margin-left:15px;">Ill Shop</MudText>
+    <MudDrawerHeader Style="background-color:black;border-radius: 10px;">
+        <MudAvatar Size="Size.Large" Image="website.png" />
+        <MudText Typo="Typo.h6" Color="Color.Error" Style="margin-top:10px; margin-left:15px;">
+            <div class="IFArchitectsDaughter-Regular"> 
+                Illegible CMS
+            </div>
+        </MudText>
     </MudDrawerHeader>
     <MudNavMenu Class="IBGCBlack IBGOpacity90">
         <MudNavLink Href="/" Match="NavLinkMatch.All" Class="ITshadowBlack" Icon="@Icons.Filled.Home">Home</MudNavLink>
         <MudNavLink Href="/IllegibleAdminDashboard" Class="ITshadowBlack" Icon="@Icons.Filled.DashboardCustomize">Illegible Admin Dashboard</MudNavLink>
+        <MudNavLink Href="/IllegibleBlog" Class="ITshadowBlack" Icon="fas fa-blog">Illegible Blog</MudNavLink>
         <MudNavLink Href="/products" Class="ITshadowBlack" Icon="@Icons.Filled.ArtTrack">Products</MudNavLink>
         <MudNavGroup Title="Product Category" Class="ITshadowBlack" Icon="@Icons.Filled.Category" Expanded="false">
             @{
@@ -15,23 +20,12 @@
                 }
             }
         </MudNavGroup>
-        <MudNavLink Href="/IllegibleBlog" Class="ITshadowBlack" Icon="fas fa-blog">Blog</MudNavLink>
         <MudNavGroup Title="User Helpers" Class="ITshadowBlack" Icon="far fa-address-card" Expanded="true">
-            @*        <AuthorizeView>
-                <Authorized>*@
             <MudNavLink Href="/logout" Class="ITshadowBlack" Icon="@Icons.Filled.ArtTrack">Logout</MudNavLink>
-            @*            </Authorized>
-                <NotAuthorized>*@
             <MudNavLink Href="/login" Class="ITshadowBlack" Icon="@Icons.Outlined.AccountBox">Login</MudNavLink>
             <MudNavLink Href="/registration" Class="ITshadowBlack" Icon="@Icons.Filled.AddReaction">Registration</MudNavLink>
             <MudNavLink Href="/personal/account" Class="ITshadowBlack" Icon="@Icons.Filled.ManageAccounts">Account Dashboard</MudNavLink>
-            @*            </NotAuthorized>
-                </AuthorizeView>*@
-            @*        <AuthorizeView Roles="Administrator">
-                <Authorized>*@
             <MudNavLink Href="application/chat" Class="ITshadowBlack" Icon="@Icons.Filled.Chat">Illegible Chat</MudNavLink>
-            @*            </Authorized>
-                </AuthorizeView>*@
         </MudNavGroup>
     </MudNavMenu>
 </MudDrawer>

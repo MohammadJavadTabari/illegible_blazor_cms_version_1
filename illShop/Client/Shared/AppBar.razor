@@ -2,23 +2,14 @@
     <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
                    OnClick="async () => await OnSidebarToggled.InvokeAsync()" />
     <MudSpacer />
-    @*    <AuthorizeView Roles="Administrator">
-        <Authorized>*@
+
     <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Primary">
         <div class="IFArchitectsDaughter-Regular">Welcome Illegible</div>
     </MudText>
     <MudSpacer />
     <MudAvatar Style="border:2px solid" Class="m-1" Image="Images/MohammadJavadTabari1024.jpeg" Alt="Mohammad Javad Tabari"></MudAvatar>
-    @*        </Authorized>
-        </AuthorizeView>*@
-    @* @if (_isDarkMode)
-        {
-        <MudIconButton Icon="@Icons.Material.Filled.Brightness5" Color="Color.Inherit" OnClick="ToggleTheme" />
-        }
-        else
-        {
-        <MudIconButton Icon="@Icons.Material.Filled.Brightness4" Color="Color.Inherit" OnClick="ToggleTheme" />
-        }*@
+
+
    <div>
         <MudSelect T="string" @bind-Value="ThemeId" FullWidth="false" Style="background-color:darkkhaki ;border:1px solid black ; border-radius:20px;" SelectedValuesChanged="@(()=> ValueChanged())">
         <MudSelectItem Value="@("0")">
