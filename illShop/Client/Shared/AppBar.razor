@@ -1,102 +1,59 @@
 ﻿<MudAppBar Elevation="3">
-    <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
+    <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Dark" Edge="Edge.Start"
                    OnClick="async () => await OnSidebarToggled.InvokeAsync()" />
-    <MudSpacer />
-
-    <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Primary">
-        <div class="IFArchitectsDaughter-Regular">Welcome Illegible</div>
-    </MudText>
-    <MudSpacer />
-    <MudAvatar Style="border:2px solid" Class="m-1" Image="Images/MohammadJavadTabari1024.jpeg" Alt="Mohammad Javad Tabari"></MudAvatar>
-
-
-   <div>
-        <MudSelect T="string" @bind-Value="ThemeId" FullWidth="false" Style="background-color:darkkhaki ;border:1px solid black ; border-radius:20px;" SelectedValuesChanged="@(()=> ValueChanged())">
-        <MudSelectItem Value="@("0")">
-            <div class="row ml-1 mr-1">
-                <div class="col-1 ml-1 IW2">
-                    <div class="rounded-xl" style="background-color:#27272f">
-                        <MudText Align="Align.Center">.</MudText>
-                    </div>
-                </div>
-                <div class="col-1 ml-1">
-                    <div class="rounded-xl" style="background-color:#32333d">
-                        <MudText Align="Align.Center">.</MudText>
-                    </div>
-                </div>
-                <div class="col-1 ml-1">
-                    <div class="rounded-xl" style="background-color:#27272f">
-                        <MudText Align="Align.Center">.</MudText>
-                    </div>
-                </div>
-                <div class="col-1 ml-1">
-                    <div class="rounded-xl" style="background-color:#373740">
-                        <MudText Align="Align.Center">.</MudText>
-                    </div>
-                </div>
-                <div class="col-1 ml-1">
-                    <div class="rounded-xl" style="background-color:#ffffffb3">
-                        <MudText Align="Align.Center">.</MudText>
-                    </div>
-                </div>
-                <div class="col-1 ml-1">
-                    <div class="rounded-xl" style="background-color:#27272f">
-                        <MudText Align="Align.Center">.</MudText>
-                    </div>
-                </div>
-                <div class="col-1 ml-1">
-                    <div class="rounded-xl" style="background-color:#ffffffb3">
-                        <MudText Align="Align.Center">.</MudText>
-                    </div>
-                </div>
-            </div>
-        </MudSelectItem>
-        @*        <MudSelectItem Value="@("1")">
-            Light
-            </MudSelectItem>*@
-        @*        <MudSelectItem Value="@("2")">
-            Pink
+    <MudAvatar Style="border:2px solid" Class="m-4" Image="Images/MohammadJavadTabari1024.jpeg" Alt="Mohammad Javad Tabari"></MudAvatar>
+    <div>
+        <MudSelect T="string" @bind-Value="ThemeId" FullWidth="true" Style="width:200px;background-color:#020205 ;border:1px solid black ; border-radius:5px;" SelectedValuesChanged="@(()=> ValueChanged())">
+            <MudSelectItem Value="@("0")">
+                <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
+                    Dark Mode
+                </MudText>
+            </MudSelectItem>
+            <MudSelectItem Value="@("5")">
+                <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
+                    Light Mood
+                </MudText>
             </MudSelectItem>
             <MudSelectItem Value="@("3")">
-            Green
-            </MudSelectItem>*@
-        <MudSelectItem Value="@("10")">
-            10
-        </MudSelectItem>
-        <MudSelectItem Value="@("4")">
-            <div class="row">
-                <div class="col-3">
-                    <div class="rounded-xl" style="background-color:#F44336">
-                        <MudText Align="Align.Center">.</MudText>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="rounded-xl" style="background-color:#F44336">
-                        <MudText Align="Align.Center">.</MudText>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="py-4 px-6 mx-4 rounded-xl" style="background-color:#F44336">
-                        <MudText Align="Align.Center">.rounded-xl</MudText>
-                    </div>
-                </div>
-            </div>
-        </MudSelectItem>
-        <MudSelectItem Value="@("5")">
-            5
-        </MudSelectItem>
-        <MudSelectItem Value="@("6")">
-            6
-        </MudSelectItem>
-        <MudSelectItem Value="@("7")">
-            7
-        </MudSelectItem>
-        <MudSelectItem Value="@("8")">
-            8
-        </MudSelectItem>
-        <MudSelectItem Value="@("9")">
-            9
-        </MudSelectItem>
-    </MudSelect>
-   </div>
+                <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
+                    Green Mode
+                </MudText>
+            </MudSelectItem>
+            <MudSelectItem Value="@("2")">
+                <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
+                    Pink Mode
+                </MudText>
+            </MudSelectItem>
+            <MudSelectItem Value="@("6")">
+                <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
+                    Light Pink Mode
+                </MudText>
+            </MudSelectItem>
+            <MudSelectItem Value="@("10")">
+                <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
+                    Deep Purple Mode
+                </MudText>
+            </MudSelectItem>
+            <MudSelectItem Value="@("4")">
+                <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
+                    Surface Blue Mode
+                </MudText>
+            </MudSelectItem>
+            <MudSelectItem Value="@("7")">
+                <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
+                    Deep Pink Mode
+                </MudText>
+            </MudSelectItem>
+            <MudSelectItem Value="@("8")">
+                <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
+                   Light Pink No 1
+                </MudText>
+            </MudSelectItem>
+            <MudSelectItem Value="@("1")">
+                <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
+                    S Light Mode
+                </MudText>
+            </MudSelectItem>
+        </MudSelect>
+    </div>
 </MudAppBar>
