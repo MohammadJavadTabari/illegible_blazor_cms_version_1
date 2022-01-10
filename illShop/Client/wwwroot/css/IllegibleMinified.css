@@ -12,7 +12,5 @@
 .ITalignCenter{text-align: center} .ITshadowBlack{ text-shadow: 5px 5px 10px black; color:white }
 
 .Imarginauto {margin: 0 auto;}
-.testvcgjav {
-    background-image: url(../Images/GalaxyOfIllShop.jpg);
-}
+.IBImageGalaxy { background-image: url(../Images/GalaxyOfIllShop.jpg);}
 .loading {display: flex;justify-content: center;}.loading::after {content: "";width: 50px;height: 50px;    border: 10px solid #dddddd;    border-top-color: #009579;    border-radius: 50%;    animation: loading 1s ease infinite;}@keyframes loading {to {transform: rotate(1turn);}}
