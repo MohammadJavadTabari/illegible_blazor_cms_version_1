@@ -51,7 +51,7 @@
             </div>
         </MudNavLink>
         <MudNavLink Href="/products" Class="ITshadowBlack">
-                        <div class="row">
+            <div class="row">
                 <div class="col-2">
                     <MudIcon Icon="fas fa-store" />
                 </div>
@@ -63,13 +63,27 @@
                     </MudText>
                 </div>
             </div>
-            </MudNavLink>
-        <MudNavGroup Title="User Helpers" Class="ITshadowBlack" Icon="far fa-address-card" Expanded="true">
-            <MudNavLink Href="/logout" Class="ITshadowBlack" Icon="@Icons.Filled.ArtTrack">Logout</MudNavLink>
-            <MudNavLink Href="/login" Class="ITshadowBlack" Icon="@Icons.Outlined.AccountBox">Login</MudNavLink>
-            <MudNavLink Href="/registration" Class="ITshadowBlack" Icon="@Icons.Filled.AddReaction">Registration</MudNavLink>
-            <MudNavLink Href="/personal/account" Class="ITshadowBlack" Icon="@Icons.Filled.ManageAccounts">Account Dashboard</MudNavLink>
-            <MudNavLink Href="application/chat" Class="ITshadowBlack" Icon="@Icons.Filled.Chat">Illegible Chat</MudNavLink>
+        </MudNavLink>
+        <MudNavLink Href="application/chat" Class="ITshadowBlack">
+            <div class="row">
+                <div class="col-2">
+                    <MudIcon Icon="far fa-comments" />
+                </div>
+                <div class="col-9">
+                    <MudText Typo="Typo.h6">
+                        <div class="IFArchitectsDaughter-Regular">
+                            Illegible Chat
+                        </div>
+                    </MudText>
+                </div>
+            </div>
+        </MudNavLink>
+        <MudNavGroup Title="User Helpers" Class="ITshadowBlack IFArchitectsDaughter-Regular" Icon="far fa-address-card" Expanded="true">
+            <MudNavLink Href="/logout" Class="ITshadowBlack" Icon="fas fa-sign-out-alt">Sign Out</MudNavLink>
+            <MudNavLink Href="/login" Class="ITshadowBlack" Icon="fas fa-sign-in-alt">Sign In</MudNavLink>
+            <MudNavLink Href="/registration" Class="ITshadowBlack" Icon="fas fa-user-plus">Sign Up</MudNavLink>
+            <MudNavLink Href="/personal/account" Class="ITshadowBlack" Icon="fas fa-user-cog">Account Dashboard</MudNavLink>
+            <MudNavLink Href="#" Class="ITshadowBlack" Icon="fas fa-clipboard-list">To Do</MudNavLink>
         </MudNavGroup>
     </MudNavMenu>
 </MudDrawer>
