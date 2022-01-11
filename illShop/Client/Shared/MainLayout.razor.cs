@@ -25,5 +25,9 @@ namespace illShop.Client.Shared
         private bool _sidebarOpen = true;
         private void ToggleTheme(MudTheme changedTheme) => _currentTheme = changedTheme;
         private void ToggleSidebar() => _sidebarOpen = !_sidebarOpen;
+
+        public bool _rtl { get; set; }
+        private void ToggleRTL(bool rtl) => _rtl = rtl;
+
     }
 }

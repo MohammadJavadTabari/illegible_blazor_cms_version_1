@@ -1,6 +1,6 @@
 ﻿<MudAppBar Elevation="3">
-    <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Dark" Edge="Edge.Start"
-                   OnClick="async () => await OnSidebarToggled.InvokeAsync()" />
+    <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Dark" Edge="Edge.Start" OnClick="async () => await OnSidebarToggled.InvokeAsync()" />
+    <MudIconButton Icon="@RTLICon" OnClick="ChangeRTL" Color="Color.Error" Title="@rtlOrtlrToolTip"/>
     <MudAvatar Style="border:2px solid" Class="m-4" Image="Images/MohammadJavadTabari1024.jpeg" Alt="Mohammad Javad Tabari"></MudAvatar>
     <div>
         <MudSelect T="string" @bind-Value="ThemeId" FullWidth="true" Style="width:200px;background-color:#020205 ;border:1px solid black ; border-radius:5px;" SelectedValuesChanged="@(()=> ValueChanged())">
@@ -46,7 +46,7 @@
             </MudSelectItem>
             <MudSelectItem Value="@("8")">
                 <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
-                   Light Pink No 1
+                    Light Pink No 1
                 </MudText>
             </MudSelectItem>
             <MudSelectItem Value="@("1")">
