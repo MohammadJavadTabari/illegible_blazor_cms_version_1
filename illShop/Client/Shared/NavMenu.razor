@@ -2,24 +2,68 @@
     <MudDrawerHeader Style="background-color:black;border-radius: 10px;">
         <MudAvatar Size="Size.Large" Image="website.png" />
         <MudText Typo="Typo.h6" Color="Color.Error" Style="margin-top:10px; margin-left:15px;">
-            <div class="IFArchitectsDaughter-Regular"> 
+            <div class="IFArchitectsDaughter-Regular">
                 Illegible CMS
             </div>
         </MudText>
     </MudDrawerHeader>
     <MudNavMenu Class="IBGCBlack IBGOpacity90">
-        <MudNavLink Href="/" Match="NavLinkMatch.All" Class="ITshadowBlack" Icon="@Icons.Filled.Home">Home</MudNavLink>
-        <MudNavLink Href="/IllegibleAdminDashboard" Class="ITshadowBlack" Icon="@Icons.Filled.DashboardCustomize">Illegible Admin Dashboard</MudNavLink>
-        <MudNavLink Href="/IllegibleBlog" Class="ITshadowBlack" Icon="fas fa-blog">Illegible Blog</MudNavLink>
-        <MudNavLink Href="/products" Class="ITshadowBlack" Icon="@Icons.Filled.ArtTrack">Products</MudNavLink>
-        <MudNavGroup Title="Product Category" Class="ITshadowBlack" Icon="@Icons.Filled.Category" Expanded="false">
-            @{
-                foreach (var cat in CategoryDtoList)
-                {
-                    <MudNavLink Href="/products" Class="ITshadowBlack" Icon="@cat.Icon">@cat.CategoryName</MudNavLink>
-                }
-            }
-        </MudNavGroup>
+        <MudNavLink Href="/" Match="NavLinkMatch.All" Class="ITshadowBlack">
+            <div class="row">
+                <div class="col-2">
+                    <MudIcon Icon="fas fa-igloo" />
+                </div>
+                <div class="col-9">
+                    <MudText Typo="Typo.h6">
+                        <div class="IFArchitectsDaughter-Regular">
+                            Home
+                        </div>
+                    </MudText>
+                </div>
+            </div>
+        </MudNavLink>
+        <MudNavLink Href="/IllegibleAdminDashboard" Class="ITshadowBlack">
+            <div class="row">
+                <div class="col-2">
+                    <MudIcon Icon="fas fa-toolbox" />
+                </div>
+                <div class="col-9">
+                    <MudText Typo="Typo.h6">
+                        <div class="IFArchitectsDaughter-Regular">
+                            Dashboard
+                        </div>
+                    </MudText>
+                </div>
+            </div>
+        </MudNavLink>
+        <MudNavLink Href="/IllegibleBlog" Class="ITshadowBlack">
+            <div class="row">
+                <div class="col-2">
+                    <MudIcon Icon="fas fa-blog" />
+                </div>
+                <div class="col-9">
+                    <MudText Typo="Typo.h6">
+                        <div class="IFArchitectsDaughter-Regular">
+                            Illegible Blog
+                        </div>
+                    </MudText>
+                </div>
+            </div>
+        </MudNavLink>
+        <MudNavLink Href="/products" Class="ITshadowBlack">
+                        <div class="row">
+                <div class="col-2">
+                    <MudIcon Icon="fas fa-store" />
+                </div>
+                <div class="col-9">
+                    <MudText Typo="Typo.h6">
+                        <div class="IFArchitectsDaughter-Regular">
+                            Products
+                        </div>
+                    </MudText>
+                </div>
+            </div>
+            </MudNavLink>
         <MudNavGroup Title="User Helpers" Class="ITshadowBlack" Icon="far fa-address-card" Expanded="true">
             <MudNavLink Href="/logout" Class="ITshadowBlack" Icon="@Icons.Filled.ArtTrack">Logout</MudNavLink>
             <MudNavLink Href="/login" Class="ITshadowBlack" Icon="@Icons.Outlined.AccountBox">Login</MudNavLink>
