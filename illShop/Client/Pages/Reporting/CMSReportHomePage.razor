@@ -1,0 +1,27 @@
+﻿@page "/admin/dashboard/reports"
+
+
+ <MudGrid Class="mt-3">
+        <MudItem xs="12">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 100%">
+                <BarChart />
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 100%">
+                <DonutChart />
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 100%">
+                <LineChart />
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" md="6">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 100%">
+                <PieChart />
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
