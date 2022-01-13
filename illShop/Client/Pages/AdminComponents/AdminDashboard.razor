@@ -1,106 +1,191 @@
 ﻿@page "/IllegibleAdminDashboard"
 <MudContainer Class="mt-16 px-8" MaxWidth="MaxWidth.False">
     <MudGrid Class="mt-2">
-        <MudItem xs="6" sm="6" md="6"  Class="mt-4">
+        <MudItem xs="6" sm="6" md="6" Class="mt-4">
             <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
                 <div class="ITalignCenter">
-                    <MudIcon Size="Size.Large" Icon="@Icons.Filled.People"></MudIcon>
-                </div>
-                <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Primary">
-                    <div class="IFArchitectsDaughter-Regular">
-                        You Can See And Manage IllShop Users Activity Here
+                    <div class="row">
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-ellipsis-v" Color="Color.Success"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-users-cog"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-user-cog"></MudIcon>
+                        </div>
                     </div>
-                </MudText>
-                <MudButton Color="Color.Dark">
-                    <MudNavLink Href="/usersDetailForAdminHandler" Class="ITshadowBlack">
-                        Illegible Users
-                    </MudNavLink>
-                </MudButton>
+                </div>
+                <div class="mt-5">
+                    <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Primary">
+                        <div class="IFArchitectsDaughter-Regular">
+                            You Can See And Manage IllShop Users Activity Here
+                        </div>
+                    </MudText>
+                </div>
+                <div class="ITalignCenter mt-6">
+                    <MudButton Color="Color.Info" Variant="Variant.Filled">
+                        <MudNavLink Href="/usersDetailForAdminHandler" Class="ITshadowBlack">
+                            Illegible Users
+                        </MudNavLink>
+                    </MudButton>
+                </div>
             </MudPaper>
         </MudItem>
-        <MudItem xs="6" sm="6" md="6"  Class="mt-4">
+        <MudItem xs="6" sm="6" md="6" Class="mt-4">
             <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
                 <div class="ITalignCenter">
-                    <MudIcon Size="Size.Large" Icon="@Icons.Filled.Category"></MudIcon>
-                </div>
-                <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
-                    <div class="IFArchitectsDaughter-Regular">
-                        You Can See And Manage IllShop Product category Here
+                    <div class="row">
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-ellipsis-v" Color="Color.Success"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-box-open"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-atlas"></MudIcon>
+                        </div>
                     </div>
-                </MudText>
-                <MudButton Color="Color.Dark">
-                    <MudNavLink Href="/IllShopProductCategory" Class="ITshadowBlack">
-                        Illegible Product category
-                    </MudNavLink>
-                </MudButton>
+                </div>
+                <div class="mt-5">
+                    <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
+                        <div class="IFArchitectsDaughter-Regular">
+                            You Can See And Manage IllShop Product category Here
+                        </div>
+                    </MudText>
+                </div>
+                <div class="ITalignCenter mt-6">
+                    <MudButton Color="Color.Info" Variant="Variant.Filled">
+                        <MudNavLink Href="/IllShopProductCategory" Class="ITshadowBlack">
+                            Illegible Product category
+                        </MudNavLink>
+                    </MudButton>
+                </div>
             </MudPaper>
         </MudItem>
-        <MudItem xs="6" sm="6" md="6"  Class="mt-4">
+        <MudItem xs="6" sm="6" md="6" Class="mt-4">
             <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
                 <div class="ITalignCenter">
-                    <MudIcon Size="Size.Large" Icon="@Icons.Filled.ShoppingBasket"></MudIcon>
-                </div>
-                <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
-                    <div class="IFArchitectsDaughter-Regular">
-                        You Can See And Manage IllShop Products Here
+                    <div class="row">
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-ellipsis-v" Color="Color.Success"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-store"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-boxes"></MudIcon>
+                        </div>
                     </div>
-                </MudText>
-                <MudButton Color="Color.Dark">
-                    <MudNavLink Href="/ProductManagment" Class="ITshadowBlack">
-                        Illegible Product Mangment
-                    </MudNavLink>
-                </MudButton>
+                </div>
+                <div class="mt-5">
+                    <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
+                        <div class="IFArchitectsDaughter-Regular">
+                            You Can See And Manage IllShop Products Here
+                        </div>
+                    </MudText>
+                </div>
+                <div class="ITalignCenter mt-6">
+                    <MudButton Color="Color.Info" Variant="Variant.Filled">
+                        <MudNavLink Href="/ProductManagment" Class="ITshadowBlack">
+                            Illegible Product Mangment
+                        </MudNavLink>
+                    </MudButton>
+                </div>
             </MudPaper>
         </MudItem>
-        <MudItem xs="6" sm="6" md="6"  Class="mt-4">
+        <MudItem xs="6" sm="6" md="6" Class="mt-4">
             <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
                 <div class="ITalignCenter">
-                    <MudIcon Size="Size.Large" Icon="@Icons.Filled.DashboardCustomize"></MudIcon>
-                </div>
-                <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
-                    <div class="IFArchitectsDaughter-Regular">
-                        You Can See And Manage IllShop UI Customization Here
+                    <div class="row">
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-ellipsis-v" Color="Color.Success"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fab fa-themeco"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-sliders-h"></MudIcon>
+                        </div>
                     </div>
-                </MudText>
-                <MudButton Color="Color.Dark">
-                    <MudNavLink Href="/UICustomizationDashBoard" Class="ITshadowBlack">
-                        Illegible Theme Mangment
-                    </MudNavLink>
-                </MudButton>
+                </div>
+                <div class="mt-5">
+                    <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
+                        <div class="IFArchitectsDaughter-Regular">
+                            You Can See And Manage IllShop UI Customization Here
+                        </div>
+                    </MudText>
+                </div>
+                <div class="ITalignCenter mt-6">
+                    <MudButton Color="Color.Info" Variant="Variant.Filled">
+                        <MudNavLink Href="/UICustomizationDashBoard" Class="ITshadowBlack">
+                            Illegible Theme Mangment
+                        </MudNavLink>
+                    </MudButton>
+                </div>
             </MudPaper>
         </MudItem>
-        <MudItem xs="6" sm="6" md="6"  Class="mt-4">
+        <MudItem xs="6" sm="6" md="6" Class="mt-4">
             <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
                 <div class="ITalignCenter">
-                    <MudIcon Size="Size.Large" Icon="@Icons.Filled.ShoppingBasket"></MudIcon>
-                </div>
-                <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
-                    <div class="IFArchitectsDaughter-Regular">
-                        You Can See And Manage IllShop Posts Here
+                    <div class="row">
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-ellipsis-v" Color="Color.Success"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-blog"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-cube"></MudIcon>
+                        </div>
                     </div>
-                </MudText>
-                <MudButton Color="Color.Dark">
-                    <MudNavLink Href="/ad/min/p0s/tManage" Class="ITshadowBlack">
-                        Illegible Blog Mangment
-                    </MudNavLink>
-                </MudButton>
+                </div>
+                <div class="mt-5">
+                    <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
+                        <div class="IFArchitectsDaughter-Regular">
+                            You Can See And Manage IllShop Posts Here
+                        </div>
+                    </MudText>
+                </div>
+                <div class="ITalignCenter mt-6">
+                    <MudButton Color="Color.Info" Variant="Variant.Filled">
+                        <MudNavLink Href="/ad/min/p0s/tManage" Class="ITshadowBlack">
+                            Illegible Blog Mangment
+                        </MudNavLink>
+                    </MudButton>
+                </div>
             </MudPaper>
         </MudItem>
-          <MudItem xs="6" sm="6" md="6" Class="mt-4">
+        <MudItem xs="6" sm="6" md="6" Class="mt-4">
             <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
                 <div class="ITalignCenter">
-                    <MudIcon Size="Size.Large" Icon="@Icons.Filled.ShoppingBasket"></MudIcon>
-                </div>
-                <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
-                    <div class="IFArchitectsDaughter-Regular">
-                        You Can See And Manage IllShop Posts Here
+                    <div class="row">
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-ellipsis-v" Color="Color.Success"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-chart-bar"></MudIcon>
+                        </div>
+                        <div class="col-3">
+                            <MudIcon Size="Size.Large" Icon="fas fa-chart-pie"></MudIcon>
+                        </div>
                     </div>
-                </MudText>
-                <MudButton Color="Color.Dark">
-                    <MudNavLink Href="/admin/dashboard/reports" Class="ITshadowBlack">
-                        Illegible CMS Reports
-                    </MudNavLink>
-                </MudButton>
+                </div>
+
+                <div class="mt-5">
+                    <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Info">
+                        <div class="IFArchitectsDaughter-Regular">
+                            You Can See And Manage IllShop Posts Here
+                        </div>
+                    </MudText>
+                </div>
+                <div class="ITalignCenter mt-6">
+                    <MudButton Color="Color.Info" Variant="Variant.Filled">
+                        <MudNavLink Href="/admin/dashboard/reports" Class="ITshadowBlack">
+                            Illegible CMS Reports
+                        </MudNavLink>
+                    </MudButton>
+                </div>
             </MudPaper>
         </MudItem>
     </MudGrid>
