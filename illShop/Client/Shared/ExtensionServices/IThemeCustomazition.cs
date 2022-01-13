@@ -10,6 +10,7 @@ namespace illShop.Client.Shared.ExtensionServices
     {
         private readonly List<MudTheme> mudThemes = new()
         {
+            // 0
             // dark
             new MudTheme
             {
@@ -28,8 +29,12 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerIcon = "#ffffffb3"
                 }
             },
+
+            // 1
             // light
             new MudTheme(),
+
+            // 2
             // pink
             new MudTheme
             {
@@ -41,6 +46,8 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerBackground = "#f08b81",
                 }
             },
+
+            // 3
             // green
             new MudTheme()
             {
@@ -55,8 +62,10 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerIcon = "#616161ff"
                 }
             },
+
             ///////////////////////////////////////
-             // green
+            
+            // 4
             new MudTheme()
             {
                 Palette = new Palette()
@@ -70,7 +79,8 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerIcon = "#616161ff"
                 }
             },
-            // green
+
+            // 5
             new MudTheme()
             {
                 Palette = new Palette()
@@ -84,7 +94,8 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerIcon = "#E8EAF6"
                 }
             },
-            // green
+
+            // 6
             new MudTheme()
             {
                 Palette = new Palette()
@@ -98,7 +109,8 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerIcon = "#E8EAF6"
                 }
             },
-            // green
+
+            // 7
             new MudTheme()
             {
                 Palette = new Palette()
@@ -112,6 +124,8 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerIcon = "#9FA8DA"
                 }
             },
+
+            // 8
             new MudTheme()
             {
                 Palette = new Palette()
@@ -125,6 +139,8 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerIcon = "#7986CB"
                 }
             },
+
+            // 9
             new MudTheme()
             {
                 Palette = new Palette()
@@ -138,6 +154,8 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerIcon = "#5C6BC0"
                 }
             },
+
+            // 10
             new MudTheme()
             {
                 Palette = new Palette()
@@ -150,8 +168,27 @@ namespace illShop.Client.Shared.ExtensionServices
                     DrawerText = "#5E35B1",
                     DrawerIcon = "#3949AB"
                 }
+            },
+
+            // 11
+            new MudTheme
+            {
+                Palette = new Palette()
+                {
+                    Black = "#27272f",
+                    Background = "#c7c8d4",
+                    BackgroundGrey = "#27272f",
+                    Surface = "#373740",
+                    TextPrimary = "#ffffffb3",
+                    TextSecondary = "rgba(255,255,255, 0.50)",
+                    AppbarBackground = "#27272f",
+                    AppbarText = "#ffffffb3",
+                    DrawerBackground = "#27272f",
+                    DrawerText = "#ffffffb3",
+                    DrawerIcon = "#ffffffb3"
+                }
             }
-        };
+    };
         public MudTheme SelectTheme(string themeId)
         {
             return mudThemes[short.Parse(themeId)];

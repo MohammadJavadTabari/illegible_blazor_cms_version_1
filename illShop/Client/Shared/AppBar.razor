@@ -4,9 +4,14 @@
     <MudAvatar Style="border:2px solid" Class="m-4" Image="Images/MohammadJavadTabari1024.jpeg" Alt="Mohammad Javad Tabari"></MudAvatar>
     <div>
         <MudSelect T="string" @bind-Value="ThemeId" FullWidth="true" Style="width:200px;background-color:#020205 ;border:1px solid black ; border-radius:5px;" SelectedValuesChanged="@(()=> ValueChanged())">
-            <MudSelectItem Value="@("0")">
+            <MudSelectItem Value="@("11")">
                 <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
-                    Dark Mode
+                    Surface Dark Mode
+                </MudText>
+            </MudSelectItem>
+             <MudSelectItem Value="@("0")">
+                <MudText Align="Align.Center" Typo="Typo.body1" Color="Color.Error">
+                    Deep Dark Mode
                 </MudText>
             </MudSelectItem>
             <MudSelectItem Value="@("5")">
