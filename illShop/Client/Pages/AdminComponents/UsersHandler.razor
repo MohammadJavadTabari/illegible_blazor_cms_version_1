@@ -1,12 +1,32 @@
 ﻿@page "/usersDetailForAdminHandler"
 @using illShop.Shared.Dto.DtosRelatedIdentity
-<div class="row">
+<PageTitle>UserHandlers</PageTitle>
+<MudContainer Class="mt-6">
+    <MudAlert Severity="Severity.Info">
+    <MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">
+        <div class="IFArchitectsDaughter-Regular">User Handlers</div>
+    </MudText>
+    <MudText Color="Color.Warning" Typo="Typo.h5">
+        there we go !
+        <br />
+        Watch And Handle User Actions , Folow this step's :
+        <br />
+        <ol>
+            <li>you can edit user data by click on it</li>
+            <li>You can active or deactive users fro here</li>
+            <li><strong>And More Important Thing , you can see all user activity</strong></li>
+        </ol>
+    </MudText>
+</MudAlert>
+<div class="row mt-8">
     <div class="col">
         <MudTable ServerData="@(new Func<TableState, Task<TableData<UserDetailDto>>>(GetServerData))"
                   Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true"
                   @ref="_table" RowsPerPage="4">
             <ToolBarContent>
-                <MudText Typo="Typo.h6">Users Detail</MudText>
+                <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Secondary">
+                    <div class="IFArchitectsDaughter-Regular">Users Detail</div>
+                </MudText>
                 <MudSpacer />
             </ToolBarContent>
             <HeaderContent>
@@ -21,11 +41,12 @@
                 <MudTd DataLabel="Email">@context.Email</MudTd>
                 <MudTd DataLabel="PhoneNumber">@context.PhoneNumber</MudTd>
                 <MudTd DataLabel="AccessFaildCount">@context.AccessFaildCount</MudTd>
-                <MudTd DataLabel="Online"><MudIcon Icon="@Icons.Outlined.OnlinePrediction"></MudIcon></MudTd>
+                <MudTd DataLabel="Online"><MudIcon Icon="fas fa-wifi" Color="Color.Success"></MudIcon></MudTd>
             </RowTemplate>
             <PagerContent>
-                <MudTablePager PageSizeOptions="@_pageSizeOption" RowsPerPageString="Products per page" />
+                <MudTablePager PageSizeOptions="@_pageSizeOption"  RowsPerPageString="Products per page" />
             </PagerContent>
         </MudTable>
     </div>
 </div>
+</MudContainer>
